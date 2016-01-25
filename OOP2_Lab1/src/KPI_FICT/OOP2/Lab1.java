@@ -1,4 +1,4 @@
-package com.example;
+package KPI_FICT.OOP2;
 
 import java.util.Scanner;
 
