@@ -66,7 +66,6 @@ public class Lab1 {
     }
 
     public static void main(String[] args) {
-        System.out.println((short)('c'));
         Scanner scan = new Scanner(System.in);
         short a, n, b, m;
         double partSum, Sum = 0.0;

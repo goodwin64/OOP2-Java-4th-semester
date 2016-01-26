@@ -5,7 +5,34 @@ ukr:
 Всі змінні повинні бути описані та значення їх задані у виконавчому методі.
 
 eng:
-Create the class that consists of the executive method that performs the calculating of the function S = SUM_i( SUM_j( (i OP2 j)/(i OP1 C) )[from b to m] )[from a to n] with a defined type of indices (p.5), operations (p.2 and p.4) {OP1 = "-", OP2 = "+"} and constant (п.3) {C = 2}. 
+Create the class that consists of the executive method that performs the calculating of the function S = SUM_i( SUM_j( (i OP2 j)/(i OP1 C) )[from b to m] )[from a to n] with a defined type of indices (p.5), operations (p.2 and p.4) {OP1 = "-", OP2 = "+"} and constant (p.3). 
 The result of the action is a single valid-type value. 
 You must process all exceptions that may occur during code execution.
 All variables should be described and their values defined in the enforcement method.
+
+	1.	Identify C2 as the remainder of the division of the student's record-book by number 2, C3 as the remainder of the division of the student record-book by 3, C5 as ... by 5, C7 as ... by 7.	
+			
+	2.	Depending on the value of C2 determine the operation O1:		
+C2	Operation O1		
+0	+		
+1	-		
+
+	3.	Determine the constant C, which is equal to C3.		
+
+	4.	Depending on the value of C5 determine the operation O2:		
+C5	Operation O2		
+0	*		
+1	/		
+2	%		
+3	+		
+4	-		
+
+	5.	Depending on the value of C7 determine the type of indices i and j:		
+C7	i and j type		
+0	byte		
+1	short		
+2	int		
+3	long		
+4	char		
+5	float		
+6	double
