@@ -1,10 +1,3 @@
-ukr:
-Створити клас, який складається з виконавчого методу, що виконує обчислення значення функції S = SUM_i( SUM_j( (i OP2 j)/(i OP1 C) )[from b to m] )[from a to n] із зазначеним типом індексів (п.5), операціями (п.2 та п.4) {OP1 = "-", OP2 = "+"} та константою (п.3) {C = 2}. 
-Результатом виконання дії є єдине значення дійсного типу. 
-Необхідно обробити всі виключні ситуації, що можуть виникнути під час виконання програмного коду. 
-Всі змінні повинні бути описані та значення їх задані у виконавчому методі.
-
-eng:
 Create the class that consists of the executive method that performs the calculating of the function S = SUM_i( SUM_j( (i OP2 j)/(i OP1 C) )[from b to m] )[from a to n] with a defined type of indices (p.5), operations (p.2 and p.4) {OP1 = "-", OP2 = "+"} and constant (p.3). 
 The result of the action is a single valid-type value. 
 You must process all exceptions that may occur during code execution.
