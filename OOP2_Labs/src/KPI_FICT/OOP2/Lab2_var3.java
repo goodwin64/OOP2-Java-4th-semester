@@ -1,68 +1,87 @@
 package KPI_FICT.OOP2;
 
-import jdk.nashorn.internal.runtime.ECMAException;
-
 import java.util.Scanner;
 
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 25.01.2016.
  */
+
 public class Lab2_var3 {
+
+    public static byte randByte(byte min, byte max) {
+        // instead of rounding, distribution is more uniform
+        return (byte) (min - 0.5 + Math.random() * (max - min + 1));
+    }
+
+    public static byte randByte() {
+        // instead of rounding, distribution is more uniform
+        return (byte) (-128 - 0.5 + Math.random() * (127 + 128 + 1));
+    }
+
+    public static void prettyPrint(byte[][] arr){
+        for (byte[] row : arr) {
+            for (byte value : row) {
+                System.out.format("%5d", value);
+            }
+            System.out.println();
+        }
+        for (int i = 0; i < arr[0].length * 5; i++) {
+            System.out.printf("%s", "-"); // format and printf are equal
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        byte a, b;
+        byte height, width;
         int sum;
 
-        System.out.print("Height (a): ");
-        a = scan.nextByte();
-        System.out.print("Width (b): ");
-        b = scan.nextByte();
+        System.out.print("Matrix height: ");
+        height = scan.nextByte();
+        System.out.print("Matrix width: ");
+        width = scan.nextByte();
 
         try {
-            if (a < 1) {
+            if (height < 1) {
                 throw new Exception("Matrix height is not natural number");
             }
-            if (b < 1) {
+            if (width < 1) {
                 throw new Exception ("Matrix width is not natural number");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            while (a < 1) {
-                System.out.print("Height (a): ");
-                a = scan.nextByte();
+            while (height < 1) {
+                System.out.print("Matrix height: ");
+                height = scan.nextByte();
             }
-            while (b < 1) {
-                System.out.print("Width (b): ");
-                b = scan.nextByte();
-            }
-        }
-
-        byte[][] myArray = new byte[a][b];
-
-        for (byte i = 0; i < a; i++) {
-            for (byte j = 0; j < b; j++) {
-                myArray[i][j] = (byte) (i ^ j);
+            while (width < 1) {
+                System.out.print("Matrix width: ");
+                width = scan.nextByte();
             }
         }
 
-        for (byte[] row : myArray) {
-            for (byte value : row) {
-                System.out.format("%3d ", value);
+        byte[][] A = new byte[height][width];
+        byte[][] B = new byte[height][width];
+        byte[][] C = new byte[height][width];
+
+        for (byte i = 0; i < height; i++) {
+            for (byte j = 0; j < width; j++) {
+                A[i][j] = randByte();
+                B[i][j] = randByte();
+                C[i][j] = (byte) (A[i][j] ^ B[i][j]);
             }
-            System.out.println();
         }
 
-        for (int i = 0; i < b * 4; i++) {
-            System.out.printf("%s", "-"); // format and printf are equal
-        }
-        System.out.println();
+//        prettyPrint(A);
+//        prettyPrint(B);
+        prettyPrint(C);
 
-        for (int j = 0; j < b; j++) {
+        for (int j = 0; j < width; j++) {
             sum = 0;
-            for (int i = 0; i < a; i++) {
-                sum += myArray[i][j];
+            for (int i = 0; i < height; i++) {
+                sum += C[i][j];
             }
-            System.out.printf("%3d ", sum);
+            System.out.printf("%5d", sum);
         }
 
     }

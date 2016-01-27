@@ -1,0 +1,36 @@
+Laboratory work #2
+Theme: Arrays in Java.
+Objective: Acquaintance with arrays and using basic methods for their processing in the Java programming language; gaining skills to use arrays in Java.
+
+Task
+	1. Determine the C5 as the remainder of the division�of the student's record-book by 5, C7 as ... by 7, C11 as ... by 11.
+	2.	Depending on the value of C5 determine the action that will be performed with the matrix(-ces):
+C5	Action with inputted matrix(-ces):
+0	 C = a * B (a - const)
+1	 C = transpose(B)
+2	 C = A + B
+3	 C = A XOR B
+4	 C = A * B
+	3.	Depending on the value of C7 determine the type of matrix elements:
+C7	Type of matrix elements
+0	double
+1	byte
+2	short
+3	int
+4	long
+5	char
+6	float
+	4.	Depending on the value of C7 determine the action with matrix C:
+C11	Action with matrix C
+0	Calculate the sum of the smallest elements in each column of the matrix
+1	Calculate the sum of the smallest elements in each row of the matrix
+2	Calculate the sum of the largest elements in each column of the matrix
+3	Calculate the sum of the largest elements in each row of the matrix
+4	Calculate the sum of the largest elements in each row with even indices and sum of the smallest elements in each row with odd indices in the matrix
+5	
+6	
+7	
+8	
+9	
+10	
+	5.	Create a class that consists of enforcement method, which performs the action with the matrix (s) (p.2) with specified type elements (p.3) and the action with the resulting matrix C (p.4). Display the results of the first and second actions. You must process all exceptional situations that may occur during code execution. All variables should be described and their significance set in the enforcement method.
