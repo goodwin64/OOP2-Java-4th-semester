@@ -1,0 +1,32 @@
+Laboratory work #3
+Theme:	Strings in Java programming language.
+Objective:	Acquaintance with strings and using basic methods of their processing in Java.
+
+Task
+1.	Determine C3 as the remainder of division of the student's record-book by number 3, C13 as ... by 17.
+2.	Depending on the value of C3 define the type of text variables:
+	C3	Type
+	0	StringBuilder
+	1	StringBuffer
+	2	String
+3.	Depending on the value of C17 define the action performed to string:
+	C17	Action performed to string
+	0	Find the maximum number of sentences in given text, which have the same word.
+	1	Output all sentences in the given text in order of increasing number of words in them.
+	2	Find a word in the first sentence of a given text, which doesn't exist in other sentences. 
+	3	In all interrogative sentences given in the text find and print without repetitions words with given length.
+	4	In each sentence given in the text swap first and last word without changing the length of the sentence.
+	5	Print words from the given text without repetitions by alphabetical order by first letter.
+	6	Sort words from the given text by increasing the number of vowel letters.
+	7	Sort words in the given text by the second letter that start with vowels.
+	8	Sort words in the given text by increasing the number of letter given by user.
+	9	Given a text and an array of the words. Count how many sentences have every word from the array.
+	10	Delete the substring that begins and ends with the given letters from each sentence.
+	11	Remove from the given text all words of a certain length beginning with the consonant letters.
+	12	Sort words in the given text by the number of occurrences of the specified character in them.
+	13	In the given text find the string with maximum length that is a palindrome (reads equally from left to right and from right to left).
+	14	Delete from each word in the given text all occurrences of the first letter of the word.
+	15	In a given text, replace words with a given length by given string.
+	16	Delete all entries of last letter of the word from each word in the given text.
+	
+Create a class that consists of enforcement method that performs an action with text string (paragraph 3), which defines by the variant number (paragraph 2). You must process all exceptional situations that may occur during code execution. All variables should be described and their significance set in the enforcement method.
