@@ -3,7 +3,7 @@ Theme:	Strings in Java programming language.
 Objective:	Acquaintance with strings and using basic methods of their processing in Java.
 
 Task
-1.	Determine C3 as the remainder of division of the student's record-book by number 3, C13 as ... by 17.
+1.	Determine C3 as the remainder of division of the student's record-book by number 3, C17 as ... by 17.
 2.	Depending on the value of C3 define the type of text variables:
 	C3	Type
 	0	StringBuilder
