@@ -1,6 +1,6 @@
 package KPI_FICT.OOP2;
 
-import java.util.Arrays;
+import java.io.*;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -10,10 +10,11 @@ import java.util.StringTokenizer;
 
 public class Lab3_var3 {
 
-    public static void printVariantInfo(Scanner scan) {
+    public static void printVariantInfo() {
+        Scanner scan = new Scanner(System.in);
         int recBook;
         System.out.print("Number of record-book: ");
-        recBook = 4103; //scan.nextInt();
+        recBook = scan.nextInt();
         int     c3 = recBook % 3,
                 c17 = recBook % 17;
         String textVarsType = "";
@@ -52,7 +53,8 @@ public class Lab3_var3 {
         return tokens;
     }
 
-    public static String readText(Scanner scan) {
+    public static String readTextFromConsole() {
+        Scanner scan = new Scanner(System.in);
         System.out.println("Input the text below (input will terminated after word <EOF>):");
         String text = "";
         String line = scan.nextLine();
@@ -63,7 +65,50 @@ public class Lab3_var3 {
         return text;
     }
 
+    public static void createFile() {
+        File file = new File("someText.txt");
+        try {
+            PrintWriter pw = new PrintWriter(file);
+            pw.println("Line 1");
+            pw.println("Line 2");
+            pw.println("Line 3");
+            pw.close();
+        } catch (IOException e) {
+            System.err.format("IOException: %s%n", e);
+        }
+    }
+
+    /**
+     * Uncomment lines starts with triple-slash (///)
+     * to output text from file to console.
+     */
+    public static String readTextFromFile() {
+        // path: C:\Users\Admin\Documents\IdeaProjects\OOP2_Labs\
+        File file = new File("someText.txt");
+        String text = "";
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                try {
+                    String line = br.readLine();
+                    /// System.out.println(line);
+                    while (!line.equalsIgnoreCase("EOF")) {
+                        text += line + "\n";
+                        line = br.readLine();
+                        /// System.out.println(line);
+                    }
+                    br.close();
+                    /// System.out.println("------------------------");
+                } catch (IOException e2) {
+                    System.err.format("IOException: %s%n", e2);
+                }
+            } catch (FileNotFoundException e1) {
+                System.err.format("Exception: %s%n", e1);
+            }
+        return text;
+    }
+
     public static void printWords(String arr[]) {
+        System.out.printf("\tWords from text:%n");
         for (String word : arr) {
             System.out.println(word);
         }
@@ -106,6 +151,9 @@ public class Lab3_var3 {
             return 0;
     }
 
+    /**
+     * Soon here will be a stable sorting algorithm.
+     */
     public static void sortByVowels(String[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i+1; j < arr.length; j++) {
@@ -126,11 +174,11 @@ public class Lab3_var3 {
      * 4) Output array of words.
      */
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        printVariantInfo();
+        //createFile(); // uncomment this line if you want to rewrite .txt-file
 
-        printVariantInfo(scan);
-        String text = readText(scan);
-        String[] wordsArray = getTokens(text, " ,.!?", true);
+        String text = readTextFromFile();
+        String[] wordsArray = getTokens(text, " ,.!?\n", true);
         sortByVowels(wordsArray);
         printWords(wordsArray);
     }
