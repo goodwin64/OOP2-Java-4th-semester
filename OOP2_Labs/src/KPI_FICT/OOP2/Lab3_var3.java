@@ -107,60 +107,63 @@ public class Lab3_var3 {
         return text;
     }
 
-    public static void printWords(String arr[]) {
+    public static void prettyPrint(String[] arr1, byte[] arr2) {
         System.out.printf("\tWords from text:%n");
-        for (String word : arr) {
-            System.out.println(word);
+        System.out.printf("%n%d: ", arr2[0]);
+        System.out.printf("%s  ", arr1[0]);
+        for (int i = 1; i < arr1.length; i++) {
+            if ( arr2[i-1] < arr2[i] ) {
+                System.out.printf("%n%d: ", arr2[i]);
+            }
+            System.out.printf("%s  ", arr1[i]);
         }
     }
 
 
     /**
-     * Returns 0 or 1 (not -1) because of comparing words for sorting.
-     * Comparing s1 < s2 is not necessary.
+     * Count the number of vowel letters in word.
      *
-     * @param s1    first string
-     * @param s2    second string
+     * @param s     word
      *
-     * @return      1 if {vowels in s1} > {vowels in s2}
-     *              0 otherwise
+     * @return      the number of vowel letters in word
      */
-    public static int compareByVowels(String s1, String s2) {
-        int     vowels1 = 0,
-                vowels2 = 0;
+    public static byte vowelsCountInWord(String s) {
+        byte result = 0;
         char vowels[] = { 'a', 'e', 'i', 'o', 'u', 'y' };
-        for (int i = 0; i < s1.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             for (char vowel : vowels) {
-                if (s1.toLowerCase().charAt(i) == vowel) {
-                    vowels1++;
+                if (s.toLowerCase().charAt(i) == vowel) {
+                    result++;
                     break;
                 }
             }
         }
-        for (int i = 0; i < s2.length(); i++) {
-            for (char vowel : vowels) {
-                if (s2.toLowerCase().charAt(i) == vowel) {
-                    vowels2++;
-                    break;
-                }
-            }
+        return result;
+    }
+
+    public static byte[] vowelsCounts(String[] arr) {
+        byte result[] = new byte[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            result[i] = vowelsCountInWord(arr[i]);
         }
-        if (vowels1 > vowels2)
-            return 1;
-        else
-            return 0;
+        return result;
     }
 
     /**
      * Soon here will be a stable sorting algorithm.
      */
-    public static void sortByVowels(String[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i+1; j < arr.length; j++) {
-                if (compareByVowels(arr[i], arr[j]) == 1) {
-                    String temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+    public static void sortWordsByVowels(String[] arr1, byte[] arr2) {
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = i + 1; j < arr1.length; j++) {
+                if (arr2[i] > arr2[j]) {
+                    String  temp1 = arr1[i];
+                    byte    temp2 = arr2[i];
+
+                    arr1[i] = arr1[j];
+                    arr2[i] = arr2[j];
+
+                    arr1[j] = temp1;
+                    arr2[j] = temp2;
                 }
             }
         }
@@ -170,16 +173,19 @@ public class Lab3_var3 {
      * Sort words from the given text by increasing the number of vowel letters.
      * 1) Reading the text (now from console, soon from file).
      * 2) Splitting text (string) by tokens (words) and creating an array on this base.
-     * 3) Sorting array of words.
-     * 4) Output array of words.
+     * 3) Creating the array of the numbers of vowels in each word.
+     * 4) Sorting the array of words by comparing numbers in array of vowels.
+     * 5) Outputting the array of words:
+     *      {number of vowels} : {the array of words with this vowels number}.
      */
     public static void main(String[] args) {
         printVariantInfo();
         //createFile(); // uncomment this line if you want to rewrite .txt-file
 
         String text = readTextFromFile();
-        String[] wordsArray = getTokens(text, " ,.!?\n", true);
-        sortByVowels(wordsArray);
-        printWords(wordsArray);
+        String[] words = getTokens(text, " ,.!?\n", true);
+        byte[] vowelNumber = vowelsCounts(words);
+        sortWordsByVowels(words, vowelNumber);
+        prettyPrint(words, vowelNumber);
     }
 }
