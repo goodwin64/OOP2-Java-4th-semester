@@ -1,12 +1,12 @@
-package KPI_FICT.OOP2;
+package KPI_FICT.OOP2.Classes;
 
 import java.util.Scanner;
 
 /**
  * Created by Max Donchenko on 24.01.2016.
  */
-
 public class Lab1 {
+
     public static void swap(short[] a, short[] b) {
         /*
          * In Java, all the arguments are passed by value.
@@ -47,6 +47,9 @@ public class Lab1 {
         }
     }
 
+    /**
+     * Simple math operations: "+", "-", "*", "/"
+     */
     public static short makeOperation(short a, short b, char operation) {
         /*
          * if this method return 0, it doesn't entail changes in further calculations
@@ -119,7 +122,7 @@ public class Lab1 {
                         if (i == c) {
                             throw new Exception("Division by 0.0 -> Inf");
                         }
-                        partSum = ( (double) makeOperation(i, j, op2) / (double) makeOperation(i, (short) c, op1) );
+                        partSum = ((double) makeOperation(i, j, op2) / (double) makeOperation(i, (short) c, op1));
                         Sum += partSum;
                         System.out.println(Sum);
                     }

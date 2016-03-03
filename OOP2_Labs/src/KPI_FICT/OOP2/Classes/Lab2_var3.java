@@ -1,16 +1,15 @@
-package KPI_FICT.OOP2;
+package KPI_FICT.OOP2.Classes;
 
 import java.util.Scanner;
 
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 25.01.2016.
  */
-
 public class Lab2_var3 {
 
     public static byte getRandByte(byte min, byte max) {
         /*
-         * Instead of rounding, distribution is more uniform.
+         * Instead of rounding, flooring distribution is more uniform.
          */
         return (byte) (min - 0.5 + Math.random() * (max - min + 1));
     }
@@ -27,11 +26,15 @@ public class Lab2_var3 {
             System.out.println();
         }
         for (int i = 0; i < matrix[0].length * 5; i++) {
-            System.out.printf("%s", "-"); // format() and printf() are equal
+            System.out.printf("%s", "-"); /* format() and printf() are similar */
         }
         System.out.println();
     }
 
+    /**
+     * Calculates the sum of numbers in each column
+     * and print additional row with these values.
+     */
     public static void printColumnAmounts(byte[][] matrix) {
         int sum;
         for (int j = 0; j < matrix[0].length; j++) {
@@ -41,12 +44,12 @@ public class Lab2_var3 {
             }
             System.out.printf("%5d", sum);
         }
+        System.out.println(); /* analogue of '\n' */
     }
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         byte height, width;
-        int sum;
 
         System.out.print("Matrix height: ");
         height = scan.nextByte();
