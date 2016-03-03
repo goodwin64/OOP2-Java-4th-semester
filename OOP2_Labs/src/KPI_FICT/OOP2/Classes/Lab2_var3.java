@@ -8,27 +8,39 @@ import java.util.Scanner;
 
 public class Lab2_var3 {
 
-    public static byte randByte(byte min, byte max) {
-        // instead of rounding, distribution is more uniform
+    public static byte getRandByte(byte min, byte max) {
+        /*
+         * Instead of rounding, distribution is more uniform.
+         */
         return (byte) (min - 0.5 + Math.random() * (max - min + 1));
     }
 
-    public static byte randByte() {
-        // instead of rounding, distribution is more uniform
+    public static byte getRandByte() {
         return (byte) (-128 - 0.5 + Math.random() * (127 + 128 + 1));
     }
 
-    public static void prettyPrint(byte[][] arr){
-        for (byte[] row : arr) {
+    public static void prettyPrint(byte[][] matrix) {
+        for (byte[] row : matrix) {
             for (byte value : row) {
                 System.out.format("%5d", value);
             }
             System.out.println();
         }
-        for (int i = 0; i < arr[0].length * 5; i++) {
-            System.out.printf("%s", "-"); // format and printf are equal
+        for (int i = 0; i < matrix[0].length * 5; i++) {
+            System.out.printf("%s", "-"); // format() and printf() are equal
         }
         System.out.println();
+    }
+
+    public static void printColumnAmounts(byte[][] matrix) {
+        int sum;
+        for (int j = 0; j < matrix[0].length; j++) {
+            sum = 0;
+            for (int i = 0; i < matrix.length; i++) {
+                sum += matrix[i][j];
+            }
+            System.out.printf("%5d", sum);
+        }
     }
 
     public static void main(String[] args) {
@@ -66,23 +78,17 @@ public class Lab2_var3 {
 
         for (byte i = 0; i < height; i++) {
             for (byte j = 0; j < width; j++) {
-                A[i][j] = randByte();
-                B[i][j] = randByte();
+                A[i][j] = getRandByte();
+                B[i][j] = getRandByte();
                 C[i][j] = (byte) (A[i][j] ^ B[i][j]);
             }
         }
 
-//        prettyPrint(A);
-//        prettyPrint(B);
+        //prettyPrint(A);
+        //prettyPrint(B);
         prettyPrint(C);
 
-        for (int j = 0; j < width; j++) {
-            sum = 0;
-            for (int i = 0; i < height; i++) {
-                sum += C[i][j];
-            }
-            System.out.printf("%5d", sum);
-        }
+        printColumnAmounts(C);
 
     }
 }

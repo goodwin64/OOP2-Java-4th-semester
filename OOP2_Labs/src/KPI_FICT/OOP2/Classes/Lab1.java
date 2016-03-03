@@ -9,10 +9,10 @@ import java.util.Scanner;
 public class Lab1 {
     public static void swap(short[] a, short[] b) {
         /*
-        In Java, all the arguments are passed by value.
-        So there is no such thing as a "ref".
-        However, I achieve variable swapping by wrapping values in arrays.
-        */
+         * In Java, all the arguments are passed by value.
+         * So there is no such thing as a "ref".
+         * However, I achieve variable swapping by wrapping values in arrays.
+         */
         short t = a[0];
         a[0] = b[0];
         b[0] = t;
@@ -48,6 +48,9 @@ public class Lab1 {
     }
 
     public static short makeOperation(short a, short b, char operation) {
+        /*
+         * if this method return 0, it doesn't entail changes in further calculations
+         */
         try {
             switch (operation) {
                 case '+': return (short) (a + b);
@@ -59,7 +62,7 @@ public class Lab1 {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            // if this method return 0, it doesn't entail changes in further calculations
+
             return 0;
         }
 
@@ -82,17 +85,6 @@ public class Lab1 {
         c = c3;
         op2 = determineOp2(c5);
 
-        /*int c7 = recordBook % 7;
-        switch (c7) {
-            case 0: byte i, j;
-            case 1: short i, j;
-            case 2: int i, j;
-            case 3: long i, j;
-            case 4: char i, j;
-            case 5: float i, j;
-            case 6: double i, j;
-        }*/
-
         try {
             System.out.print("Sum 1 from ");
             a = scan.nextShort();
@@ -110,7 +102,6 @@ public class Lab1 {
                 swap(A, N);
                 a = A[0];
                 n = N[0];
-                // it's possible to delete arrays A and N here
                 System.out.println("Inverted limits were swapped: [n,a]->[a,n]");
             }
             if (b > m) {
@@ -121,7 +112,6 @@ public class Lab1 {
                 m = M[0];
                 System.out.println("Inverted limits were swapped: [m,b]->[b,m]");
             }
-
 
             for (short i = a; i <= n; i++) {
                 for (short j = b; j <= m; j++) {
@@ -144,7 +134,7 @@ public class Lab1 {
 
             System.out.print("Sum is ");
             System.out.println(Sum);
-            
+
         } catch (Exception e1) {
             e1.printStackTrace();
         }
