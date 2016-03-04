@@ -11,11 +11,15 @@ public class Lab2_var3 {
         /*
          * Instead of rounding, flooring distribution is more uniform.
          */
-        return (byte) (min - 0.5 + Math.random() * (max - min + 1));
+        return (byte) (min + Math.random() * (max - min + 1));
+    }
+
+    public static int getRandInt(int min, int max) {
+        return (int) (min + Math.random() * (max - min + 1));
     }
 
     public static byte getRandByte() {
-        return (byte) (-128 - 0.5 + Math.random() * (127 + 128 + 1));
+        return (byte) (-128 + Math.random() * (127 + 128 + 1));
     }
 
     public static void prettyPrint(byte[][] matrix) {
