@@ -18,6 +18,17 @@ public class Lab1 {
         b[0] = t;
     }
 
+    public static void swap(int[] a, int[] b) {
+        /*
+         * In Java, all the arguments are passed by value.
+         * So there is no such thing as a "ref".
+         * However, I achieve variable swapping by wrapping values in arrays.
+         */
+        int t = a[0];
+        a[0] = b[0];
+        b[0] = t;
+    }
+
     public static char determineOp1(int value) {
         try {
             switch (value) {
