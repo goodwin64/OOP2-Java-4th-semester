@@ -1,0 +1,21 @@
+Laboratory work #4
+Theme: 		Classes in Java.
+Objective: 	Introduction to classes. Using existing and creating own classes in Java.
+
+Task
+1.	Determine the C11 as a remainder of the division of the student's record-book by 11.
+2.	Depending on the value of C11 determine the class to implement:
+C11	
+0	Student
+1	School
+2	Car
+3	Plane
+4	Sea boat
+5	Clothes
+6	Cosmetics
+7	Sport equipment
+8	Furniture
+9	Student
+10	Student
+
+Create a class with executive method, which create an array of objects of specified class. Sort the array by ascending by one of the fields, and in descending order by the other one using standard sorting tools. All variables should be described and their values given in the enforcement method. The code must correspond to the JCC standards and be thoroughly documented.

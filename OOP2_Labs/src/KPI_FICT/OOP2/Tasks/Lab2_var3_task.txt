@@ -3,7 +3,7 @@ Theme: Arrays in Java.
 Objective: Acquaintance with arrays and using basic methods for their processing in the Java programming language; gaining skills to use arrays in Java.
 
 Task
-	1. Determine the C5 as the remainder of the division�of the student's record-book by 5, C7 as ... by 7, C11 as ... by 11.
+	1. Determine the C5 as the remainder of the division of the student's record-book by 5, C7 as ... by 7, C11 as ... by 11.
 	2.	Depending on the value of C5 determine the action that will be performed with the matrix(-ces):
 C5	Action with inputted matrix(-ces):
 0	 C = a * B (a - const)
