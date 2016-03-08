@@ -1,43 +1,60 @@
 package KPI_FICT.OOP2.Classes;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 03.03.2016.
  */
 public class Lab4_var3 {
 
     public static void main(String[] args) {
-        Student st1 = new Student(true, "Max");
-        Student st2 = new Student(true, "Max Donchenko");
-        Student st3 = new Student(true, "Rauf-San Ibn-Al-Hattab-Al-Dzhazir");
-        Student st4 = new Student();
+        Student[] students = fillStudentsArray();
+        printStudentsArray(students);
 
-        Student rst1 = new Student(true);
-        Student rst2 = new Student(false);
+        Arrays.sort(students);
+        System.out.println("\n\t In ascending order by age:");
+        printStudentsArray(students);
 
-        System.out.printf("\t%-16.25s\t %s\t %s%n", "Name", "Age", "Scholarship");
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", st1.getFullName(), st1.getAge(), st1.getScholarship());
+        Arrays.sort(students, new SortDescByAverMark());
+        System.out.println("\n\t In descending order by average mark:");
+        printStudentsArray(students);
 
-        st1.addMarks(20);
-        st1.recalcScholarship();
-        st1.printMarks();
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", st1.getFullName(), st1.getAge(), st1.getScholarship());
+        Arrays.sort(students, new SortAscBySurname());
+        System.out.println("\n\t In ascending order by surname:");
+        printStudentsArray(students);
+    }
 
-        st1.addMarks(20, 94, 96);
-        st1.recalcScholarship();
-        st1.printMarks();
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", st1.getFullName(), st1.getAge(), st1.getScholarship());
+    public static Student[] fillStudentsArray() {
+        Student[] students = new Student[10];
+        int middle = students.length / 2 >> 0;
 
+        /* Medium knowledge */
+        for (int i = 0; i < middle; i++) {
+            students[i] = new Student();
+            Student st = students[i];
+            st.addMarks(50);
+            st.recalcScholarship();
+        }
+        /* Excellent pupils */
+        for (int i = middle; i < students.length; i++) {
+            students[i] = new Student();
+            Student st = students[i];
+            st.addMarks(10, 90, 100);
+            st.recalcScholarship();
+        }
 
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", st2.getFullName(), st2.getAge(), st2.getScholarship());
-        System.out.printf("%-20.20s\t %d\t %11.2f%n", st3.getFullName(), st3.getAge(), st3.getScholarship());
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", st4.getFullName(), st4.getAge(), st4.getScholarship());
+        return students;
+    }
 
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", rst1.getFullName(), rst1.getAge(), rst1.getScholarship());
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", rst2.getFullName(), rst2.getAge(), rst2.getScholarship());
+    public static void printStudentsArray(Student[] students) {
+        for (Student st : students) {
+            System.out.println(st);
+        }
     }
 }
 
-class Student {
+class Student implements Comparable<Student> {
 
     private String name;
     private String surname;
@@ -55,7 +72,7 @@ class Student {
         this.isMale = Math.random() < 0.5;
         this.name = Name.getRandName(isMale);
         this.surname = Name.getRandSurname();
-        this.age = Lab2_var3.getRandInt(minAge, maxAge);
+        this.age = Lab2_var3.getRandInt(minAge, maxAge); // TODO: Normal distribution, f(x) = 1/x
         this.scholarship = basicScholarship;
     }
     public Student(boolean isMale) {
@@ -158,6 +175,13 @@ class Student {
             }
         }
 
+        /*
+         * Bonus 25% for underage girls.
+         */
+        if (this.getGender() == 'F' && this.getAge() < 18 && averMark >= 95) {
+            factor *= 1.25;
+        }
+
         scholarship = basicScholarship * factor * (bonusLast10Marks ? 1.1 : 1);
     }
 
@@ -213,6 +237,20 @@ class Student {
             }
         }
         System.out.printf(", average: %.1f %n", this.getAverageMark());
+    }
+
+    /**
+     * By default, sorting of students is by age.
+     */
+    @Override
+    public int compareTo(Student arg) {
+        return this.age - arg.age;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-20.20s\t %d\t %11.2f\t %5.1f",
+                this.getFullName(), this.getAge(), this.getScholarship(),  this.getAverageMark());
     }
 }
 
@@ -279,5 +317,28 @@ class Name {
     }
     public static String getRandFullName(boolean isMale) {
         return String.format("%s %s", getRandName(isMale), getRandSurname());
+    }
+}
+
+// Classes to implement a sorting the array of students by keys.
+class SortDescByAverMark implements Comparator<Student> {
+    @Override
+    public int compare(Student st1, Student st2) {
+        double am1 = st1.getAverageMark();
+        double am2 = st2.getAverageMark();
+
+        if (am2 == am1) {
+            return 0;
+        } else if (am2 - am1 < 0) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+}
+class SortAscBySurname implements Comparator<Student> {
+    @Override
+    public int compare(Student st1, Student st2) {
+        return st1.getSurname().compareTo(st2.getSurname());
     }
 }
