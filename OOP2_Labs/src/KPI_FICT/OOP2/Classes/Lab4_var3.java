@@ -28,7 +28,7 @@ public class Lab4_var3 {
 
     public static Student[] fillStudentsArray(int count) {
         Student[] students = new Student[count];
-        int middle = students.length / 2 >> 0;
+        int middle = students.length / 2;
 
         /* Medium knowledge */
         for (int i = 0; i < middle; i++) {
@@ -95,7 +95,7 @@ class Student implements Comparable<Student> {
     }
 
     public char getGender() {
-        return (isMale == true ? 'M' : 'F');
+        return (isMale ? 'M' : 'F');
     }
     public void setGender(boolean isMale) {
         this.isMale = isMale;
@@ -141,8 +141,7 @@ class Student implements Comparable<Student> {
         int minY = 1;
         int maxY = (int) Math.pow(maxAge - minAge + 1, power);
         double yRand = minY + (Math.random() * (maxY - minY + 1));
-        int age = (int) Math.round(61 - Math.pow(yRand, (1 / power)));
-        return age;
+        return (int) Math.round(61 - Math.pow(yRand, (1 / power)));
     }
     public static int getRandomGaussianAge(int minAge, int maxAge) {
         int minY = 1;
@@ -207,7 +206,7 @@ class Student implements Comparable<Student> {
         }
 
         /*
-         * Bonus 25% for underage girls.
+         * Relief Society sisters' bonus 25% for underage excellent-estimated girls.
          */
         if (this.getGender() == 'F' && this.getAge() < 18 && averMark >= 95) {
             factor *= 1.25;
@@ -274,8 +273,8 @@ class Student implements Comparable<Student> {
      * By default, sorting of students is by age.
      */
     @Override
-    public int compareTo(Student arg) {
-        return this.age - arg.age;
+    public int compareTo(Student other) {
+        return this.age - other.age;
     }
 
     @Override
@@ -370,6 +369,11 @@ class SortDescByAverMark implements Comparator<Student> {
 class SortAscBySurname implements Comparator<Student> {
     @Override
     public int compare(Student st1, Student st2) {
-        return st1.getSurname().compareTo(st2.getSurname());
+        if (st1.getSurname().compareTo(st2.getSurname()) == 0) {
+            /* Surnames are equal, must be compared by names */
+            return st1.getName().compareTo(st2.getName());
+        } else {
+            return st1.getSurname().compareTo(st2.getSurname());
+        }
     }
 }
