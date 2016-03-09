@@ -9,7 +9,8 @@ import java.util.Comparator;
 public class Lab4_var3 {
 
     public static void main(String[] args) {
-        Student[] students = fillStudentsArray();
+
+        Student[] students = fillStudentsArray(50);
         printStudentsArray(students);
 
         Arrays.sort(students);
@@ -25,8 +26,8 @@ public class Lab4_var3 {
         printStudentsArray(students);
     }
 
-    public static Student[] fillStudentsArray() {
-        Student[] students = new Student[10];
+    public static Student[] fillStudentsArray(int count) {
+        Student[] students = new Student[count];
         int middle = students.length / 2 >> 0;
 
         /* Medium knowledge */
@@ -72,7 +73,7 @@ class Student implements Comparable<Student> {
         this.isMale = Math.random() < 0.5;
         this.name = Name.getRandName(isMale);
         this.surname = Name.getRandSurname();
-        this.age = Lab2_var3.getRandInt(minAge, maxAge); // TODO: Normal distribution, f(x) = 1/x
+        this.age = getRandomGaussianAge(minAge, maxAge);
         this.scholarship = basicScholarship;
     }
     public Student(boolean isMale) {
@@ -81,7 +82,7 @@ class Student implements Comparable<Student> {
         String[] parts = fullName.split(" ");
         this.name = parts[0];
         this.surname = parts.length == 2 ? parts[1] : "";
-        this.age = Lab2_var3.getRandInt(minAge, maxAge);
+        this.age = getRandomGaussianAge(minAge, maxAge);
         this.scholarship = basicScholarship;
     }
     public Student(boolean isMale, String fullName) {
@@ -89,7 +90,7 @@ class Student implements Comparable<Student> {
         String[] parts = fullName.split(" ");
         this.name = parts[0];
         this.surname = parts.length == 2 ? parts[1] : "";
-        this.age = Lab2_var3.getRandInt(minAge, maxAge);
+        this.age = getRandomGaussianAge(minAge, maxAge);
         this.scholarship = basicScholarship;
     }
 
@@ -119,6 +120,36 @@ class Student implements Comparable<Student> {
     }
     public void setAge(int age) {
         this.age = age;
+    }
+    /**
+     * Generates random age due to the Gaussian distribution:
+     * number of students of age X is inversely proportional to the value of X:
+     * count(age) ~ (61-age)^power, where "power" is natural number.
+     *
+     * Probability of "creating" the student 16 years old is 8.51%.
+     * Probability of "creating" the student 60 years old is 9e-5%.
+     * The average age using this distribution is 24.6 y.o.
+     *      instead of 38 y.o. using uniform distribution.
+     *
+     * The inverse function is f'(x) = 61 - pow(x, 1/power).
+     *
+     * @param minAge    minimum student's age
+     * @param maxAge    maximum student's age
+     * @param power     power of inverse proportionality
+     */
+    public static int getRandomGaussianAge(int minAge, int maxAge, int power) {
+        int minY = 1;
+        int maxY = (int) Math.pow(maxAge - minAge + 1, power);
+        double yRand = minY + (Math.random() * (maxY - minY + 1));
+        int age = (int) Math.round(61 - Math.pow(yRand, (1 / power)));
+        return age;
+    }
+    public static int getRandomGaussianAge(int minAge, int maxAge) {
+        int minY = 1;
+        int maxY = (int) Math.pow(maxAge - minAge + 1, 3);
+        double yRand = minY + (Math.random() * (maxY - minY + 1));
+        int age = (int) Math.round(61 - Math.pow(yRand, (1.0 / 3)));
+        return age;
     }
 
 
