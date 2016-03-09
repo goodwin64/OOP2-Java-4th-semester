@@ -147,8 +147,7 @@ class Student implements Comparable<Student> {
         int minY = 1;
         int maxY = (int) Math.pow(maxAge - minAge + 1, 3);
         double yRand = minY + (Math.random() * (maxY - minY + 1));
-        int age = (int) Math.round(61 - Math.pow(yRand, (1.0 / 3)));
-        return age;
+        return (int) Math.round(61 - Math.pow(yRand, (1.0 / 3)));
     }
 
 
