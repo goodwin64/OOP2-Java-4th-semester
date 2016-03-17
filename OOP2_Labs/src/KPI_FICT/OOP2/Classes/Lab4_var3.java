@@ -1,43 +1,61 @@
 package KPI_FICT.OOP2.Classes;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 03.03.2016.
  */
 public class Lab4_var3 {
 
     public static void main(String[] args) {
-        Student st1 = new Student(true, "Max");
-        Student st2 = new Student(true, "Max Donchenko");
-        Student st3 = new Student(true, "Rauf-San Ibn-Al-Hattab-Al-Dzhazir");
-        Student st4 = new Student();
 
-        Student rst1 = new Student(true);
-        Student rst2 = new Student(false);
+        Student[] students = fillStudentsArray(50);
+        printStudentsArray(students);
 
-        System.out.printf("\t%-16.25s\t %s\t %s%n", "Name", "Age", "Scholarship");
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", st1.getFullName(), st1.getAge(), st1.getScholarship());
+        Arrays.sort(students);
+        System.out.println("\n\t In ascending order by age:");
+        printStudentsArray(students);
 
-        st1.addMarks(20);
-        st1.recalcScholarship();
-        st1.printMarks();
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", st1.getFullName(), st1.getAge(), st1.getScholarship());
+        Arrays.sort(students, new SortDescByAverMark());
+        System.out.println("\n\t In descending order by average mark:");
+        printStudentsArray(students);
 
-        st1.addMarks(20, 94, 96);
-        st1.recalcScholarship();
-        st1.printMarks();
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", st1.getFullName(), st1.getAge(), st1.getScholarship());
+        Arrays.sort(students, new SortAscBySurname());
+        System.out.println("\n\t In ascending order by surname:");
+        printStudentsArray(students);
+    }
 
+    public static Student[] fillStudentsArray(int count) {
+        Student[] students = new Student[count];
+        int middle = students.length / 2;
 
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", st2.getFullName(), st2.getAge(), st2.getScholarship());
-        System.out.printf("%-20.20s\t %d\t %11.2f%n", st3.getFullName(), st3.getAge(), st3.getScholarship());
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", st4.getFullName(), st4.getAge(), st4.getScholarship());
+        /* Medium knowledge */
+        for (int i = 0; i < middle; i++) {
+            students[i] = new Student();
+            Student st = students[i];
+            st.addMarks(50);
+            st.recalcScholarship();
+        }
+        /* Excellent pupils */
+        for (int i = middle; i < students.length; i++) {
+            students[i] = new Student();
+            Student st = students[i];
+            st.addMarks(10, 90, 100);
+            st.recalcScholarship();
+        }
 
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", rst1.getFullName(), rst1.getAge(), rst1.getScholarship());
-        System.out.printf("%-20.25s\t %d\t %11.2f%n", rst2.getFullName(), rst2.getAge(), rst2.getScholarship());
+        return students;
+    }
+
+    public static void printStudentsArray(Student[] students) {
+        for (Student st : students) {
+            System.out.println(st);
+        }
     }
 }
 
-class Student {
+class Student implements Comparable<Student> {
 
     private String name;
     private String surname;
@@ -55,7 +73,7 @@ class Student {
         this.isMale = Math.random() < 0.5;
         this.name = Name.getRandName(isMale);
         this.surname = Name.getRandSurname();
-        this.age = Lab2_var3.getRandInt(minAge, maxAge);
+        this.age = getRandomGaussianAge(minAge, maxAge);
         this.scholarship = basicScholarship;
     }
     public Student(boolean isMale) {
@@ -64,7 +82,7 @@ class Student {
         String[] parts = fullName.split(" ");
         this.name = parts[0];
         this.surname = parts.length == 2 ? parts[1] : "";
-        this.age = Lab2_var3.getRandInt(minAge, maxAge);
+        this.age = getRandomGaussianAge(minAge, maxAge);
         this.scholarship = basicScholarship;
     }
     public Student(boolean isMale, String fullName) {
@@ -72,12 +90,12 @@ class Student {
         String[] parts = fullName.split(" ");
         this.name = parts[0];
         this.surname = parts.length == 2 ? parts[1] : "";
-        this.age = Lab2_var3.getRandInt(minAge, maxAge);
+        this.age = getRandomGaussianAge(minAge, maxAge);
         this.scholarship = basicScholarship;
     }
 
     public char getGender() {
-        return (isMale == true ? 'M' : 'F');
+        return (isMale ? 'M' : 'F');
     }
     public void setGender(boolean isMale) {
         this.isMale = isMale;
@@ -102,6 +120,34 @@ class Student {
     }
     public void setAge(int age) {
         this.age = age;
+    }
+    /**
+     * Generates random age due to the Gaussian distribution:
+     * number of students of age X is inversely proportional to the value of X:
+     * count(age) ~ (61-age)^power, where "power" is natural number.
+     *
+     * Probability of "creating" the student 16 years old is 8.51%.
+     * Probability of "creating" the student 60 years old is 9e-5%.
+     * The average age using this distribution is 24.6 y.o.
+     *      instead of 38 y.o. using uniform distribution.
+     *
+     * The inverse function is f'(x) = 61 - pow(x, 1/power).
+     *
+     * @param minAge    minimum student's age
+     * @param maxAge    maximum student's age
+     * @param power     power of inverse proportionality
+     */
+    public static int getRandomGaussianAge(int minAge, int maxAge, int power) {
+        int minY = 1;
+        int maxY = (int) Math.pow(maxAge - minAge + 1, power);
+        double yRand = minY + (Math.random() * (maxY - minY + 1));
+        return (int) Math.round(61 - Math.pow(yRand, (1 / power)));
+    }
+    public static int getRandomGaussianAge(int minAge, int maxAge) {
+        int minY = 1;
+        int maxY = (int) Math.pow(maxAge - minAge + 1, 3);
+        double yRand = minY + (Math.random() * (maxY - minY + 1));
+        return (int) Math.round(61 - Math.pow(yRand, (1.0 / 3)));
     }
 
 
@@ -156,6 +202,13 @@ class Student {
                 bonusLast10Marks = false;
                 break;
             }
+        }
+
+        /*
+         * Relief Society sisters' bonus 25% for underage excellent-estimated girls.
+         */
+        if (this.getGender() == 'F' && this.getAge() < 18 && averMark >= 95) {
+            factor *= 1.25;
         }
 
         scholarship = basicScholarship * factor * (bonusLast10Marks ? 1.1 : 1);
@@ -213,6 +266,20 @@ class Student {
             }
         }
         System.out.printf(", average: %.1f %n", this.getAverageMark());
+    }
+
+    /**
+     * By default, sorting of students is by age.
+     */
+    @Override
+    public int compareTo(Student other) {
+        return this.age - other.age;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-20.20s\t %d\t %11.2f\t %5.1f",
+                this.getFullName(), this.getAge(), this.getScholarship(),  this.getAverageMark());
     }
 }
 
@@ -279,5 +346,33 @@ class Name {
     }
     public static String getRandFullName(boolean isMale) {
         return String.format("%s %s", getRandName(isMale), getRandSurname());
+    }
+}
+
+// Classes to implement a sorting the array of students by keys.
+class SortDescByAverMark implements Comparator<Student> {
+    @Override
+    public int compare(Student st1, Student st2) {
+        double am1 = st1.getAverageMark();
+        double am2 = st2.getAverageMark();
+
+        if (am2 == am1) {
+            return 0;
+        } else if (am2 - am1 < 0) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+}
+class SortAscBySurname implements Comparator<Student> {
+    @Override
+    public int compare(Student st1, Student st2) {
+        if (st1.getSurname().compareTo(st2.getSurname()) == 0) {
+            /* Surnames are equal, must be compared by names */
+            return st1.getName().compareTo(st2.getName());
+        } else {
+            return st1.getSurname().compareTo(st2.getSurname());
+        }
     }
 }
