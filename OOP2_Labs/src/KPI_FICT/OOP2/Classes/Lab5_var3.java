@@ -28,12 +28,7 @@ public class Lab5_var3 {
             try {
                 String line = br.readLine();
                 while (!line.equalsIgnoreCase("EOF")) {
-                    try {
-                        text.value.addAll(parseLine(line));
-                    } catch (IllegalArgumentException e) {
-                        // TODO: add PunctuationMark('\n') to the text
-                        // empty line, ignore
-                    }
+                    text.value.addAll(parseLine(line));
                     line = br.readLine();
                 }
                 br.close();
@@ -55,11 +50,11 @@ public class Lab5_var3 {
      * @param line                          line to parse
      * @throws IllegalArgumentException     if line is empty
      */
-    public static ArrayList<Sentence> parseLine(String line) throws IllegalArgumentException {
-        if (line.equals("")) {
-            throw new IllegalArgumentException("Empty line");
-        }
+    public static ArrayList<Sentence> parseLine(String line) {
         ArrayList<Sentence> result = new ArrayList<>(20);
+        if (line.equals("")) {
+            result.add(new Sentence(new PunctuationMark('\n')));
+        }
         char currentChar;
         Word lastWord = new Word();
         PunctuationMark lastPM = new PunctuationMark();
@@ -174,6 +169,9 @@ class PunctuationMark extends SentenceElement {
         super();
         setValue("\0");
     }
+    public PunctuationMark(char c) {
+        this.value = c;
+    }
     public PunctuationMark(String punctuationMark) {
         super(punctuationMark);
         try {
@@ -256,6 +254,14 @@ class Sentence {
 
     public Sentence() {
         this.value = new ArrayList<>(1);
+    }
+    public Sentence(Word word) {
+        this.value = new ArrayList<>(1);
+        value.add(word);
+    }
+    public Sentence(PunctuationMark pm) {
+        this.value = new ArrayList<>(1);
+        value.add(pm);
     }
     public Sentence(ArrayList<SentenceElement> sentence) {
         this.value = new ArrayList<>(20);
