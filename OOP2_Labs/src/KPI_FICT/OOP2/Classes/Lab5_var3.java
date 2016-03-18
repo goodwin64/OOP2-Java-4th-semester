@@ -7,29 +7,17 @@ import java.util.ArrayList;
  */
 public class Lab5_var3 {
     public static void main(String[] args) {
-        /*
-        * 1) Create the empty text.
-        * 2) Output it.
-        * 3) Changing it items.
-        * 4) Output the edited text.
-        */
+        // sorting by vowels
 
-        Text text = new Text();
-        System.out.println(text);
+        Word w1 = new Word("brr"); // 0
+        Word w2 = new Word("Java"); // 2
+        Word w3 = new Word("exciting"); // 3
+        Word w4 = new Word("Python"); // 2
 
-        ArrayList<SentenceElement> sentElements = new ArrayList<>();
-
-        sentElements.add(new Word("Buenos Aires"));
-        sentElements.add(new PunctuationMark(","));
-        sentElements.add(new PunctuationMark());
-        sentElements.add(new Word("Córdoba"));
-        sentElements.add(new PunctuationMark(",-"));
-        sentElements.add(new PunctuationMark(","));
-        sentElements.add(new PunctuationMark());
-        sentElements.add(new Word("La Plata"));
-        text.value.set(0, new Sentence(sentElements));
-
-        System.out.println(text);
+        System.out.println(w1.compareTo(w2)); // -2
+        System.out.println(w1.compareTo(w3)); // -3
+        System.out.println(w3.compareTo(w2)); // 1
+        System.out.println(w2.compareTo(w4)); // 0
     }
 }
 
@@ -37,8 +25,11 @@ public class Lab5_var3 {
  * Class implements the word - a sequence of alphabet characters:
  * A..Z, a..z
  */
-class Word extends SentenceElement {
+class Word extends SentenceElement implements Comparable<Word> {
     private String value;
+    public static final char[] vowels = {
+            'a', 'e', 'i', 'o', 'u', 'y'
+    };
 
     public Word() {
         this.value = "default";
@@ -64,6 +55,27 @@ class Word extends SentenceElement {
     @Override
     public String toString() {
         return value;
+    }
+
+    public int countVowels() {
+        int count = 0;
+        for (char c : this.getValue().toCharArray()) {
+            for (char vowel : this.vowels) {
+                if (c == vowel) {
+                    count++;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+
+    @Override
+    /**
+     * Comparing by number of vowels
+     */
+    public int compareTo(Word other) {
+        return this.countVowels() - other.countVowels();
     }
 }
 
