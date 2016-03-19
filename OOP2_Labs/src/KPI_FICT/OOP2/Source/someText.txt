@@ -1,0 +1,8 @@
+Hi! It's me, Max.
+I like programming.
+It is a third line.
+
+It was an empty line above. Here is 5th one.
+WordWithMaximumCountOfVowels is VeryLongWord :)
+The end. Good luck! 
+EoF
