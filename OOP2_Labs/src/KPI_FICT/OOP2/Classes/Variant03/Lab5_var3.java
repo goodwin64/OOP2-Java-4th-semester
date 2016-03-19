@@ -2,15 +2,22 @@ package KPI_FICT.OOP2.Classes.Variant03;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 09.03.2016.
  */
 public class Lab5_var3 {
     public static void main(String[] args) {
-        Text text = readTextFromFile("src\\KPI_FICT\\OOP2\\Source\\Baskervilles, Chapter 8.txt");
+        String pathPrefix = "src\\KPI_FICT\\OOP2\\Source\\";
+        String fileName = "Baskervilles, Chapter 8";
+        String fileExtension = ".txt";
 
-        System.out.println(text);
+        Text text = readTextFromFile(pathPrefix + fileName + fileExtension);
+        ArrayList<Word> words = getWords(text);
+        Collections.sort(words);
+        toFile(pathPrefix + fileName + " - output" + fileExtension, words);
     }
 
     /**
@@ -82,10 +89,51 @@ public class Lab5_var3 {
                     lastSentence.add(new PunctuationMark(lastPM.getValue()));
                     result.add(new Sentence(lastSentence.getValue()));
                     lastSentence.value.clear();
+                } else {
+                    // TODO special case: numbers within word (2nd, 5th)
                 }
             }
         }
         return result;
+    }
+
+    /**
+     * Gets words from the text and puts them into ArrayList.
+     * Then returns this ArrayList.
+     *
+     * In ArrayList words will be repeated.
+     */
+    public static ArrayList<Word> getWords(Text text) {
+        ArrayList<Word> result = new ArrayList<>(2000); // depends on text
+        for (Sentence s : text.getValue()) {
+            for (SentenceElement se : s.getValue()) {
+                if (se instanceof Word && !se.getValue().equals("")) {
+                    result.add(new Word(se.getValue()));
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Prints words from ArrayList to file.
+     *
+     * @param path      path to file
+     * @param words     ArrayList with words
+     */
+    private static void toFile(String path, ArrayList<Word> words) {
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(path, "UTF-8");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        for (Word word : words) {
+            writer.println(word);
+        }
+        writer.close();
     }
 }
 
@@ -128,8 +176,9 @@ class Word extends SentenceElement implements Comparable<Word> {
     public int countVowels() {
         int count = 0;
         for (char c : this.getValue().toCharArray()) {
+            char cLower = Character.toLowerCase(c);
             for (char vowel : vowels) {
-                if (c == vowel) {
+                if (cLower == vowel) {
                     count++;
                     break;
                 }
@@ -140,10 +189,24 @@ class Word extends SentenceElement implements Comparable<Word> {
 
     @Override
     /**
-     * Comparing by number of vowels
+     * Comparing by (in queue order):
+     * 1) number of vowels (descending)
+     * 2) length (descending)
+     * 3) abc rules (ascending)
      */
     public int compareTo(Word other) {
-        return this.countVowels() - other.countVowels();
+        int vowelsDiff = other.countVowels() - this.countVowels();
+        if (vowelsDiff != 0) {
+            return vowelsDiff;
+        }
+
+        int lengthDiff = other.getValue().length() - this.getValue().length();
+        if (lengthDiff != 0) {
+            return lengthDiff;
+        }
+
+        int alphabetDiff = this.getValue().compareTo(other.getValue());
+        return alphabetDiff;
     }
 
     public void add(char c) {
