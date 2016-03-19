@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 27.01.2016.
  */
-public class Lab3_var3 {
+public class Lab3_var03 {
 
     /**
      * General information about student's variant and task.

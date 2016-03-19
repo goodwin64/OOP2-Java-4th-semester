@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 09.03.2016.
  */
-public class Lab5_var3 {
+public class Lab5_var03 {
     public static void main(String[] args) {
         String pathPrefix = "src\\KPI_FICT\\OOP2\\Source\\";
         String fileName = "Baskervilles, Chapter 8";

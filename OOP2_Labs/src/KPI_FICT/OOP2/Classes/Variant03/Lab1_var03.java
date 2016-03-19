@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by Max Donchenko on 24.01.2016.
  */
-public class Lab1_var3 {
+public class Lab1_var03 {
 
     public static void swap(short[] a, short[] b) {
         /*
