@@ -1,4 +1,4 @@
-package KPI_FICT.OOP2.Classes;
+package KPI_FICT.OOP2.Classes.Variant03;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Lab5_var3 {
     public static void main(String[] args) {
-        Text text = readTextFromFile("someText.txt");
+        Text text = readTextFromFile("src\\KPI_FICT\\OOP2\\Source\\someText.txt");
 
         System.out.println(text);
     }

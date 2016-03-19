@@ -22,15 +22,15 @@ C7	Type of matrix elements
 6	float
 	4.	Depending on the value of C7 determine the action with matrix C:
 C11	Action with matrix C
-0	Calculate the sum of the smallest elements in each column of the matrix
-1	Calculate the sum of the smallest elements in each row of the matrix
-2	Calculate the sum of the largest elements in each column of the matrix
-3	Calculate the sum of the largest elements in each row of the matrix
-4	Calculate the sum of the largest elements in each row with even indices and sum of the smallest elements in each row with odd indices in the matrix
-5	
-6	
-7	
-8	
-9	
-10	
+0	Calculate the sum of smallest elements in each column of the matrix
+1	Calculate the sum of smallest elements in each row of the matrix
+2	Calculate the sum of largest elements in each column of the matrix
+3	Calculate the sum of largest elements in each row of the matrix
+4	Calculate the sum of largest elements in each row with even indices and sum of the smallest elements in each row with odd indices in the matrix
+5	Calculate the sum of largest elements in a row with odd numbers and the smallest element in a row with even numbers
+6	Calculate the sum of largest elements in columns of matrix with odd numbers and smallest elements in columns of the matrix with odd numbers
+7	Calculate the sum of largest elements in columns of matrix with odd numbers and smallest elements in matrix columns with even numbers
+8	Calculate the average value of each row in matrix
+9	Calculate the average value of each column in matrix
+10	Calculate the average value of the matrix
 	5.	Create a class that consists of enforcement method, which performs the action with the matrix (s) (p.2) with specified type elements (p.3) and the action with the resulting matrix C (p.4). Display the results of the first and second actions. You must process all exceptional situations that may occur during code execution. All variables should be described and their significance set in the enforcement method.

@@ -1,4 +1,4 @@
-package KPI_FICT.OOP2.Classes;
+package KPI_FICT.OOP2.Classes.Variant03;
 
 import java.io.*;
 import java.util.Scanner;
@@ -73,7 +73,7 @@ public class Lab3_var3 {
         System.out.println("Input the text below (input will terminated after word <EOF>):");
         String text = "";
         String line = scan.nextLine();
-        while ( !line.equalsIgnoreCase("EOF") ) {
+        while ( !line.equalsIgnoreCase("EO") ) {
             text += line + " ";
             line = scan.nextLine();
         }
@@ -216,7 +216,7 @@ public class Lab3_var3 {
          */
         printVariantInfo();
 
-        String text = readTextFromFile("someText.txt");
+        String text = readTextFromFile("src\\KPI_FICT\\OOP2\\Source\\someText.txt");
         String[] words = getTokens(text, " ,.!?\n", true);
         byte[] vowelNumber = vowelsCounts(words);
         sortWordsByVowels(words, vowelNumber);

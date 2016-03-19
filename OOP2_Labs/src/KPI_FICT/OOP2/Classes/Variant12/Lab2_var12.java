@@ -1,4 +1,4 @@
-package KPI_FICT.OOP2.Classes;
+package KPI_FICT.OOP2.Classes.Variant12;
 
 import java.util.Random;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package KPI_FICT.OOP2.Classes;
+package KPI_FICT.OOP2.Classes.Variant03;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -245,7 +245,7 @@ class Student implements Comparable<Student> {
         }
 
         if (minMark > maxMark) {
-            Lab1.swap(new int[] {minMark},
+            Lab1_var3.swap(new int[] {minMark},
                       new int[] {maxMark});
         }
         for (int i = 0; i < count; i++) {
