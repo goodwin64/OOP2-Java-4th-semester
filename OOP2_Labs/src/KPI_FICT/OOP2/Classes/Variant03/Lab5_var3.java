@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Lab5_var3 {
     public static void main(String[] args) {
-        Text text = readTextFromFile("src\\KPI_FICT\\OOP2\\Source\\someText.txt");
+        Text text = readTextFromFile("src\\KPI_FICT\\OOP2\\Source\\Baskervilles, Chapter 8.txt");
 
         System.out.println(text);
     }
@@ -310,7 +310,11 @@ class Text {
     public String toString() {
         String result = "";
         for (Sentence sentence : value) {
-            result += sentence + "\n";
+            if (sentence.toString().equals("\n")) {
+                result += sentence;
+            } else {
+                result += sentence + "\n";
+            }
         }
         return String.format("%s", result);
     }
