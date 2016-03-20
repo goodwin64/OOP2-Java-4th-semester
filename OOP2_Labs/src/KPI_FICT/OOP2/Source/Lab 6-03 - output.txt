@@ -1,18 +1,19 @@
-Airplane Il-2:
+Airplane "Il-2":
 	ID: 1
 	Mass: 6160,00 kg
-	Flight 0 km-s
+	Flew 0 km
 	Fuel consumption is 89,20 units
 
-Airplane null:
+Airliner "Cessna 172":
 	ID: 2
-	Mass: 0,00 kg
-	Flight 0 km-s
-	Fuel consumption is 0,00 units
+	Mass: 994,00 kg
+	Flew 0 km
+	Fuel consumption is 11,30 units
+	Seating capacity: 1
 
-Airplane North American F-86 Sabre / FJ Fury:
+Airplane "North American F-86 Sabre / FJ Fury":
 	ID: 3
 	Mass: 6870,00 kg
-	Flight 112 km-s
+	Flew 112 km
 	Fuel consumption is 71,00 units
 

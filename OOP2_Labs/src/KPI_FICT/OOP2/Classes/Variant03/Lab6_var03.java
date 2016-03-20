@@ -11,7 +11,7 @@ import java.util.Locale;
 public class Lab6_var03 {
     public static void main(String[] args) {
         Airplane ap1 = new Airplane("Il-2", 6160, 89.2);
-        Airplane ap2 = new Airplane();
+        Airplane ap2 = new Airliner("Cessna 172", 994, 11.3, 1);
         Airplane ap3 = new Airplane("North American F-86 Sabre / FJ Fury",
                 6870, 71);
 
@@ -191,26 +191,71 @@ class Airplane {
 
     @Override
     public String toString() {
-        return String.format("Airplane %s:\n" +
+        String className = this.getClass().getName();
+        className = className.substring(className.lastIndexOf('.') + 1);
+        return String.format("%s \"%s\":\n" +
                 "\tID: %d\n" +
                 "\tMass: %.2f kg\n" +
-                "\tFlight %d km-s\n" +
-                "\tFuel consumption is %.2f units\n",
+                "\tFlew %d km\n" +
+                "\tFuel consumption is %.2f units\n", className,
                 getModel(), getID(), getMass(), getFlightDistance(), getFuelConsumption());
     }
 }
 
 /**
- * Civil airplane
+ * Civil airplane, carries passengers.
  *
- * seatingCapacity: maximum count of seats
+ * seatingCapacity: maximum count of seats excluding crew
  */
 class Airliner extends Airplane {
-    public int seatingCapacity;
+    private int seatingCapacity;
+
+    public Airliner() {
+        super();
+    }
+
+    public Airliner(int seatingCapacity) {
+        super();
+        try {
+            setSeatingCapacity(seatingCapacity);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Airliner(String model, double mass,
+                    double fuelConsumption, int seatingCapacity) throws IllegalArgumentException {
+        super(model, mass, fuelConsumption);
+        try {
+            setSeatingCapacity(seatingCapacity);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getSeatingCapacity() {
+        return seatingCapacity;
+    }
+
+    public void setSeatingCapacity(int seatingCapacity) throws IllegalArgumentException {
+        // TODO: add a check whether airplane will be able to lift such count of people
+        if (seatingCapacity >= 0) {
+            this.seatingCapacity = seatingCapacity;
+        } else {
+            String message = String.format("Incorrect seating capacity (%d)", seatingCapacity);
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    @Override
+    public String toString() {
+        String appendMessage = String.format("\tSeating capacity: %d\n", getSeatingCapacity());
+        return super.toString() + appendMessage;
+    }
 }
 
 /**
- * Military airplane
+ * Military airplane.
  *
  * bombLoad: maximum mass of bombs carried by a warplane
  */
@@ -219,7 +264,7 @@ class Warplane extends Airplane {
 }
 
 /**
- * Cargo airplane
+ * Civil airplane, carries cargo.
  *
  * cargoCapacity: maximum mass of cargo carried by an air freighter
  */
