@@ -10,10 +10,9 @@ import java.util.Locale;
  */
 public class Lab6_var03 {
     public static void main(String[] args) {
-        Airplane ap1 = new Airplane("Il-2", 6160, 89.2);
+        Airplane ap1 = new Warplane("Il-2", 6160, 89.2, 600);
         Airplane ap2 = new Airliner("Cessna 172", 994, 11.3, 1);
-        Airplane ap3 = new Airplane("North American F-86 Sabre / FJ Fury",
-                6870, 71);
+        Airplane ap3 = new Warplane("North American F-86 Sabre / FJ Fury", 6870, 71, 2400);
 
         ap3.addFlightDistance(112);
 
@@ -259,7 +258,47 @@ class Airliner extends Airplane {
  * bombLoad: maximum mass of bombs carried by a warplane
  */
 class Warplane extends Airplane {
-    public int bombLoad;
+    private int bombLoad;
+
+    public Warplane() {
+        super();
+    }
+
+    public Warplane(int bombLoad) {
+        super();
+        try {
+            setBombLoad(bombLoad);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Warplane(String model, double mass, double fuelConsumption,
+                    int bombLoad) throws IllegalArgumentException {
+        super(model, mass, fuelConsumption);
+        try {
+            setBombLoad(bombLoad);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getBombLoad() {
+        return bombLoad;
+    }
+
+    public void setBombLoad(int bombLoad) throws IllegalArgumentException {
+        // TODO: add checking with maximum bomb load value
+        if (bombLoad >= 0) {
+            this.bombLoad = bombLoad;
+        }
+    }
+
+    @Override
+    public String toString() {
+        String appendMessage = String.format("\tBomb load: %d kg\n", getBombLoad());
+        return super.toString() + appendMessage;
+    }
 }
 
 /**

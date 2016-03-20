@@ -1,8 +1,9 @@
-Airplane "Il-2":
+Warplane "Il-2":
 	ID: 1
 	Mass: 6160,00 kg
 	Flew 0 km
 	Fuel consumption is 89,20 units
+	Bomb load: 600 kg
 
 Airliner "Cessna 172":
 	ID: 2
@@ -11,9 +12,10 @@ Airliner "Cessna 172":
 	Fuel consumption is 11,30 units
 	Seating capacity: 1
 
-Airplane "North American F-86 Sabre / FJ Fury":
+Warplane "North American F-86 Sabre / FJ Fury":
 	ID: 3
 	Mass: 6870,00 kg
 	Flew 112 km
 	Fuel consumption is 71,00 units
+	Bomb load: 2400 kg
 
