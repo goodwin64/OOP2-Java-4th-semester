@@ -1,5 +1,8 @@
 package KPI_FICT.OOP2.Classes.Variant03;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
 /**
@@ -10,35 +13,23 @@ public class Lab6_var03 {
         Airplane ap1 = new Airplane("Il-2", 6160, 89.2);
         Airplane ap2 = new Airplane();
         Airplane ap3 = new Airplane("North American F-86 Sabre / FJ Fury",
-                6870, 115.5); // Incorrect fuel consumption
-        ap3.setFuelConsumption(71); // Correct fuel consumption
+                6870, 71);
 
+        ap3.addFlightDistance(112);
+
+        PrintWriter writer = null;
         try {
-            ap2.setMass(-120); // Exception
-        } catch (IllegalArgumentException e) {
+            writer = new PrintWriter("src\\KPI_FICT\\OOP2\\Source\\Lab 6-03 - output.txt", "UTF-8");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+            writer.println(ap1);
+            writer.println(ap2);
+            writer.println(ap3);
 
-        ap2.setMass(992.4);
-        ap2.addMass(7.6);
-        ap2.setFuelConsumption(10.5);
-
-        ap2.setModel("Cessna 172");
-
-        System.out.println(ap2.repairEngine(-5.2)); // false
-        System.out.println(ap2.repairEngine(5.2)); // true
-
-        System.out.println(ap1.getFuelConsumption()); // 89.2
-        System.out.println(ap2.getFuelConsumption()); // 5.3
-        System.out.println(ap3.getFuelConsumption()); // 71.0
-
-        System.out.println(ap1.getMass()); // 6160
-        System.out.println(ap2.getMass()); // 1000
-        System.out.println(ap3.getMass()); // 6870.0
-
-        System.out.println(ap1.getID()); // 1
-        System.out.println(ap2.getID()); // 2
-        System.out.println(ap3.getID()); // 3
+        writer.close();
     }
 }
 
@@ -52,6 +43,8 @@ class Airplane {
     private double fuelConsumption;
     private double mass; // kg
     private String model;
+    // TODO: add lift power
+    // TODO: add Airplane range
 
     public Airplane() {
         this.flightDistance = 0;
@@ -135,6 +128,7 @@ class Airplane {
     }
 
     public void addMass(double mass) {
+        // TODO: check whether lift power is enough
         if (mass > 0) {
             this.mass += mass;
         }
@@ -193,6 +187,16 @@ class Airplane {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Airplane %s:\n" +
+                "\tID: %d\n" +
+                "\tMass: %.2f kg\n" +
+                "\tFlight %d km-s\n" +
+                "\tFuel consumption is %.2f units\n",
+                getModel(), getID(), getMass(), getFlightDistance(), getFuelConsumption());
     }
 }
 

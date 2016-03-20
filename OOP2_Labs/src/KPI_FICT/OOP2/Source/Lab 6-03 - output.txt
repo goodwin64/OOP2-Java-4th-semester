@@ -1,0 +1,18 @@
+Airplane Il-2:
+	ID: 1
+	Mass: 6160,00 kg
+	Flight 0 km-s
+	Fuel consumption is 89,20 units
+
+Airplane null:
+	ID: 2
+	Mass: 0,00 kg
+	Flight 0 km-s
+	Fuel consumption is 0,00 units
+
+Airplane North American F-86 Sabre / FJ Fury:
+	ID: 3
+	Mass: 6870,00 kg
+	Flight 112 km-s
+	Fuel consumption is 71,00 units
+
