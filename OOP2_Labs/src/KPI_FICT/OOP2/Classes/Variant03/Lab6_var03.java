@@ -13,6 +13,11 @@ public class Lab6_var03 {
         Airplane ap1 = new Warplane("Il-2", 6160, 89.2, 600);
         Airplane ap2 = new Airliner("Cessna 172", 994, 11.3, 1);
         Airplane ap3 = new Warplane("North American F-86 Sabre / FJ Fury", 6870, 71, 2400);
+        Airplane ap4 = new Airliner("Airbus A330-300", 117500, 1240, 440);
+        Airplane ap5 = new Airliner("McDonnell Douglas MD-11ER", 132050, 1640.1, 410);
+        Airplane ap6 = new AirFreighter("Airbus A330-200", 119600, 1240, 242000);
+        Airplane ap7 = new AirFreighter("McDonnell Douglas MD-11ER", 132050, 1640.1, 286000);
+
 
         ap3.addFlightDistance(112);
 
@@ -26,6 +31,10 @@ public class Lab6_var03 {
             writer.println(ap1);
             writer.println(ap2);
             writer.println(ap3);
+            writer.println(ap4);
+            writer.println(ap5);
+            writer.println(ap6);
+            writer.println(ap7);
 
             writer.close();
         }
@@ -304,8 +313,59 @@ class Warplane extends Airplane {
 /**
  * Civil airplane, carries cargo.
  *
- * cargoCapacity: maximum mass of cargo carried by an air freighter
+ * MTOW: maximum takeoff weight
+ * cargoCapacity: maximum mass of cargo carried by an air freighter (MTOW - mass)
  */
-class Airfreighter extends Airplane {
-    public int cargoCapacity;
+class AirFreighter extends Airplane {
+    private int MTOW;
+
+    public AirFreighter() {
+        super();
+    }
+
+    public AirFreighter(int MTOW) {
+        super();
+        try {
+            setMTOW(MTOW);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public AirFreighter(String model, double mass, double fuelConsumption,
+                        int MTOW) throws IllegalArgumentException {
+        super(model, mass, fuelConsumption);
+        try {
+            setMTOW(MTOW);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getCargoCapacity() {
+        return MTOW - ((int) getMass());
+    }
+
+    public int getMTOW() {
+        return MTOW;
+    }
+
+    public void setMTOW(int MTOW) throws IllegalArgumentException {
+        // TODO: add checking with maximum cargo weight
+        if (MTOW >= 0) {
+            this.MTOW = MTOW;
+        } else {
+            String message = String.format("Incorrect cargo capacity (%d kg)", MTOW);
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    @Override
+    public String toString() {
+        String appendMessage = String.format(
+                "\tCargo capacity: %d kg\n" +
+                "\tMaximum takeoff weight: %d kg\n",
+                getCargoCapacity(), getMTOW());
+        return super.toString() + appendMessage;
+    }
 }
