@@ -20,16 +20,16 @@ public class Lab6_var03 {
         PrintWriter writer = null;
         try {
             writer = new PrintWriter("src\\KPI_FICT\\OOP2\\Source\\Lab 6-03 - output.txt", "UTF-8");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+        if (writer != null) {
             writer.println(ap1);
             writer.println(ap2);
             writer.println(ap3);
 
-        writer.close();
+            writer.close();
+        }
     }
 }
 
@@ -168,7 +168,7 @@ class Airplane {
         if (model.length() <= 50) {
             this.model = model;
         } else {
-            String message = String.format("Incorrect model name, length is >50");
+            String message = "Incorrect model name, length is >50";
             throw new IllegalArgumentException(message);
         }
     }
@@ -178,7 +178,6 @@ class Airplane {
      * Engine repair will reduce fuel consumption.
      *
      * @return true     if repair was successful
-     * @return false    otherwise
      */
     public boolean repairEngine(double fuelConsumptionReduction) {
         if (fuelConsumptionReduction > 0
