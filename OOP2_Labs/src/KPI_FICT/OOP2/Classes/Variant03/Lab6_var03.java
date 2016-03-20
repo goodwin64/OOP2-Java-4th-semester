@@ -8,17 +8,20 @@ import java.util.Locale;
 public class Lab6_var03 {
     public static void main(String[] args) {
         Airplane ap1 = new Airplane("Il-2", 6160, 89.2);
-
         Airplane ap2 = new Airplane();
-        ap2.setFuelConsumption(10.5);
+        Airplane ap3 = new Airplane("North American F-86 Sabre / FJ Fury",
+                6870, 115.5); // Incorrect fuel consumption
+        ap3.setFuelConsumption(71); // Correct fuel consumption
 
         try {
             ap2.setMass(-120); // Exception
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
+
         ap2.setMass(992.4);
         ap2.addMass(7.6);
+        ap2.setFuelConsumption(10.5);
 
         ap2.setModel("Cessna 172");
 
@@ -27,12 +30,15 @@ public class Lab6_var03 {
 
         System.out.println(ap1.getFuelConsumption()); // 89.2
         System.out.println(ap2.getFuelConsumption()); // 5.3
+        System.out.println(ap3.getFuelConsumption()); // 71.0
 
         System.out.println(ap1.getMass()); // 6160
         System.out.println(ap2.getMass()); // 1000
+        System.out.println(ap3.getMass()); // 6870.0
 
         System.out.println(ap1.getID()); // 1
         System.out.println(ap2.getID()); // 2
+        System.out.println(ap3.getID()); // 3
     }
 }
 
@@ -58,10 +64,23 @@ class Airplane {
         this.flightDistance = 0;
         this.ID = maxID + 1;
         maxID++;
-        this.fuelConsumption = fuelConsumption;
-        setMass(mass);
-        if (model.length() < 50) {
-            this.model = model;
+
+        try {
+            setMass(mass);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            setFuelConsumption(fuelConsumption);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            setModel(model);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
     }
 
@@ -69,8 +88,36 @@ class Airplane {
         return fuelConsumption;
     }
 
-    public void setFuelConsumption(double fuelConsumption) {
-        this.fuelConsumption = fuelConsumption;
+    /**
+     * Sets fuel consumption based on the airplane weight:
+     * correct fuel consumption is within 25% of the average fuel consumption value.
+     */
+    public void setFuelConsumption(double fuelConsumption) throws IllegalArgumentException {
+        double minFuelConsumption = calcFuelConsumption() * 0.75;
+        double maxFuelConsumption = calcFuelConsumption() * 1.25;
+
+        if (fuelConsumption > minFuelConsumption && fuelConsumption < maxFuelConsumption) {
+            this.fuelConsumption = fuelConsumption;
+        } else {
+            String message = "Incorrect fuel consumption value";
+            if (fuelConsumption < minFuelConsumption) {
+                message += String.format("(%.2f < %.2f)", fuelConsumption, minFuelConsumption);
+            } else if (fuelConsumption > maxFuelConsumption) {
+                // need repair
+                message += String.format("(%.2f > %.2f)", fuelConsumption, maxFuelConsumption);
+            }
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    /**
+     * Calculates the approximate fuel consumption based on the airplane weight.
+     *
+     * For now, this formula does not assume any physical meaning.
+     */
+    public double calcFuelConsumption() {
+        // TODO: add physical meaning
+        return this.mass / 80;
     }
 
 
@@ -78,7 +125,7 @@ class Airplane {
         return mass;
     }
 
-    public void setMass(double mass) {
+    public void setMass(double mass) throws IllegalArgumentException {
         if (mass > 70.0) {
             this.mass = mass;
         } else {
@@ -98,8 +145,15 @@ class Airplane {
         return flightDistance;
     }
 
-    public void setFlightDistance(int flightDistance) {
-        this.flightDistance = flightDistance;
+    /**
+     * There is no need in public method setFlightDistance.
+     * Method addFlightDistance provided instead.
+     *
+     * @param flightDistance    positive or negative integer number
+     *                          (distance in km-s that airplane covered)
+     */
+    public void addFlightDistance(int flightDistance) {
+        this.flightDistance += flightDistance;
     }
 
 
@@ -116,8 +170,13 @@ class Airplane {
         return model;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setModel(String model) throws IllegalArgumentException {
+        if (model.length() <= 50) {
+            this.model = model;
+        } else {
+            String message = String.format("Incorrect model name, length is >50");
+            throw new IllegalArgumentException(message);
+        }
     }
 
 
