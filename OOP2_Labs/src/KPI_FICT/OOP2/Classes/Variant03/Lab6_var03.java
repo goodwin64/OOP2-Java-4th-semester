@@ -10,7 +10,40 @@ import java.util.Locale;
  */
 public class Lab6_var03 {
     public static void main(String[] args) {
-        Airplane[] airplanes = new Airplane[50];
+        Airplane[] airplanes = createAirplanesBasedOnPrototypes();
+
+        toFile("src\\KPI_FICT\\OOP2\\Source\\Lab 6-03 - output.txt", airplanes);
+    }
+
+    /**
+     * Writes the Airplanes array to a file.
+     * @param path          path to file
+     * @param airplanes     Airplanes array
+     */
+    public static void toFile(String path, Airplane[] airplanes) {
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(path, "UTF-8");
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        if (writer != null) {
+            for (Airplane ap : airplanes) {
+                if (ap != null) {
+                    writer.println(ap);
+                }
+            }
+            writer.close();
+        }
+    }
+
+    /**
+     * Creates and fills an Airplanes array based on real prototypes,
+     * real historic aircraft units.
+     */
+    public static Airplane[] createAirplanesBasedOnPrototypes() {
+        Airplane[] airplanes = new Airplane[15];
 
         airplanes[0] = new Warplane("Il-2", 6160, 89.2, 600);
         airplanes[1] = new Warplane("North American F-86 Sabre / FJ Fury", 6870, 71, 2400);
@@ -30,21 +63,7 @@ public class Lab6_var03 {
         airplanes[13] = new AirFreighter("McDonnell Douglas DC-10-30", 120742, 1640.1, 259459);
         airplanes[14] = new AirFreighter("Boeing 747-8I", 214503, 2500, 447696);
 
-        PrintWriter writer = null;
-        try {
-            writer = new PrintWriter("src\\KPI_FICT\\OOP2\\Source\\Lab 6-03 - output.txt", "UTF-8");
-        } catch (FileNotFoundException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        if (writer != null) {
-            for (Airplane ap : airplanes) {
-                if (ap != null) {
-                    writer.println(ap);
-                }
-            }
-            writer.close();
-        }
+        return airplanes;
     }
 }
 
