@@ -10,16 +10,25 @@ import java.util.Locale;
  */
 public class Lab6_var03 {
     public static void main(String[] args) {
-        Airplane ap1 = new Warplane("Il-2", 6160, 89.2, 600);
-        Airplane ap2 = new Airliner("Cessna 172", 994, 11.3, 1);
-        Airplane ap3 = new Warplane("North American F-86 Sabre / FJ Fury", 6870, 71, 2400);
-        Airplane ap4 = new Airliner("Airbus A330-300", 117500, 1240, 440);
-        Airplane ap5 = new Airliner("McDonnell Douglas MD-11ER", 132050, 1640.1, 410);
-        Airplane ap6 = new AirFreighter("Airbus A330-200", 119600, 1240, 242000);
-        Airplane ap7 = new AirFreighter("McDonnell Douglas MD-11ER", 132050, 1640.1, 286000);
+        Airplane[] airplanes = new Airplane[50];
 
+        airplanes[0] = new Warplane("Il-2", 6160, 89.2, 600);
+        airplanes[1] = new Warplane("North American F-86 Sabre / FJ Fury", 6870, 71, 2400);
+        airplanes[2] = new Warplane("Messerschmitt Bf 109", 3148, 32.2, 250);
+        airplanes[3] = new Warplane("Boeing B-17 Flying Fortress", 24500, 336, 7800);
+        airplanes[4] = new Warplane("Focke-Wulf Fw 190 D-9", 4270, 63.1, 500);
 
-        ap3.addFlightDistance(112);
+        airplanes[5] = new Airliner("Cessna 172", 994, 11.3, 1);
+        airplanes[6] = new Airliner("Airbus A330-300", 117500, 1240, 440);
+        airplanes[7] = new Airliner("McDonnell Douglas MD-11ER", 132050, 1640.1, 410);
+        airplanes[8] = new Airliner("McDonnell Douglas DC-10-30", 120742, 1640.1, 380);
+        airplanes[9] = new Airliner("Boeing 747-8I", 214503, 2500, 605);
+
+        airplanes[10] = new AirFreighter("Airbus A330-200", 119600, 1240, 242000);
+        airplanes[11] = new AirFreighter("An-225", 285000, 3300, 640000);
+        airplanes[12] = new AirFreighter("McDonnell Douglas MD-11ER", 132050, 1640.1, 286000);
+        airplanes[13] = new AirFreighter("McDonnell Douglas DC-10-30", 120742, 1640.1, 259459);
+        airplanes[14] = new AirFreighter("Boeing 747-8I", 214503, 2500, 447696);
 
         PrintWriter writer = null;
         try {
@@ -27,15 +36,13 @@ public class Lab6_var03 {
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        if (writer != null) {
-            writer.println(ap1);
-            writer.println(ap2);
-            writer.println(ap3);
-            writer.println(ap4);
-            writer.println(ap5);
-            writer.println(ap6);
-            writer.println(ap7);
 
+        if (writer != null) {
+            for (Airplane ap : airplanes) {
+                if (ap != null) {
+                    writer.println(ap);
+                }
+            }
             writer.close();
         }
     }

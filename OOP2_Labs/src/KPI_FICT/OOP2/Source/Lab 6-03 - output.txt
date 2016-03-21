@@ -5,47 +5,106 @@ Warplane "Il-2":
 	Fuel consumption is 89,20 units
 	Bomb load: 600 kg
 
-Airliner "Cessna 172":
+Warplane "North American F-86 Sabre / FJ Fury":
 	ID: 2
+	Mass: 6870,00 kg
+	Flew 0 km
+	Fuel consumption is 71,00 units
+	Bomb load: 2400 kg
+
+Warplane "Messerschmitt Bf 109":
+	ID: 3
+	Mass: 3148,00 kg
+	Flew 0 km
+	Fuel consumption is 32,20 units
+	Bomb load: 250 kg
+
+Warplane "Boeing B-17 Flying Fortress":
+	ID: 4
+	Mass: 24500,00 kg
+	Flew 0 km
+	Fuel consumption is 336,00 units
+	Bomb load: 7800 kg
+
+Warplane "Focke-Wulf Fw 190 D-9":
+	ID: 5
+	Mass: 4270,00 kg
+	Flew 0 km
+	Fuel consumption is 63,10 units
+	Bomb load: 500 kg
+
+Airliner "Cessna 172":
+	ID: 6
 	Mass: 994,00 kg
 	Flew 0 km
 	Fuel consumption is 11,30 units
 	Seating capacity: 1
 
-Warplane "North American F-86 Sabre / FJ Fury":
-	ID: 3
-	Mass: 6870,00 kg
-	Flew 112 km
-	Fuel consumption is 71,00 units
-	Bomb load: 2400 kg
-
 Airliner "Airbus A330-300":
-	ID: 4
+	ID: 7
 	Mass: 117500,00 kg
 	Flew 0 km
 	Fuel consumption is 1240,00 units
 	Seating capacity: 440
 
 Airliner "McDonnell Douglas MD-11ER":
-	ID: 5
+	ID: 8
 	Mass: 132050,00 kg
 	Flew 0 km
 	Fuel consumption is 1640,10 units
 	Seating capacity: 410
 
+Airliner "McDonnell Douglas DC-10-30":
+	ID: 9
+	Mass: 120742,00 kg
+	Flew 0 km
+	Fuel consumption is 1640,10 units
+	Seating capacity: 380
+
+Airliner "Boeing 747-8I":
+	ID: 10
+	Mass: 214503,00 kg
+	Flew 0 km
+	Fuel consumption is 2500,00 units
+	Seating capacity: 605
+
 AirFreighter "Airbus A330-200":
-	ID: 6
+	ID: 11
 	Mass: 119600,00 kg
 	Flew 0 km
 	Fuel consumption is 1240,00 units
 	Cargo capacity: 122400 kg
 	Maximum takeoff weight: 242000 kg
 
+AirFreighter "An-225":
+	ID: 12
+	Mass: 285000,00 kg
+	Flew 0 km
+	Fuel consumption is 3300,00 units
+	Cargo capacity: 355000 kg
+	Maximum takeoff weight: 640000 kg
+
 AirFreighter "McDonnell Douglas MD-11ER":
-	ID: 7
+	ID: 13
 	Mass: 132050,00 kg
 	Flew 0 km
 	Fuel consumption is 1640,10 units
 	Cargo capacity: 153950 kg
 	Maximum takeoff weight: 286000 kg
+
+AirFreighter "McDonnell Douglas DC-10-30":
+	ID: 14
+	Mass: 120742,00 kg
+	Flew 0 km
+	Fuel consumption is 1640,10 units
+	Cargo capacity: 138717 kg
+	Maximum takeoff weight: 259459 kg
+
+AirFreighter "Boeing 747-8I":
+	ID: 15
+	Mass: 214503,00 kg
+	Flew 0 km
+	Fuel consumption is 2500,00 units
+	Cargo capacity: 233193 kg
+	Maximum takeoff weight: 447696 kg
 
