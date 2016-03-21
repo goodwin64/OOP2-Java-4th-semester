@@ -18,8 +18,8 @@ Task
 		Plug in some appliances. Calculate the power consumption. Sort devices in apartment by their capacities. Find the appliance in apartment which corresponds to a specified range of electro-magnetic radiation.
 	3	Визначити ієрархію овочів. 
 		Зробити салат. Порахувати калорійність салату. Провести сортування овочів для салату на основі одного з параметрів. Знайти овоч у салаті, , що відповідає заданому діапазону калорійності.
-	4	Визначити ієрархію музичних композицій. 
-		Записати на диск альбом. Порахувати тривалість альбому. Провести перестановку композицій диска на основі приналежності до стилю. Знайти композицію, що відповідає заданому діапазону довжини треків.
+	4	Determine the hierarchy of musical compositions. 
+		Record the album to a disk. Calculate the total album length. Sort tracks by style. Find the track which corresponds to a given range of tracks length.
 	5	Визначити ієрархію дорогоцінного та напівкоштовного каміння. 
 		Відібрати камені для намиста. Порахувати загальну вагу (у каратах) і вартість намиста. Провести сортування каміння намиста за цінністю. Знайти каміння в намисто, що відповідає заданому діапазону параметрів прозорості.
 	6	Визначити ієрархію амуніції лицаря. 
