@@ -265,7 +265,8 @@ class Airplane {
     public String toString() {
         String className = this.getClass().getName();
         className = className.substring(className.lastIndexOf('.') + 1);
-        return String.format("%s \"%s\":\n" +
+        return String.format(Locale.ENGLISH,
+                "%s \"%s\":\n" +
                 "\tID: %d\n" +
                 "\tMass: %.2f kg\n" +
                 "\tFlew %d km\n" +
