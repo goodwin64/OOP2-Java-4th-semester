@@ -1,0 +1,44 @@
+Laboratory work #6
+Theme: 		Inheritance and polymorphism in Java.
+Objective: 	Introduction to mechanism of inheritance and polymorphism principle. 
+			Using the principle mechanism of inheritance and polymorphism in Java. 
+			Gaining skills of using the mechanism of inheritance and polymorphism principle.
+
+Task
+1.	Determine C13 as a remainder of division of the student record book by number 13.
+
+// TODO: translate tasks 3-7, 9-12 from "ukr" to "eng"
+2.	Depending on C13 value determine the variant task:
+	C13	Variant task
+	0	Determine the hierarchy of flowers.
+		Create several flowers objects. Gather a bunch (using accessories) with definition of its value. Sort flowers in the bunch by freshness. Find a flower bunch which corresponds to a given range of lengths.
+	1	Determine the hierarchy of candy and other sweets. 
+		Create several objects-candy. Gather the children gift with definition of its weight. Sort candies in the gift by one of parameters. Find candy in the gift which corresponds to a given range of content of chocolate in candy.
+	2	Determine the hierarchy of electrical appliances. 
+		Plug in some appliances. Calculate the power consumption. Sort devices in apartment by their capacities. Find the appliance in apartment which corresponds to a specified range of electro-magnetic radiation.
+	3	Визначити ієрархію овочів. 
+		Зробити салат. Порахувати калорійність салату. Провести сортування овочів для салату на основі одного з параметрів. Знайти овоч у салаті, , що відповідає заданому діапазону калорійності.
+	4	Determine the hierarchy of musical compositions. 
+		Record the album to a disk. Calculate the total album length. Sort tracks by style. Find the track which corresponds to a given range of tracks length.
+	5	Визначити ієрархію дорогоцінного та напівкоштовного каміння. 
+		Відібрати камені для намиста. Порахувати загальну вагу (у каратах) і вартість намиста. Провести сортування каміння намиста за цінністю. Знайти каміння в намисто, що відповідає заданому діапазону параметрів прозорості.
+	6	Визначити ієрархію амуніції лицаря. 
+		Екіпірувати лицаря. Порахувати вартість амуніції. Провести сортування амуніції за вагою. Знайти елементи амуніції, що відповідає заданому діапазону цін.
+	7	Визначити ієрархію рухомого складу залізничного транспорту. 
+		Створити пасажирський потяг. Порахувати загальну чисельність пасажирів і багажу в потязі. Провести сортування вагонів потягу за рівнем комфортності. Знайти вагон в потязі, що відповідає заданому діапазону кількості пасажирів.
+	8	Determine the hierarchy of airplanes. 
+		Create an airline. Calculate the total capaciousness and carrying capacity of airline. Sort company's airplanes by flight distances. Find company's airplanes that correspond to a given range of fuel consumption.
+	9	Визначити ієрархію легкових автомобілів. 
+		Створити таксопарк. Порахувати вартість автопарку. Провести сортування автомобілів парку за витратами палива. Знайти автомобіль у компанії, що відповідає заданому діапазону швидкості автомобіля.
+	10	Визначити ієрархію тарифів мобільної компанії. 
+		Створити список тарифів компанії. Порахувати загальну чисельність клієнтів. Провести сортування тарифів на основі розміру абонентської плати. Знайти тариф у компанії, що відповідає заданому діапазону вартості послуг.
+	11	Визначити ієрархію сортов кофе.
+		Завантажити фургон певного обсягу вантажем на певну суму з різних сортів кави, що можуть перебувати у різних фізичних станах (зерно, мелена, розчинна в банках і пакетиках). Ураховувати обсяг кава разом з упаковкою. Провести сортування товарів на основі співвідношення ціни й ваги. Знайти товар у фургоні, що відповідає заданому діапазону якості кави.
+	12	Підготувати ігрову кімнату для дітей різних вікових груп. 
+		Іграшок повинно бути фіксована кількість у межах виділеної суми грошей. Повинні зустрічатися іграшки для різних вікових груп: маленькі, середні та великі машинки, ляльки, м'ячі, кубики. Провести сортування іграшок у  кімнаті за будь-яким параметром. Знайти іграшку в кімнаті, що відповідає заданому діапазону вартості.
+
+3.	Create general class and at least 3 descendant classes that describe the area of expertise given due to variant task (paragraph 2). 
+	Create a class consists of an array of objects with which you can do an action given in variant task. 
+	It is necessary to process all exceptional situations that may arise during a code execution. 
+	All variables should be described and their values given in the enforcement method. 
+	The code must conform to the JCC standards and be thoroughly documented.

@@ -1,4 +1,4 @@
-package KPI_FICT.OOP2.Classes;
+package KPI_FICT.OOP2.Classes.Variant12;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -7,13 +7,6 @@ import java.util.Scanner;
  * Created by Rock(https://github.com/Filin-Rock) on 17.03.2016.
  */
 public class Lab2_var12 {
-
-    static Random rand = new Random();
-
-    public static int getRandValue() {
-        return rand.nextInt(50);
-    }
-
     public static void printMatrix(int[][] matrix) {
         for (int[] row : matrix) {
             for (int value : row) {
@@ -27,7 +20,7 @@ public class Lab2_var12 {
         System.out.println();
     }
 
-    public static void printResultArray(int[][] matrix) {
+    public static void printColumnsAverages(int[][] matrix) {
         int sum;
         double average;
         int n = matrix.length;
@@ -44,13 +37,14 @@ public class Lab2_var12 {
     }
 
     public static void main(String[] args) {
-        Scanner scaner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int height, width;
+        Random rand = new Random();
 
         System.out.print("Matrix height: ");
-        height = scaner.nextInt();
+        height = scanner.nextInt();
         System.out.print("Matrix width: ");
-        width = scaner.nextInt();
+        width = scanner.nextInt();
 
         try {
             if (height < 1) {
@@ -63,11 +57,11 @@ public class Lab2_var12 {
             e.printStackTrace();
             while (height < 1) {
                 System.out.print("Matrix height: ");
-                height = scaner.nextInt();
+                height = scanner.nextInt();
             }
             while (width < 1) {
                 System.out.print("Matrix width: ");
-                width = scaner.nextInt();
+                width = scanner.nextInt();
             }
         }
 
@@ -77,8 +71,8 @@ public class Lab2_var12 {
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                matrixA[i][j] = getRandValue();
-                matrixB[i][j] = getRandValue();
+                matrixA[i][j] = rand.nextInt(50);
+                matrixB[i][j] = rand.nextInt(50);
                 matrixC[i][j] = matrixA[i][j] + matrixB[i][j];
             }
         }
@@ -87,7 +81,7 @@ public class Lab2_var12 {
         printMatrix(matrixB);
         printMatrix(matrixC);
 
-        printResultArray(matrixC);
+        printColumnsAverages(matrixC);
 
     }
 

@@ -1,11 +1,11 @@
-package KPI_FICT.OOP2.Classes;
+package KPI_FICT.OOP2.Classes.Variant03;
 
 import java.util.Scanner;
 
 /**
  * Created by Max Donchenko on 24.01.2016.
  */
-public class Lab1 {
+public class Lab1_var03 {
 
     public static void swap(short[] a, short[] b) {
         /*

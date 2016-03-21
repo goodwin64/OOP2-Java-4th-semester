@@ -1,4 +1,4 @@
-package KPI_FICT.OOP2.Classes;
+package KPI_FICT.OOP2.Classes.Variant03;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -6,7 +6,7 @@ import java.util.Comparator;
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 03.03.2016.
  */
-public class Lab4_var3 {
+public class Lab4_var03 {
 
     public static void main(String[] args) {
 
@@ -222,7 +222,7 @@ class Student implements Comparable<Student> {
     public void addMarks(int count) {
         for (int i = 0; i < count; i++) {
             if (i < marks.length) {
-                marks[i] = Lab2_var3.getRandInt(50, 100);
+                marks[i] = Lab2_var03.getRandInt(50, 100);
             }
         }
     }
@@ -245,12 +245,12 @@ class Student implements Comparable<Student> {
         }
 
         if (minMark > maxMark) {
-            Lab1.swap(new int[] {minMark},
+            Lab1_var03.swap(new int[] {minMark},
                       new int[] {maxMark});
         }
         for (int i = 0; i < count; i++) {
             if (i < marks.length) {
-                marks[i] = Lab2_var3.getRandInt(minMark, maxMark);
+                marks[i] = Lab2_var03.getRandInt(minMark, maxMark);
             }
         }
     }

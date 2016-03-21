@@ -1,0 +1,18 @@
+Laboratory work #5
+Theme: 		The relationship between classes in Java.
+Objective: 	Introduction to the relations between the classes in Java. 
+			Gaining skills to use relationships between classes in Java.
+
+Task
+1. Modify laboratory work №3 follows: 
+-   for letters, words, sentences, punctuation and text you should create separate classes;
+-   the word must consist of an array of characters,
+        sentences - of an array of words and punctuation,
+        text - of an array of sentences;
+-   change each sequence of tabs and spaces to one space.
+
+2. Create a class that consists of enforcement method that performs 
+the action described from laboratory work №3, but as types using created classes. 
+It is necessary to process all exceptional situations that may occur during the execution of code. 
+All variables should be described and their values should be given in the enforcement method. 
+The code must correspond to JCC standards and be thoroughly documented.

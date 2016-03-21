@@ -1,0 +1,51 @@
+Warplane "Il-2":
+	ID: 1
+	Mass: 6160,00 kg
+	Flew 0 km
+	Fuel consumption is 89,20 units
+	Bomb load: 600 kg
+
+Airliner "Cessna 172":
+	ID: 2
+	Mass: 994,00 kg
+	Flew 0 km
+	Fuel consumption is 11,30 units
+	Seating capacity: 1
+
+Warplane "North American F-86 Sabre / FJ Fury":
+	ID: 3
+	Mass: 6870,00 kg
+	Flew 112 km
+	Fuel consumption is 71,00 units
+	Bomb load: 2400 kg
+
+Airliner "Airbus A330-300":
+	ID: 4
+	Mass: 117500,00 kg
+	Flew 0 km
+	Fuel consumption is 1240,00 units
+	Seating capacity: 440
+
+Airliner "McDonnell Douglas MD-11ER":
+	ID: 5
+	Mass: 132050,00 kg
+	Flew 0 km
+	Fuel consumption is 1640,10 units
+	Seating capacity: 410
+
+AirFreighter "Airbus A330-200":
+	ID: 6
+	Mass: 119600,00 kg
+	Flew 0 km
+	Fuel consumption is 1240,00 units
+	Cargo capacity: 122400 kg
+	Maximum takeoff weight: 242000 kg
+
+AirFreighter "McDonnell Douglas MD-11ER":
+	ID: 7
+	Mass: 132050,00 kg
+	Flew 0 km
+	Fuel consumption is 1640,10 units
+	Cargo capacity: 153950 kg
+	Maximum takeoff weight: 286000 kg
+
