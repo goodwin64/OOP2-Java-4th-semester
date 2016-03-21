@@ -1,8 +1,6 @@
 package KPI_FICT.OOP2.Classes.Variant03;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.util.Locale;
 
 /**
@@ -10,21 +8,25 @@ import java.util.Locale;
  */
 public class Lab6_var03 {
     public static void main(String[] args) {
-        Airplane[] airplanes = createAirplanesBasedOnPrototypes();
+        Airplane[] realAirplanes = createAirplanesBasedOnPrototypes();
+        toFile("src\\KPI_FICT\\OOP2\\Source\\Lab 6-03 - output.txt", realAirplanes, false);
 
-        toFile("src\\KPI_FICT\\OOP2\\Source\\Lab 6-03 - output.txt", airplanes);
+        Airplane[] randAirplanes = createRandomAirplanes();
+        toFile("src\\KPI_FICT\\OOP2\\Source\\Lab 6-03 - output.txt", randAirplanes, true);
     }
 
     /**
      * Writes the Airplanes array to a file.
      * @param path          path to file
      * @param airplanes     Airplanes array
+     * @param append        boolean if <code>true</code>, then data will be written
+     *                      to the end of the file rather than the beginning.
      */
-    public static void toFile(String path, Airplane[] airplanes) {
+    public static void toFile(String path, Airplane[] airplanes, boolean append) {
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter(path, "UTF-8");
-        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            writer = new PrintWriter(new BufferedWriter(new FileWriter(path, append)));
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -62,6 +64,43 @@ public class Lab6_var03 {
         airplanes[12] = new AirFreighter("McDonnell Douglas MD-11ER", 132050, 1640.1, 286000);
         airplanes[13] = new AirFreighter("McDonnell Douglas DC-10-30", 120742, 1640.1, 259459);
         airplanes[14] = new AirFreighter("Boeing 747-8I", 214503, 2500, 447696);
+
+        return airplanes;
+    }
+
+    /**
+     * Creates and fills an Airplanes array of random airplanes.
+     */
+    public static Airplane[] createRandomAirplanes() {
+        Airplane[] airplanes = new Airplane[50];
+
+        for (int i = 0; i < 50; i++) {
+            int selector = ((int) (Math.random() * 3) + 1);         // 1..3
+
+            int mass = ((int) (Math.random() * 240000)) + 500;      // 500kg..250t;
+            double fuelDelta = Math.random() * 0.5 + 0.75;          // 75%..125%
+            double fuelConsumption = (mass / 80) * fuelDelta;       // direct dependence on the mass
+
+            switch (selector) {
+                case 1:
+                    int bombLoad = ((int) (Math.random() * mass));  // direct dependence on the mass
+                    airplanes[i] = new Warplane("random warplane", mass, fuelConsumption, bombLoad);
+                    break;
+
+                case 2:
+                    int seatingCapacity = ((int) (Math.random() * mass));  // direct dependence on the mass
+                    airplanes[i] = new Airliner("random airliner", mass, fuelConsumption, seatingCapacity);
+                    break;
+
+                case 3:
+                    /* TODO: find the bug, air freighters are twice less than other airplanes */
+                    int MTOW = ((int) (Math.random() * mass));      // direct dependence on the mass
+                    airplanes[i] = new AirFreighter("random air freighter", mass, fuelConsumption, MTOW);
+                    break;
+            }
+
+            airplanes[i].addFlightDistance((int) (Math.random() * 10000));
+        }
 
         return airplanes;
     }
