@@ -1,18 +1,55 @@
 package KPI_FICT.OOP2.Classes.Variant03;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.Scanner;
 
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 20.03.2016.
  */
 public class Lab6_var03 {
     public static void main(String[] args) {
-        Airplane[] realAirplanes = createAirplanesBasedOnPrototypes();
-        toFile("src\\KPI_FICT\\OOP2\\Source\\Lab 6-03 - output.txt", realAirplanes, false);
+        String dataPath = "src\\KPI_FICT\\OOP2\\Source\\Variant03\\Lab6 - airplanes data.txt";
+        String outputPath = "src\\KPI_FICT\\OOP2\\Source\\Variant03\\Lab6 - output.txt";
 
-        Airplane[] randAirplanes = createRandomAirplanes();
-        toFile("src\\KPI_FICT\\OOP2\\Source\\Lab 6-03 - output.txt", randAirplanes, true);
+        Airplane[] realAirplanes = createAirplanesBasedOnPrototypes();
+        airplanesToFile(dataPath, realAirplanes, false);
+
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(outputPath, "UTF-8");
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        if (writer != null) {
+            // Create an airline.
+            Airplane[] airline = createRandomAirplanes();
+            airplanesToFile(dataPath, airline, true);
+
+            // Calculate the total carrying capacity of airline.
+            int totalCarryingCapacity = getTotalCarryingCapacity(airline);
+            writer.printf("Airline total carrying capacity is %d kg\n", totalCarryingCapacity);
+
+            // Sort company's airplanes by flight distances.
+            Arrays.sort(airline);
+
+            // Find company's airplanes that correspond to a given range of fuel consumption.
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Minimum fuel consumption value: ");
+            int minFC = scanner.nextInt();
+            System.out.print("Maximum fuel consumption value: ");
+            int maxFC = scanner.nextInt();
+
+            writer.printf("Airplanes with fuel consumption between %d and %d sorted by flight distance:\n\n",
+                    minFC, maxFC);
+            for (Airplane ap : airline) {
+                if (ap.getFuelConsumption() > minFC && ap.getFuelConsumption() < maxFC) {
+                    writer.println(ap);
+                }
+            }
+            writer.close();
+        }
     }
 
     /**
@@ -22,7 +59,7 @@ public class Lab6_var03 {
      * @param append        boolean if <code>true</code>, then data will be written
      *                      to the end of the file rather than the beginning.
      */
-    public static void toFile(String path, Airplane[] airplanes, boolean append) {
+    public static void airplanesToFile(String path, Airplane[] airplanes, boolean append) {
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(new BufferedWriter(new FileWriter(path, append)));
@@ -94,7 +131,7 @@ public class Lab6_var03 {
 
                 case 3:
                     /* TODO: find the bug, air freighters are twice less than other airplanes */
-                    int MTOW = ((int) (Math.random() * mass));      // direct dependence on the mass
+                    int MTOW = (int) ((Math.random() + 1) * mass);      // g.t. or equal to mass
                     airplanes[i] = new AirFreighter("random air freighter", mass, fuelConsumption, MTOW);
                     break;
             }
@@ -104,12 +141,31 @@ public class Lab6_var03 {
 
         return airplanes;
     }
+
+    /**
+     * Calculates the total carrying capacity of the airline.
+     *
+     * @param airline       airplanes array
+     */
+    public static int getTotalCarryingCapacity(Airplane[] airline) {
+        int totalCarryingCapacity = 0;
+        for (Airplane ap : airline) {
+            if (ap instanceof Airliner) {
+                totalCarryingCapacity += ((Airliner) ap).getSeatingCapacity() * 80; // average man mass
+            } else if (ap instanceof AirFreighter) {
+                totalCarryingCapacity += ((AirFreighter) ap).getCargoCapacity();
+            } else if (ap instanceof Warplane) {
+                totalCarryingCapacity += ((Warplane) ap).getBombLoad();
+            }
+        }
+        return totalCarryingCapacity;
+    }
 }
 
 /**
  * Parent class for all airplanes
  */
-class Airplane {
+class Airplane implements Comparable<Airplane> {
     private int flightDistance;
     private int ID;
     private static int maxID = 0;
@@ -273,6 +329,16 @@ class Airplane {
                 "\tFuel consumption is %.2f units\n", className,
                 getModel(), getID(), getMass(), getFlightDistance(), getFuelConsumption());
     }
+
+    @Override
+    public int compareTo(Airplane other) {
+        int compareFlightDistance = this.getFlightDistance() - other.getFlightDistance();
+        if (compareFlightDistance != 0) {
+            return compareFlightDistance;
+        } else {
+            return ((int) Math.signum(this.getFuelConsumption() - other.getFuelConsumption()));
+        }
+    }
 }
 
 /**
@@ -367,6 +433,13 @@ class Warplane extends Airplane {
         if (bombLoad >= 0) {
             this.bombLoad = bombLoad;
         }
+    }
+
+    /**
+     * Returns count of bombs warplane is able to lift.
+     */
+    public int getBombsCount(int bombMass) {
+        return getBombLoad() / bombMass;
     }
 
     @Override
