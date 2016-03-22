@@ -53,7 +53,7 @@ public class Lab6_var03 {
         airplanes[3] = new Warplane("Boeing B-17 Flying Fortress", 24500, 336, 7800);
         airplanes[4] = new Warplane("Focke-Wulf Fw 190 D-9", 4270, 63.1, 500);
 
-        airplanes[5] = new Airliner("Cessna 172", 994, 11.3, 1);
+        airplanes[5] = new Airliner("Cessna 172", 994, 11.3, 4);
         airplanes[6] = new Airliner("Airbus A330-300", 117500, 1240, 440);
         airplanes[7] = new Airliner("McDonnell Douglas MD-11ER", 132050, 1640.1, 410);
         airplanes[8] = new Airliner("McDonnell Douglas DC-10-30", 120742, 1640.1, 380);
