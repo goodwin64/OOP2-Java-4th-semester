@@ -1,0 +1,477 @@
+Warplane "Il-2":
+	ID: 1
+	Mass: 6160.00 kg
+	Flew 0 km
+	Fuel consumption is 89.20 units
+	Bomb load: 600 kg
+
+Warplane "North American F-86 Sabre / FJ Fury":
+	ID: 2
+	Mass: 6870.00 kg
+	Flew 0 km
+	Fuel consumption is 71.00 units
+	Bomb load: 2400 kg
+
+Warplane "Messerschmitt Bf 109":
+	ID: 3
+	Mass: 3148.00 kg
+	Flew 0 km
+	Fuel consumption is 32.20 units
+	Bomb load: 250 kg
+
+Warplane "Boeing B-17 Flying Fortress":
+	ID: 4
+	Mass: 24500.00 kg
+	Flew 0 km
+	Fuel consumption is 336.00 units
+	Bomb load: 7800 kg
+
+Warplane "Focke-Wulf Fw 190 D-9":
+	ID: 5
+	Mass: 4270.00 kg
+	Flew 0 km
+	Fuel consumption is 63.10 units
+	Bomb load: 500 kg
+
+Airliner "Cessna 172":
+	ID: 6
+	Mass: 994.00 kg
+	Flew 0 km
+	Fuel consumption is 11.30 units
+	Seating capacity: 4
+
+Airliner "Airbus A330-300":
+	ID: 7
+	Mass: 117500.00 kg
+	Flew 0 km
+	Fuel consumption is 1240.00 units
+	Seating capacity: 440
+
+Airliner "McDonnell Douglas MD-11ER":
+	ID: 8
+	Mass: 132050.00 kg
+	Flew 0 km
+	Fuel consumption is 1640.10 units
+	Seating capacity: 410
+
+Airliner "McDonnell Douglas DC-10-30":
+	ID: 9
+	Mass: 120742.00 kg
+	Flew 0 km
+	Fuel consumption is 1640.10 units
+	Seating capacity: 380
+
+Airliner "Boeing 747-8I":
+	ID: 10
+	Mass: 214503.00 kg
+	Flew 0 km
+	Fuel consumption is 2500.00 units
+	Seating capacity: 605
+
+AirFreighter "Airbus A330-200":
+	ID: 11
+	Mass: 119600.00 kg
+	Flew 0 km
+	Fuel consumption is 1240.00 units
+	Cargo capacity: 122400 kg
+	Maximum takeoff weight: 242000 kg
+
+AirFreighter "An-225":
+	ID: 12
+	Mass: 285000.00 kg
+	Flew 0 km
+	Fuel consumption is 3300.00 units
+	Cargo capacity: 355000 kg
+	Maximum takeoff weight: 640000 kg
+
+AirFreighter "McDonnell Douglas MD-11ER":
+	ID: 13
+	Mass: 132050.00 kg
+	Flew 0 km
+	Fuel consumption is 1640.10 units
+	Cargo capacity: 153950 kg
+	Maximum takeoff weight: 286000 kg
+
+AirFreighter "McDonnell Douglas DC-10-30":
+	ID: 14
+	Mass: 120742.00 kg
+	Flew 0 km
+	Fuel consumption is 1640.10 units
+	Cargo capacity: 138717 kg
+	Maximum takeoff weight: 259459 kg
+
+AirFreighter "Boeing 747-8I":
+	ID: 15
+	Mass: 214503.00 kg
+	Flew 0 km
+	Fuel consumption is 2500.00 units
+	Cargo capacity: 233193 kg
+	Maximum takeoff weight: 447696 kg
+
+AirFreighter "random air freighter":
+	ID: 16
+	Mass: 23242.00 kg
+	Flew 1467 km
+	Fuel consumption is 302.08 units
+	Cargo capacity: 10742 kg
+	Maximum takeoff weight: 33984 kg
+
+AirFreighter "random air freighter":
+	ID: 17
+	Mass: 43548.00 kg
+	Flew 7531 km
+	Fuel consumption is 665.25 units
+	Cargo capacity: 18204 kg
+	Maximum takeoff weight: 61752 kg
+
+Airliner "random airliner":
+	ID: 18
+	Mass: 11564.00 kg
+	Flew 4447 km
+	Fuel consumption is 131.73 units
+	Seating capacity: 8333
+
+AirFreighter "random air freighter":
+	ID: 19
+	Mass: 18850.00 kg
+	Flew 4750 km
+	Fuel consumption is 218.40 units
+	Cargo capacity: 10679 kg
+	Maximum takeoff weight: 29529 kg
+
+Warplane "random warplane":
+	ID: 20
+	Mass: 131101.00 kg
+	Flew 7134 km
+	Fuel consumption is 1733.96 units
+	Bomb load: 69889 kg
+
+Airliner "random airliner":
+	ID: 21
+	Mass: 209778.00 kg
+	Flew 6452 km
+	Fuel consumption is 2287.97 units
+	Seating capacity: 145907
+
+AirFreighter "random air freighter":
+	ID: 22
+	Mass: 128242.00 kg
+	Flew 1242 km
+	Fuel consumption is 1759.59 units
+	Cargo capacity: 63872 kg
+	Maximum takeoff weight: 192114 kg
+
+Airliner "random airliner":
+	ID: 23
+	Mass: 224469.00 kg
+	Flew 9376 km
+	Fuel consumption is 2984.57 units
+	Seating capacity: 123806
+
+Warplane "random warplane":
+	ID: 24
+	Mass: 224806.00 kg
+	Flew 2358 km
+	Fuel consumption is 2495.91 units
+	Bomb load: 73533 kg
+
+Airliner "random airliner":
+	ID: 25
+	Mass: 116586.00 kg
+	Flew 3306 km
+	Fuel consumption is 1255.36 units
+	Seating capacity: 13663
+
+Airliner "random airliner":
+	ID: 26
+	Mass: 12528.00 kg
+	Flew 7962 km
+	Fuel consumption is 158.97 units
+	Seating capacity: 7091
+
+Warplane "random warplane":
+	ID: 27
+	Mass: 182520.00 kg
+	Flew 5027 km
+	Fuel consumption is 2018.53 units
+	Bomb load: 6888 kg
+
+Warplane "random warplane":
+	ID: 28
+	Mass: 43955.00 kg
+	Flew 7195 km
+	Fuel consumption is 584.03 units
+	Bomb load: 39285 kg
+
+AirFreighter "random air freighter":
+	ID: 29
+	Mass: 207737.00 kg
+	Flew 8815 km
+	Fuel consumption is 2221.26 units
+	Cargo capacity: 10703 kg
+	Maximum takeoff weight: 218440 kg
+
+AirFreighter "random air freighter":
+	ID: 30
+	Mass: 114252.00 kg
+	Flew 2319 km
+	Fuel consumption is 1627.39 units
+	Cargo capacity: 67115 kg
+	Maximum takeoff weight: 181367 kg
+
+Warplane "random warplane":
+	ID: 31
+	Mass: 186879.00 kg
+	Flew 3700 km
+	Fuel consumption is 2236.27 units
+	Bomb load: 139819 kg
+
+AirFreighter "random air freighter":
+	ID: 32
+	Mass: 75734.00 kg
+	Flew 5191 km
+	Fuel consumption is 892.69 units
+	Cargo capacity: 72071 kg
+	Maximum takeoff weight: 147805 kg
+
+Airliner "random airliner":
+	ID: 33
+	Mass: 115287.00 kg
+	Flew 8343 km
+	Fuel consumption is 1515.46 units
+	Seating capacity: 51425
+
+AirFreighter "random air freighter":
+	ID: 34
+	Mass: 99627.00 kg
+	Flew 925 km
+	Fuel consumption is 1123.63 units
+	Cargo capacity: 40351 kg
+	Maximum takeoff weight: 139978 kg
+
+Airliner "random airliner":
+	ID: 35
+	Mass: 134312.00 kg
+	Flew 5398 km
+	Fuel consumption is 1990.12 units
+	Seating capacity: 17330
+
+AirFreighter "random air freighter":
+	ID: 36
+	Mass: 96039.00 kg
+	Flew 6626 km
+	Fuel consumption is 1467.64 units
+	Cargo capacity: 23493 kg
+	Maximum takeoff weight: 119532 kg
+
+Warplane "random warplane":
+	ID: 37
+	Mass: 147067.00 kg
+	Flew 841 km
+	Fuel consumption is 1654.24 units
+	Bomb load: 145941 kg
+
+Warplane "random warplane":
+	ID: 38
+	Mass: 176086.00 kg
+	Flew 6871 km
+	Fuel consumption is 2609.91 units
+	Bomb load: 174775 kg
+
+Airliner "random airliner":
+	ID: 39
+	Mass: 107127.00 kg
+	Flew 3566 km
+	Fuel consumption is 1102.22 units
+	Seating capacity: 54785
+
+Warplane "random warplane":
+	ID: 40
+	Mass: 55434.00 kg
+	Flew 3634 km
+	Fuel consumption is 835.03 units
+	Bomb load: 24565 kg
+
+Warplane "random warplane":
+	ID: 41
+	Mass: 25433.00 kg
+	Flew 4216 km
+	Fuel consumption is 359.93 units
+	Bomb load: 3177 kg
+
+Airliner "random airliner":
+	ID: 42
+	Mass: 176447.00 kg
+	Flew 5701 km
+	Fuel consumption is 1896.78 units
+	Seating capacity: 129343
+
+AirFreighter "random air freighter":
+	ID: 43
+	Mass: 109804.00 kg
+	Flew 3569 km
+	Fuel consumption is 1158.71 units
+	Cargo capacity: 75958 kg
+	Maximum takeoff weight: 185762 kg
+
+Warplane "random warplane":
+	ID: 44
+	Mass: 59999.00 kg
+	Flew 8254 km
+	Fuel consumption is 620.80 units
+	Bomb load: 45150 kg
+
+Airliner "random airliner":
+	ID: 45
+	Mass: 199888.00 kg
+	Flew 2816 km
+	Fuel consumption is 2905.89 units
+	Seating capacity: 35381
+
+Airliner "random airliner":
+	ID: 46
+	Mass: 135541.00 kg
+	Flew 4073 km
+	Fuel consumption is 1887.48 units
+	Seating capacity: 26715
+
+Warplane "random warplane":
+	ID: 47
+	Mass: 185001.00 kg
+	Flew 4897 km
+	Fuel consumption is 2504.37 units
+	Bomb load: 75493 kg
+
+Warplane "random warplane":
+	ID: 48
+	Mass: 40167.00 kg
+	Flew 3529 km
+	Fuel consumption is 413.51 units
+	Bomb load: 14308 kg
+
+Warplane "random warplane":
+	ID: 49
+	Mass: 73607.00 kg
+	Flew 5988 km
+	Fuel consumption is 1065.71 units
+	Bomb load: 61261 kg
+
+Airliner "random airliner":
+	ID: 50
+	Mass: 159230.00 kg
+	Flew 5919 km
+	Fuel consumption is 2127.87 units
+	Seating capacity: 11940
+
+Warplane "random warplane":
+	ID: 51
+	Mass: 125464.00 kg
+	Flew 3766 km
+	Fuel consumption is 1334.88 units
+	Bomb load: 81192 kg
+
+AirFreighter "random air freighter":
+	ID: 52
+	Mass: 131174.00 kg
+	Flew 2224 km
+	Fuel consumption is 1445.98 units
+	Cargo capacity: 9085 kg
+	Maximum takeoff weight: 140259 kg
+
+Warplane "random warplane":
+	ID: 53
+	Mass: 28806.00 kg
+	Flew 7719 km
+	Fuel consumption is 426.79 units
+	Bomb load: 10432 kg
+
+AirFreighter "random air freighter":
+	ID: 54
+	Mass: 160038.00 kg
+	Flew 1748 km
+	Fuel consumption is 1674.50 units
+	Cargo capacity: 28642 kg
+	Maximum takeoff weight: 188680 kg
+
+AirFreighter "random air freighter":
+	ID: 55
+	Mass: 197084.00 kg
+	Flew 1434 km
+	Fuel consumption is 2409.76 units
+	Cargo capacity: 40945 kg
+	Maximum takeoff weight: 238029 kg
+
+AirFreighter "random air freighter":
+	ID: 56
+	Mass: 46825.00 kg
+	Flew 7468 km
+	Fuel consumption is 630.31 units
+	Cargo capacity: 4912 kg
+	Maximum takeoff weight: 51737 kg
+
+Warplane "random warplane":
+	ID: 57
+	Mass: 48333.00 kg
+	Flew 6251 km
+	Fuel consumption is 750.90 units
+	Bomb load: 790 kg
+
+AirFreighter "random air freighter":
+	ID: 58
+	Mass: 235425.00 kg
+	Flew 7878 km
+	Fuel consumption is 3127.92 units
+	Cargo capacity: 112156 kg
+	Maximum takeoff weight: 347581 kg
+
+AirFreighter "random air freighter":
+	ID: 59
+	Mass: 134473.00 kg
+	Flew 5139 km
+	Fuel consumption is 1340.44 units
+	Cargo capacity: 62473 kg
+	Maximum takeoff weight: 196946 kg
+
+Airliner "random airliner":
+	ID: 60
+	Mass: 133797.00 kg
+	Flew 4656 km
+	Fuel consumption is 1347.43 units
+	Seating capacity: 89351
+
+AirFreighter "random air freighter":
+	ID: 61
+	Mass: 50765.00 kg
+	Flew 9259 km
+	Fuel consumption is 548.16 units
+	Cargo capacity: 17576 kg
+	Maximum takeoff weight: 68341 kg
+
+Airliner "random airliner":
+	ID: 62
+	Mass: 94015.00 kg
+	Flew 3827 km
+	Fuel consumption is 1359.36 units
+	Seating capacity: 88307
+
+Warplane "random warplane":
+	ID: 63
+	Mass: 204153.00 kg
+	Flew 2883 km
+	Fuel consumption is 2818.07 units
+	Bomb load: 169409 kg
+
+Warplane "random warplane":
+	ID: 64
+	Mass: 106772.00 kg
+	Flew 4337 km
+	Fuel consumption is 1293.45 units
+	Bomb load: 18899 kg
+
+Airliner "random airliner":
+	ID: 65
+	Mass: 183739.00 kg
+	Flew 4669 km
+	Fuel consumption is 1799.81 units
+	Seating capacity: 33732
+

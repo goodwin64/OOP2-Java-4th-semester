@@ -1,50 +1,171 @@
 package KPI_FICT.OOP2.Classes.Variant03;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.Scanner;
 
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 20.03.2016.
  */
 public class Lab6_var03 {
     public static void main(String[] args) {
-        Airplane ap1 = new Warplane("Il-2", 6160, 89.2, 600);
-        Airplane ap2 = new Airliner("Cessna 172", 994, 11.3, 1);
-        Airplane ap3 = new Warplane("North American F-86 Sabre / FJ Fury", 6870, 71, 2400);
-        Airplane ap4 = new Airliner("Airbus A330-300", 117500, 1240, 440);
-        Airplane ap5 = new Airliner("McDonnell Douglas MD-11ER", 132050, 1640.1, 410);
-        Airplane ap6 = new AirFreighter("Airbus A330-200", 119600, 1240, 242000);
-        Airplane ap7 = new AirFreighter("McDonnell Douglas MD-11ER", 132050, 1640.1, 286000);
+        String dataPath = "src\\KPI_FICT\\OOP2\\Source\\Variant03\\Lab6 - airplanes data.txt";
+        String outputPath = "src\\KPI_FICT\\OOP2\\Source\\Variant03\\Lab6 - output.txt";
 
-
-        ap3.addFlightDistance(112);
+        Airplane[] realAirplanes = createAirplanesBasedOnPrototypes();
+        airplanesToFile(dataPath, realAirplanes, false);
 
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter("src\\KPI_FICT\\OOP2\\Source\\Lab 6-03 - output.txt", "UTF-8");
+            writer = new PrintWriter(outputPath, "UTF-8");
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         if (writer != null) {
-            writer.println(ap1);
-            writer.println(ap2);
-            writer.println(ap3);
-            writer.println(ap4);
-            writer.println(ap5);
-            writer.println(ap6);
-            writer.println(ap7);
+            // Create an airline.
+            Airplane[] airline = createRandomAirplanes();
+            airplanesToFile(dataPath, airline, true);
 
+            // Calculate the total carrying capacity of airline.
+            int totalCarryingCapacity = getTotalCarryingCapacity(airline);
+            writer.printf("Airline total carrying capacity is %d kg\n", totalCarryingCapacity);
+
+            // Sort company's airplanes by flight distances.
+            Arrays.sort(airline);
+
+            // Find company's airplanes that correspond to a given range of fuel consumption.
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Minimum fuel consumption value: ");
+            int minFC = scanner.nextInt();
+            System.out.print("Maximum fuel consumption value: ");
+            int maxFC = scanner.nextInt();
+
+            writer.printf("Airplanes with fuel consumption between %d and %d sorted by flight distance:\n\n",
+                    minFC, maxFC);
+            for (Airplane ap : airline) {
+                if (ap.getFuelConsumption() > minFC && ap.getFuelConsumption() < maxFC) {
+                    writer.println(ap);
+                }
+            }
             writer.close();
         }
+    }
+
+    /**
+     * Writes the Airplanes array to a file.
+     * @param path          path to file
+     * @param airplanes     Airplanes array
+     * @param append        boolean if <code>true</code>, then data will be written
+     *                      to the end of the file rather than the beginning.
+     */
+    public static void airplanesToFile(String path, Airplane[] airplanes, boolean append) {
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(new BufferedWriter(new FileWriter(path, append)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (writer != null) {
+            for (Airplane ap : airplanes) {
+                if (ap != null) {
+                    writer.println(ap);
+                }
+            }
+            writer.close();
+        }
+    }
+
+    /**
+     * Creates and fills an Airplanes array based on real prototypes,
+     * real historic aircraft units.
+     */
+    public static Airplane[] createAirplanesBasedOnPrototypes() {
+        Airplane[] airplanes = new Airplane[15];
+
+        airplanes[0] = new Warplane("Il-2", 6160, 89.2, 600);
+        airplanes[1] = new Warplane("North American F-86 Sabre / FJ Fury", 6870, 71, 2400);
+        airplanes[2] = new Warplane("Messerschmitt Bf 109", 3148, 32.2, 250);
+        airplanes[3] = new Warplane("Boeing B-17 Flying Fortress", 24500, 336, 7800);
+        airplanes[4] = new Warplane("Focke-Wulf Fw 190 D-9", 4270, 63.1, 500);
+
+        airplanes[5] = new Airliner("Cessna 172", 994, 11.3, 4);
+        airplanes[6] = new Airliner("Airbus A330-300", 117500, 1240, 440);
+        airplanes[7] = new Airliner("McDonnell Douglas MD-11ER", 132050, 1640.1, 410);
+        airplanes[8] = new Airliner("McDonnell Douglas DC-10-30", 120742, 1640.1, 380);
+        airplanes[9] = new Airliner("Boeing 747-8I", 214503, 2500, 605);
+
+        airplanes[10] = new AirFreighter("Airbus A330-200", 119600, 1240, 242000);
+        airplanes[11] = new AirFreighter("An-225", 285000, 3300, 640000);
+        airplanes[12] = new AirFreighter("McDonnell Douglas MD-11ER", 132050, 1640.1, 286000);
+        airplanes[13] = new AirFreighter("McDonnell Douglas DC-10-30", 120742, 1640.1, 259459);
+        airplanes[14] = new AirFreighter("Boeing 747-8I", 214503, 2500, 447696);
+
+        return airplanes;
+    }
+
+    /**
+     * Creates and fills an Airplanes array of random airplanes.
+     */
+    public static Airplane[] createRandomAirplanes() {
+        Airplane[] airplanes = new Airplane[50];
+
+        for (int i = 0; i < 50; i++) {
+            int selector = ((int) (Math.random() * 3) + 1);         // 1..3
+
+            int mass = ((int) (Math.random() * 240000)) + 500;      // 500kg..250t;
+            double fuelDelta = Math.random() * 0.5 + 0.75;          // 75%..125%
+            double fuelConsumption = (mass / 80) * fuelDelta;       // direct dependence on the mass
+
+            switch (selector) {
+                case 1:
+                    int bombLoad = ((int) (Math.random() * mass));  // direct dependence on the mass
+                    airplanes[i] = new Warplane("random warplane", mass, fuelConsumption, bombLoad);
+                    break;
+
+                case 2:
+                    int seatingCapacity = ((int) (Math.random() * mass));  // direct dependence on the mass
+                    airplanes[i] = new Airliner("random airliner", mass, fuelConsumption, seatingCapacity);
+                    break;
+
+                case 3:
+                    /* TODO: find the bug, air freighters are twice less than other airplanes */
+                    int MTOW = (int) ((Math.random() + 1) * mass);      // g.t. or equal to mass
+                    airplanes[i] = new AirFreighter("random air freighter", mass, fuelConsumption, MTOW);
+                    break;
+            }
+
+            airplanes[i].addFlightDistance((int) (Math.random() * 10000));
+        }
+
+        return airplanes;
+    }
+
+    /**
+     * Calculates the total carrying capacity of the airline.
+     *
+     * @param airline       airplanes array
+     */
+    public static int getTotalCarryingCapacity(Airplane[] airline) {
+        int totalCarryingCapacity = 0;
+        for (Airplane ap : airline) {
+            if (ap instanceof Airliner) {
+                totalCarryingCapacity += ((Airliner) ap).getSeatingCapacity() * 80; // average man mass
+            } else if (ap instanceof AirFreighter) {
+                totalCarryingCapacity += ((AirFreighter) ap).getCargoCapacity();
+            } else if (ap instanceof Warplane) {
+                totalCarryingCapacity += ((Warplane) ap).getBombLoad();
+            }
+        }
+        return totalCarryingCapacity;
     }
 }
 
 /**
  * Parent class for all airplanes
  */
-class Airplane {
+class Airplane implements Comparable<Airplane> {
     private int flightDistance;
     private int ID;
     private static int maxID = 0;
@@ -200,12 +321,23 @@ class Airplane {
     public String toString() {
         String className = this.getClass().getName();
         className = className.substring(className.lastIndexOf('.') + 1);
-        return String.format("%s \"%s\":\n" +
+        return String.format(Locale.ENGLISH,
+                "%s \"%s\":\n" +
                 "\tID: %d\n" +
                 "\tMass: %.2f kg\n" +
                 "\tFlew %d km\n" +
                 "\tFuel consumption is %.2f units\n", className,
                 getModel(), getID(), getMass(), getFlightDistance(), getFuelConsumption());
+    }
+
+    @Override
+    public int compareTo(Airplane other) {
+        int compareFlightDistance = this.getFlightDistance() - other.getFlightDistance();
+        if (compareFlightDistance != 0) {
+            return compareFlightDistance;
+        } else {
+            return ((int) Math.signum(this.getFuelConsumption() - other.getFuelConsumption()));
+        }
     }
 }
 
@@ -301,6 +433,13 @@ class Warplane extends Airplane {
         if (bombLoad >= 0) {
             this.bombLoad = bombLoad;
         }
+    }
+
+    /**
+     * Returns count of bombs warplane is able to lift.
+     */
+    public int getBombsCount(int bombMass) {
+        return getBombLoad() / bombMass;
     }
 
     @Override
