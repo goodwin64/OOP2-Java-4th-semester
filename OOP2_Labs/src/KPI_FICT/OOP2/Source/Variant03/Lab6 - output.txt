@@ -1,46 +1,30 @@
-Airline total carrying capacity is 68792503 kg
+Airline total carrying capacity is 2259034 kg
 Airplanes with fuel consumption between 1200 and 1400 sorted by flight distance:
 
-Airliner "random airliner":
-	ID: 25
-	Mass: 116586.00 kg
-	Flew 3306 km
-	Fuel consumption is 1255.36 units
-	Seating capacity: 13663
-
 Warplane "random warplane":
-	ID: 51
-	Mass: 125464.00 kg
-	Flew 3766 km
-	Fuel consumption is 1334.88 units
-	Bomb load: 81192 kg
+	ID: 34
+	Flew 4839 km, range: 1388 km
+	Cruise speed: 912 km/h
+	Fuel consumption is 1346.39 kg/h
+	Energy conversion efficiency: 4% (deviation: -17%)
+	Weight: 39518 kg, Cargo weight: 0 kg
+	Bomb load: 32056 kg
 
 Airliner "random airliner":
-	ID: 62
-	Mass: 94015.00 kg
-	Flew 3827 km
-	Fuel consumption is 1359.36 units
-	Seating capacity: 88307
-
-Warplane "random warplane":
-	ID: 64
-	Mass: 106772.00 kg
-	Flew 4337 km
-	Fuel consumption is 1293.45 units
-	Bomb load: 18899 kg
+	ID: 36
+	Flew 6432 km, range: 1914 km
+	Cruise speed: 823 km/h
+	Fuel consumption is 1203.01 kg/h
+	Energy conversion efficiency: 4% (deviation: -16%)
+	Weight: 39434 kg, Cargo weight: 0 kg
+	Seating capacity: 341
 
 Airliner "random airliner":
-	ID: 60
-	Mass: 133797.00 kg
-	Flew 4656 km
-	Fuel consumption is 1347.43 units
-	Seating capacity: 89351
-
-AirFreighter "random air freighter":
-	ID: 59
-	Mass: 134473.00 kg
-	Flew 5139 km
-	Fuel consumption is 1340.44 units
-	Cargo capacity: 62473 kg
-	Maximum takeoff weight: 196946 kg
+	ID: 19
+	Flew 6861 km, range: 1046 km
+	Cruise speed: 324 km/h
+	Fuel consumption is 1373.74 kg/h
+	Energy conversion efficiency: 1% (deviation: -19%)
+	Weight: 29098 kg, Cargo weight: 0 kg
+	Seating capacity: 11
 
