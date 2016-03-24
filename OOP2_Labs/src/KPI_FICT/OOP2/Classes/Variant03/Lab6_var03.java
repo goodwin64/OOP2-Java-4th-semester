@@ -2,6 +2,7 @@ package KPI_FICT.OOP2.Classes.Variant03;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -10,23 +11,23 @@ import java.util.Scanner;
  */
 public class Lab6_var03 {
     public static void main(String[] args) {
-        String dataPath = "src\\KPI_FICT\\OOP2\\Source\\Variant03\\Lab6 - airplanes data.txt";
-        String outputPath = "src\\KPI_FICT\\OOP2\\Source\\Variant03\\Lab6 - output.txt";
+        String dataPathPrefix = "src\\KPI_FICT\\OOP2\\Source\\Variant03\\";
+        String outputPathPrefix = "src\\KPI_FICT\\OOP2\\Source\\Variant03\\";
 
         Airplane[] realAirplanes = createAirplanesBasedOnPrototypes();
 
-        airplanesToFile(dataPath, realAirplanes, false);
+        airplanesToFile(dataPathPrefix + "Lab6 - airplanes data.txt", realAirplanes, false);
 
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter(outputPath, "UTF-8");
+            writer = new PrintWriter(outputPathPrefix + "Lab6 - output.txt", "UTF-8");
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         if (writer != null) {
             // TASK: Create an airline.
             Airplane[] airline = createRandomAirplanes();
-            airplanesToFile(dataPath, airline, true);
+            airplanesToFile(dataPathPrefix + "Lab6 - airplanes data.txt", airline, true);
 
             // TASK: Calculate the total carrying capacity of airline.
             int totalCarryingCapacity = getTotalCarryingCapacity(airline);
@@ -51,6 +52,14 @@ public class Lab6_var03 {
                 }
             }
             writer.close();
+
+            // Additional TASK: sort random airplanes by speed
+            Arrays.sort(airline, new SortByCruiseSpeed());
+            airplanesToFile(dataPathPrefix + "Lab6 - rand by speed.txt", airline, false);
+
+            // Additional TASK: sort random airplanes by FC efficiency
+            Arrays.sort(airline, new SortByFuelConsumptionEfficiency());
+            airplanesToFile(dataPathPrefix + "Lab6 - rand by FC efficiency.txt", airline, false);
         }
 
     }
@@ -631,5 +640,22 @@ class AirFreighter extends Airplane {
                 "\tMaximum takeoff weight: %d kg\n",
                 getCargoCapacity(), getMTOW());
         return super.toString() + appendMessage;
+    }
+}
+
+class SortByFuelConsumptionEfficiency implements Comparator<Airplane> {
+
+    @Override
+    public int compare(Airplane o1, Airplane o2) {
+        double comparing = o2.getFuelConsumptionEfficiency() - o1.getFuelConsumptionEfficiency();
+        return ((int) Math.signum(comparing));
+    }
+}
+
+class SortByCruiseSpeed implements Comparator<Airplane> {
+
+    @Override
+    public int compare(Airplane o1, Airplane o2) {
+        return o2.getCruiseSpeed() - o1.getCruiseSpeed();
     }
 }
