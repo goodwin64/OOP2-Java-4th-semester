@@ -1,0 +1,9 @@
+Hi! It's me, Max.
+I like programming.
+It is a third line.
+
+It was an empty line above. Here is 5th one.
+WordWithMaximumCountOfVowels is VeryLongWord :)
+Previous line hasn't got a sentence-end mark like dot or question mark so it hasn't been parsed.
+The end. Good luck! 
+EoF
