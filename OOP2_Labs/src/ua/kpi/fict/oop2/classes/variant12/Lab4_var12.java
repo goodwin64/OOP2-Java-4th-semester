@@ -1,4 +1,4 @@
-package KPI_FICT.OOP2.Classes.Variant12;
+package ua.kpi.fict.oop2.classes.variant12;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * Created by Rock(https://github.com/Filin-Rock) on 29.03.2016.
  */
-public class Lab4_Var12 {
+public class Lab4_var12 {
 
     static class Student {
         private String name, surname, secondName;

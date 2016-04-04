@@ -1,4 +1,4 @@
-package KPI_FICT.OOP2.Classes.Variant03;
+package ua.kpi.fict.oop2.classes.variant03;
 
 import java.util.Arrays;
 import java.util.Comparator;
