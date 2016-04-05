@@ -1,4 +1,4 @@
-package KPI_FICT.OOP2.Classes.Variant12;
+package ua.kpi.fict.oop2.classes.variant12;
 
 import java.io.*;
 import java.nio.charset.Charset;

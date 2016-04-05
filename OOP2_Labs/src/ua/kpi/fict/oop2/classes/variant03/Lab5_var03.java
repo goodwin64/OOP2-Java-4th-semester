@@ -1,9 +1,8 @@
-package KPI_FICT.OOP2.Classes.Variant03;
+package ua.kpi.fict.oop2.classes.variant03;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.stream.Collectors;
 
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 09.03.2016.
