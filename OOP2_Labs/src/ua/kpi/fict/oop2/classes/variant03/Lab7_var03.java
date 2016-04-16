@@ -34,6 +34,15 @@ public class Lab7_var03 {
         System.out.println(airplanes3);
     }
 
+    /**
+     * My own Set implementation based on Double Linked List
+     * which is also implemented by me.
+     *
+     * @author      Max Donchenko (https://github.com/goodwin64)
+     * @see         Set
+     * @see         Collection
+     * @see         DoublyLinkedList
+     */
     public static class MySet implements Set, Collection {
         private DoublyLinkedList<Object> value;
 
@@ -50,6 +59,7 @@ public class Lab7_var03 {
             this.value = new DoublyLinkedList<>();
             addAll(airplanes);
         }
+
 
         @Override
         public int size() {
@@ -214,24 +224,6 @@ public class Lab7_var03 {
             size = 0;
         }
 
-        @Override
-        public Iterator<E> iterator() {
-            return new Iterator<E>() {
-                private Node temp = new Node(null, head, null);
-
-                @Override
-                public boolean hasNext() {
-                    return temp.next != null;
-                }
-
-                @Override
-                public E next() {
-                    temp = temp.next;
-                    return temp.element;
-                }
-            };
-        }
-
         /**
          * This class keeps track of each element information.
          */
@@ -250,6 +242,7 @@ public class Lab7_var03 {
                 return this.element.equals(other.element);
             }
         }
+
         /**
          * Returns the size of the linked list.
          */
@@ -296,6 +289,10 @@ public class Lab7_var03 {
             size++;
         }
 
+        /**
+         * Removes an element from the list.
+         * @param e     the element to remove
+         */
         public boolean remove(E e) {
             if (head.element.equals(e)) {
                 head.next.prev = null;
@@ -334,6 +331,25 @@ public class Lab7_var03 {
                 temp = temp.next;
             }
             return false;
+        }
+
+
+        @Override
+        public Iterator<E> iterator() {
+            return new Iterator<E>() {
+                private Node temp = new Node(null, head, null);
+
+                @Override
+                public boolean hasNext() {
+                    return temp.next != null;
+                }
+
+                @Override
+                public E next() {
+                    temp = temp.next;
+                    return temp.element;
+                }
+            };
         }
 
         @Override
