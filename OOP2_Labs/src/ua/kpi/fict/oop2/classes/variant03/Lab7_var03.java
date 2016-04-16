@@ -1,37 +1,37 @@
 package ua.kpi.fict.oop2.classes.variant03;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 08.04.2016.
  */
 public class Lab7_var03 {
     public static void main(String[] args) {
-        MySet airplanes1 = new MySet();
-        MySet airplanes2 = new MySet();
-
+        /* Via empty constructor */
         Airplane wp1 = new Warplane("Warplane 1", 500, 20.4, 300, 1500, 100);
         Airplane wp2 = new Warplane("Warplane 2", 3000, 270.13, 800, 5000, 500);
+        MySet airplanes1 = new MySet();
         airplanes1.add(wp1);
         airplanes1.add(wp2);
 
+        /* Via constructor with Airplane instance */
         Airplane al1 = new Airliner("Airliner 1", 500, 20.4, 300, 1500, 2);
         Airplane al2 = new Airliner("Airliner 2", 3000, 270.13, 800, 5000, 500);
-        airplanes2.add(al1);
+        MySet airplanes2 = new MySet(al1);
         airplanes2.add(al2);
         airplanes2.add(al2); // duplicate, ignore
-        airplanes1.addAll(airplanes2);
 
+        /* Via constructor with Airplane collection */
         Airplane af1 = new AirFreighter("AF 1", 500, 20.4, 300, 1500, 700);
         Airplane af2 = new AirFreighter("AF 2", 3000, 270.13, 800, 5000, 5800);
-        airplanes1.add(af1);
-        airplanes1.add(af2);
-        airplanes1.add(new AirFreighter(af2, 500)); // duplicate, ignore
+        List<Airplane> airFreightersList = new ArrayList<>(2);
+        airFreightersList.add(af1);
+        airFreightersList.add(af2);
+        MySet airplanes3 = new MySet(airFreightersList);
 
         System.out.println(airplanes1);
+        System.out.println(airplanes2);
+        System.out.println(airplanes3);
     }
 
     public static class MySet implements Set, Collection {
@@ -39,6 +39,16 @@ public class Lab7_var03 {
 
         public MySet() {
             this.value = new DoublyLinkedList<>();
+        }
+
+        public MySet(Airplane airplane) {
+            this.value = new DoublyLinkedList<>();
+            add(airplane);
+        }
+
+        public MySet(List<Airplane> airplanes) {
+            this.value = new DoublyLinkedList<>();
+            addAll(airplanes);
         }
 
         @Override
