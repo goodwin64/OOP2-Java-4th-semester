@@ -465,6 +465,23 @@ class Airplane implements Comparable<Airplane> {
             return ((int) Math.signum(this.getFuelConsumption() - other.getFuelConsumption()));
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Airplane airplane = (Airplane) o;
+
+        return getID() == airplane.getID()
+                && (getModel() != null ? getModel().equals(airplane.getModel()) : airplane.getModel() == null)
+                && getEmptyWeight() == airplane.getEmptyWeight()
+                && getWeight() == airplane.getWeight()
+                && getRange() == airplane.getRange()
+                && getCruiseSpeed() == airplane.getCruiseSpeed()
+                && getFlightDistance() == airplane.getFlightDistance()
+                && Double.compare(airplane.getFuelConsumption(), getFuelConsumption()) == 0;
+    }
 }
 
 /**
