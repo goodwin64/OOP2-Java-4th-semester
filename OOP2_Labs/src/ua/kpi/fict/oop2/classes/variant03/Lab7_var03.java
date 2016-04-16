@@ -1,5 +1,7 @@
 package ua.kpi.fict.oop2.classes.variant03;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -8,21 +10,214 @@ import java.util.Set;
  */
 public class Lab7_var03 {
     public static void main(String[] args) {
-        DoublyLinkedList<Integer> dll = new DoublyLinkedList<>();
-        System.out.println("DLL is empty: " + dll.isEmpty());
-        dll.addFirst(10);
-        dll.addFirst(34);
-        dll.addLast(56);
-        dll.addLast(364);
-        int numberToFind = 34;
-        System.out.printf("Is %d in list: %s\n", numberToFind, dll.contains(34));
-        System.out.println("DLL size: " + dll.getSize());
-        System.out.printf("Is %d in list: %s\n", numberToFind, dll.contains(34));
+        Set<Integer> ms1 = new MySet();
+        Set<Integer> ms2 = new MySet();
+        MySet ms3 = new MySet();
+        MySet ms4 = new MySet();
+
+        Integer[] even = {0, 2, 4, 6, 8};
+        Integer[] odd = {1, 3, 5, 7, 9};
+        Integer[] oneDigit = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        Integer[] sixToTwelve = {6, 7, 8, 9, 10, 11, 12};
+
+        ms1.addAll(Arrays.asList(even));
+        ms2.addAll(Arrays.asList(odd));
+        ms3.addAll(Arrays.asList(oneDigit));
+        ms4.addAll(Arrays.asList(sixToTwelve));
+
+        System.out.println(ms1);                // {0, 2, 4, 6, 8}
+        System.out.println(ms2);                // {1, 3, 5, 7, 9}
+        System.out.println(ms3);                // {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+        System.out.println(ms4);                // {6, 7, 8, 9, 10, 11, 12}
+
+        /* There is used the next construction below:
+         * (Integer[]) mySet.toArray(new Integer[mySet.size()])
+         * instead of
+         * (Integer[]) mySet.toArray() // ClassCastException
+         * because the second action returns the Object[] array and it cannot been casted.
+         *
+         * So:
+         * 1) make an array sixToTwelve = {6, 7, 8, 9, 10, 11, 12};
+         * 2) make a set based on this array;
+         * 3) make an array based on this set
+         * 4) check whether these arrays are equals (yes, they are equals)
+         */
+        Integer[] sixToTwelveFromSet = (Integer[]) ms4.toArray(new Integer[ms4.size()]);
+        System.out.println(Arrays.equals(sixToTwelve, sixToTwelveFromSet)); // true
+
+        System.out.println(ms3.removeAll(ms2)); // true
+        System.out.println(ms3.removeAll(ms2)); // false
+        System.out.println(ms3);                // {0, 2, 4, 6, 8}
+
+        System.out.println(ms3.equals(ms1));    // true
+
+        System.out.println(ms3.retainAll(ms4)); // true
+        System.out.println(ms3);                // {6, 8}
+
+        ms3.clear();
+        System.out.println(ms3.isEmpty());      // true
+        System.out.println(ms3.size());         // 0
     }
 
-    public abstract class MySet implements Set {
-        private int size = 0;
-        private DoublyLinkedList value;
+    public static class MySet implements Set, Collection {
+        private DoublyLinkedList<Object> value;
+
+        public MySet() {
+            this.value = new DoublyLinkedList<>();
+        }
+
+        @Override
+        public int size() {
+            return value.getSize();
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return value.isEmpty();
+        }
+
+        @Override
+        public boolean contains(Object o) {
+            return value.contains(o);
+        }
+
+        @Override
+        public Iterator iterator() {
+            return value.iterator();
+        }
+
+        @Override
+        public Object[] toArray() {
+            Object[] result = new Object[value.getSize()];
+            int i = 0;
+            for (Object o : value) {
+                result[i++] = o;
+            }
+            return result;
+        }
+
+        @Override
+        public Object[] toArray(Object[] a) {
+            int i = 0;
+            if (a.length >= size()) {
+                for (Object o : value) {
+                    a[i++] = o;
+                }
+            } else {
+                a = new Object[size()];
+                for (Object o : value) {
+                    a[i++] = o;
+                }
+            }
+            return a;
+        }
+
+        @Override
+        public boolean add(Object o) {
+            if (value.contains(o)) {
+                return false;
+            } else {
+                value.addLast(o);
+                return true;
+            }
+        }
+
+        @Override
+        public boolean remove(Object o) {
+            return value.remove(o);
+        }
+
+        @Override
+        public boolean containsAll(Collection c) {
+            for (Object o : c) {
+                if (!value.contains(o)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        @Override
+        public boolean addAll(Collection c) {
+            int sizeBefore, sizeAfter;
+            sizeBefore = size();
+
+            for (Object elem : c) {
+                this.add(elem);
+            }
+
+            sizeAfter = size();
+            return sizeAfter - sizeBefore != 0;
+        }
+
+        @Override
+        public boolean retainAll(Collection c) {
+            int sizeBefore, sizeAfter;
+            sizeBefore = size();
+            MySet tempSet = new MySet();
+
+            for (Object o : c) {
+                if (contains(o)) {
+                    tempSet.add(o);
+                }
+            }
+
+            clear();
+            addAll(tempSet);
+            sizeAfter = tempSet.size();
+            return sizeAfter - sizeBefore != 0;
+        }
+
+        @Override
+        public boolean removeAll(Collection c) {
+            int sizeBefore, sizeAfter;
+            sizeBefore = size();
+
+            for (Object o : c) {
+                remove(o);
+            }
+
+            sizeAfter = size();
+            return sizeAfter - sizeBefore != 0;
+        }
+
+        @Override
+        public void clear() {
+            this.value = new DoublyLinkedList<>();
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            MySet other = (MySet) o;
+            for (Object elem : other) {
+                if (!contains(elem)) {
+                    return false;
+                }
+            }
+
+            if (size() != other.size()) {
+                return false;
+            }
+
+            return true;
+        }
+
+        @Override
+        public String toString() {
+            String result = "{";
+            Iterator it = iterator();
+
+            result += it.next();
+            while (it.hasNext()) {
+                result += ", " + it.next();
+            }
+
+            result += "}";
+            return result;
+        }
     }
 }
 
