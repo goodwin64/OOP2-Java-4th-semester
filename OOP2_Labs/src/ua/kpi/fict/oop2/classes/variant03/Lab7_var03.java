@@ -1,6 +1,6 @@
 package ua.kpi.fict.oop2.classes.variant03;
 
-import java.util.NoSuchElementException;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -16,10 +16,6 @@ public class Lab7_var03 {
         dll.addLast(364);
         int numberToFind = 34;
         System.out.printf("Is %d in list: %s\n", numberToFind, dll.contains(34));
-        dll.iterateForward();
-        dll.removeFirst();
-        dll.removeLast();
-        dll.iterateBackward();
         System.out.println("DLL size: " + dll.getSize());
         System.out.printf("Is %d in list: %s\n", numberToFind, dll.contains(34));
     }
@@ -30,13 +26,31 @@ public class Lab7_var03 {
     }
 }
 
-class DoublyLinkedList<E> {
+class DoublyLinkedList<E> implements Iterable<E> {
     private Node head;
     private Node tail;
     private int size;
 
     public DoublyLinkedList() {
         size = 0;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
+            private Node temp = new Node(null, head, null);
+
+            @Override
+            public boolean hasNext() {
+                return temp.next != null;
+            }
+
+            @Override
+            public E next() {
+                temp = temp.next;
+                return temp.element;
+            }
+        };
     }
 
     /**
@@ -51,6 +65,10 @@ class DoublyLinkedList<E> {
             this.element = element;
             this.next = next;
             this.prev = prev;
+        }
+
+        public boolean equals(Node other) {
+            return this.element.equals(other.element);
         }
     }
     /**
@@ -99,66 +117,29 @@ class DoublyLinkedList<E> {
         size++;
     }
 
-    /**
-     * Walks forward through the linked list and prints elements.
-     */
-    public void iterateForward() {
-        System.out.println("Iterating forward:");
-        Node temp = this.head;
-        if (temp != null) {
-            System.out.print(temp.element);
+    public boolean remove(E e) {
+        if (head.element.equals(e)) {
+            head.next.prev = null;
+            head = head.next;
+            size--;
+            return true;
+        } else if (tail.element.equals(e)) {
+            tail.prev.next = null;
+            tail = tail.prev;
+            size--;
+            return true;
+        }
+        Node temp = this.head.next;
+        while (temp != null) {
+            if (temp.element.equals(e)) {
+                temp.prev.next = temp.next;
+                temp.next.prev = temp.prev;
+                size--;
+                return true;
+            }
             temp = temp.next;
         }
-        while (temp != null) {
-            System.out.printf(" -> %s", temp.element);
-            temp = temp.next;
-        }
-        System.out.println();
-    }
-
-    /**
-     * Walks backward through the linked list and prints elements.
-     */
-    public void iterateBackward() {
-        System.out.println("Iterating backward:");
-        Node temp = this.tail;
-        if (temp != null) {
-            System.out.print(temp.element);
-            temp = temp.prev;
-        }
-        while (temp != null) {
-            System.out.printf(" <- %s", temp.element);
-            temp = temp.prev;
-        }
-        System.out.println();
-    }
-
-    /**
-     * Removes element from the start of the linked list.
-     */
-    public E removeFirst() {
-        if (size == 0) {
-            throw new NoSuchElementException();
-        }
-        Node temp = this.head;
-        head = head.next;
-        head.prev = null;
-        size--;
-        return temp.element;
-    }
-
-    /**
-     * Removes element from the end of the linked list.
-     */
-    public E removeLast() {
-        if (size == 0) {
-            throw new NoSuchElementException();
-        }
-        Node temp = this.tail;
-        tail = tail.prev;
-        tail.next = null;
-        size--;
-        return temp.element;
+        return false;
     }
 
     /**
@@ -168,11 +149,27 @@ class DoublyLinkedList<E> {
     public boolean contains(E element) {
         Node temp = this.head;
         while (temp != null) {
-            if (temp.element == element) {
+            if (temp.element.equals(element)) {
                 return true;
             }
             temp = temp.next;
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        String result = "";
+        Node temp = this.head;
+        if (temp != null) {
+            result += temp.element;
+            temp = temp.next;
+        }
+        while (temp != null) {
+            result += " -> " + temp.element;
+            temp = temp.next;
+        }
+        return result;
+    }
 }
+
