@@ -7,7 +7,7 @@ Objective: 	Introduction to mechanism of inheritance and polymorphism principle.
 Task
 1.	Determine C13 as a remainder of division of the student record book by number 13.
 
-// TODO: translate tasks 3-7, 9-12 from "ukr" to "eng"
+// TODO: translate tasks 3, 5-7, 9-12 from "ukr" to "eng"
 2.	Depending on C13 value determine the variant task:
 	C13	Variant task
 	0	Determine the hierarchy of flowers.
