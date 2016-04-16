@@ -10,53 +10,28 @@ import java.util.Set;
  */
 public class Lab7_var03 {
     public static void main(String[] args) {
-        Set<Integer> ms1 = new MySet();
-        Set<Integer> ms2 = new MySet();
-        MySet ms3 = new MySet();
-        MySet ms4 = new MySet();
+        MySet airplanes1 = new MySet();
+        MySet airplanes2 = new MySet();
 
-        Integer[] even = {0, 2, 4, 6, 8};
-        Integer[] odd = {1, 3, 5, 7, 9};
-        Integer[] oneDigit = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        Integer[] sixToTwelve = {6, 7, 8, 9, 10, 11, 12};
+        Airplane wp1 = new Warplane("Warplane 1", 500, 20.4, 300, 1500, 100);
+        Airplane wp2 = new Warplane("Warplane 2", 3000, 270.13, 800, 5000, 500);
+        airplanes1.add(wp1);
+        airplanes1.add(wp2);
 
-        ms1.addAll(Arrays.asList(even));
-        ms2.addAll(Arrays.asList(odd));
-        ms3.addAll(Arrays.asList(oneDigit));
-        ms4.addAll(Arrays.asList(sixToTwelve));
+        Airplane al1 = new Airliner("Airliner 1", 500, 20.4, 300, 1500, 2);
+        Airplane al2 = new Airliner("Airliner 2", 3000, 270.13, 800, 5000, 500);
+        airplanes2.add(al1);
+        airplanes2.add(al2);
+        airplanes2.add(al2); // duplicate, ignore
+        airplanes1.addAll(airplanes2);
 
-        System.out.println(ms1);                // {0, 2, 4, 6, 8}
-        System.out.println(ms2);                // {1, 3, 5, 7, 9}
-        System.out.println(ms3);                // {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-        System.out.println(ms4);                // {6, 7, 8, 9, 10, 11, 12}
+        Airplane af1 = new AirFreighter("AF 1", 500, 20.4, 300, 1500, 700);
+        Airplane af2 = new AirFreighter("AF 2", 3000, 270.13, 800, 5000, 5800);
+        airplanes1.add(af1);
+        airplanes1.add(af2);
+        airplanes1.add(new AirFreighter(af2, 500)); // duplicate, ignore
 
-        /* There is used the next construction below:
-         * (Integer[]) mySet.toArray(new Integer[mySet.size()])
-         * instead of
-         * (Integer[]) mySet.toArray() // ClassCastException
-         * because the second action returns the Object[] array and it cannot been casted.
-         *
-         * So:
-         * 1) make an array sixToTwelve = {6, 7, 8, 9, 10, 11, 12};
-         * 2) make a set based on this array;
-         * 3) make an array based on this set
-         * 4) check whether these arrays are equals (yes, they are equals)
-         */
-        Integer[] sixToTwelveFromSet = (Integer[]) ms4.toArray(new Integer[ms4.size()]);
-        System.out.println(Arrays.equals(sixToTwelve, sixToTwelveFromSet)); // true
-
-        System.out.println(ms3.removeAll(ms2)); // true
-        System.out.println(ms3.removeAll(ms2)); // false
-        System.out.println(ms3);                // {0, 2, 4, 6, 8}
-
-        System.out.println(ms3.equals(ms1));    // true
-
-        System.out.println(ms3.retainAll(ms4)); // true
-        System.out.println(ms3);                // {6, 8}
-
-        ms3.clear();
-        System.out.println(ms3.isEmpty());      // true
-        System.out.println(ms3.size());         // 0
+        System.out.println(airplanes1);
     }
 
     public static class MySet implements Set, Collection {
