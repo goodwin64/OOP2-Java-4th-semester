@@ -29,63 +29,77 @@ public class Lab1_var03 {
         b[0] = t;
     }
 
-    public static char determineOp1(int value) {
-        try {
-            switch (value) {
-                case 0: return '+';
-                case 1: return '-';
-                default: throw new Exception("Incorrect value");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 'E';
+    public static char determineOp1(int value) throws IllegalArgumentException {
+        switch (value) {
+            case 0:
+                return '+';
+            case 1:
+                return '-';
+            default:
+                throw new IllegalArgumentException("Incorrect value: " + value);
         }
     }
 
     public static char determineOp2(int value) {
-        try {
-            switch (value) {
-                case 0: return '*';
-                case 1: return '/';
-                case 2: return '%';
-                case 3: return '+';
-                case 4: return '-';
-                default: throw new Exception("Incorrect value");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 'E';
+        switch (value) {
+            case 0:
+                return '*';
+            case 1:
+                return '/';
+            case 2:
+                return '%';
+            case 3:
+                return '+';
+            case 4:
+                return '-';
+            default:
+                throw new IllegalArgumentException("Incorrect value: " + value);
         }
     }
 
     /**
-     * Simple math operations: "+", "-", "*", "/"
+     * Simple math operations: "+", "-", "*", "/", "%"
      */
-    public static short makeOperation(short a, short b, char operation) {
-        /*
-         * if this method return 0, it doesn't entail changes in further calculations
-         */
-        try {
-            switch (operation) {
-                case '+': return (short) (a + b);
-                case '-': return (short) (a - b);
-                case '*': return (short) (a * b);
-                case '/': return (short) (a / b);
-                case '%': return (short) (a % b);
-                default: throw new Exception("Incorrect operation");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            return 0;
+    public static double makeOperation(short a, short b, char operation)
+            throws IllegalArgumentException {
+        switch (operation) {
+            case '+':
+                return (double) (a + b);
+            case '-':
+                return (double) (a - b);
+            case '*':
+                return (double) (a * b);
+            case '/':
+                return (double) (a / b);
+            case '%':
+                return (double) (a % b);
+            default:
+                throw new IllegalArgumentException("Incorrect operation: " + operation);
         }
+    }
 
+    public static double calculateSum(short minOuter, short maxOuter,
+                                      short minInner, short maxInner,
+                                      char op1, char op2,
+                                      short denominatorConstant) throws ArithmeticException {
+        double sum = 0.0;
+
+        for (short i = minOuter; i <= maxOuter; i++) {
+            for (short j = minInner; j <= maxInner; j++) {
+                if (i == denominatorConstant) {
+                    throw new ArithmeticException("Division by 0.0 -> Inf");
+                }
+                double numerator = makeOperation(i, j, op2);
+                double denominator = makeOperation(i, denominatorConstant, op1);
+                sum += (numerator / denominator);
+            }
+        }
+        return sum;
     }
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        short a, n, b, m;
-        double partSum, Sum = 0.0;
+        short a = 0, n = 0, b = 0, m = 0;
         int c, c2, c3, c5, recordBook;
         char op1, op2;
 
@@ -105,52 +119,44 @@ public class Lab1_var03 {
             System.out.print("to ");
             n = scan.nextShort();
 
+            if (a > n) {
+                String message = String.format("Inverted loop limits: %d > %d", a, n);
+                throw new ArithmeticException(message);
+            }
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+            short[] A = {a};
+            short[] N = {n};
+            swap(A, N);
+            a = A[0];
+            n = N[0];
+            System.out.println("Inverted limits were swapped: [n,a]->[a,n]");
+        }
+
+        try {
             System.out.print("Sum 2 from ");
             b = scan.nextShort();
             System.out.print("to ");
             m = scan.nextShort();
 
-            if (a > n) {
-                short[] A = {a};
-                short[] N = {n};
-                swap(A, N);
-                a = A[0];
-                n = N[0];
-                System.out.println("Inverted limits were swapped: [n,a]->[a,n]");
-            }
             if (b > m) {
-                short[] B = {b};
-                short[] M = {m};
-                swap(B, M);
-                b = B[0];
-                m = M[0];
-                System.out.println("Inverted limits were swapped: [m,b]->[b,m]");
+                String message = String.format("Inverted loop limits: %d > %d", b, m);
+                throw new ArithmeticException(message);
             }
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+            short[] B = {b};
+            short[] M = {m};
+            swap(B, M);
+            b = B[0];
+            m = M[0];
+            System.out.println("Inverted limits were swapped: [m,b]->[b,m]");
+        }
 
-            for (short i = a; i <= n; i++) {
-                for (short j = b; j <= m; j++) {
-                    try {
-                        if (i == c) {
-                            throw new Exception("Division by 0.0 -> Inf");
-                        }
-                        partSum = ((double) makeOperation(i, j, op2) / (double) makeOperation(i, (short) c, op1));
-                        Sum += partSum;
-                        System.out.println(Sum);
-                    }
-                    catch (ArithmeticException e) {
-                        System.err.println("Division by zero, action was ignored");
-                    }
-                    catch (Exception e2) {
-                        e2.printStackTrace();
-                    }
-                }
-            }
-
-            System.out.print("Sum is ");
-            System.out.println(Sum);
-
-        } catch (Exception e1) {
-            e1.printStackTrace();
+        try {
+            System.out.print("Sum is " + calculateSum(a, n, b, m, op1, op2, (short) c));
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
         }
     }
 }
