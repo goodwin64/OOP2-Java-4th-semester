@@ -1,15 +1,13 @@
 package ua.kpi.fict.oop2.test.variant03;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import ua.kpi.fict.oop2.classes.variant03.Airliner;
+import ua.kpi.fict.oop2.classes.variant03.Airplane;
+import ua.kpi.fict.oop2.classes.variant03.Lab6_var03;
 import ua.kpi.fict.oop2.classes.variant03.Lab7_var03;
-
-import java.util.Collections;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 09.05.2016.
@@ -25,45 +23,36 @@ public class Lab7_var03Test {
     }
 
     @Test
-    public void sizeTest() {
-        assertEquals(0, mySet.size());
-        assertEquals(true, mySet.isEmpty());
+    public void sameAirplanesTest() {
+        Airplane airplane1 = new Airplane("Model", 2000, 54.5, 500, 3000);
+        Airplane airplane2 = new Airplane("Model", 2000, 54.5, 500, 3000);
 
-        Collections.addAll(mySet, 1, 2, 3, 3, 2, 1, 1, 1, 2);
-        assertEquals(3, mySet.size());
-        assertEquals(false, mySet.isEmpty());
+        // difference is only in ID
+        Assert.assertEquals(airplane1, airplane2);
     }
 
     @Test
-    public void toArrayTest() {
-        Collections.addAll(mySet, 1, 2, 3);
-        Integer[] sample = new Integer[] {1, 2, 3};
+    public void comparingAirplanesTest() {
+        Airplane airplane1 = new Airplane("Model", 2000, 54.5, 500, 3000);
+        Airplane airplane2 = new Airplane("Model", 2000, 54.5, 500, 3000);
+        Airplane airplane3 = new Airplane("Another Model", 1000, 34.5, 200, 300);
 
-        assertArrayEquals(sample, mySet.toArray());
+        Assert.assertEquals(0, airplane1.compareTo(airplane2));
+        Assert.assertEquals(1, airplane1.compareTo(airplane3)); // by fuel consumption
     }
 
     @Test
-    public void addAndRemoveTest() {
-        Collections.addAll(mySet, 1, 2, 3);
-        Collections.addAll(anotherSet, 1, 3, 4);
-        mySet.add(4);
-        mySet.remove(2);
+    public void createAirplanesBasedOnPrototypesTest() {
+        Airplane[] airplanes1 = Lab6_var03.createAirplanesBasedOnPrototypes();
+        Airplane[] airplanes2 = Lab6_var03.createAirplanesBasedOnPrototypes();
+        mySet = new Lab7_var03.MySet(airplanes1);
+        anotherSet = new Lab7_var03.MySet(airplanes2);
 
-        assertTrue(anotherSet.equals(mySet));
-        assertEquals(anotherSet, mySet);
-    }
+        // duplicate will be ignored:
+        mySet.add(new Airliner("Cessna 172R", 767, 28.47, 226, 1289, 4));
 
-    @Test
-    public void retainAllTest() {
-        Collections.addAll(mySet, 1, 4, 3);
-        Collections.addAll(anotherSet, 9, 8, 7, 6, 5, 4, 3, 2);
-
-        Lab7_var03.MySet differenceSet = new Lab7_var03.MySet();
-        Collections.addAll(differenceSet, 4, 3);
-
-        boolean changed = mySet.retainAll(anotherSet);
-        assertTrue(changed);
-        assertEquals(mySet, differenceSet);
+        Assert.assertArrayEquals(airplanes1, airplanes2);
+        Assert.assertEquals(mySet, anotherSet);
     }
 
     @After

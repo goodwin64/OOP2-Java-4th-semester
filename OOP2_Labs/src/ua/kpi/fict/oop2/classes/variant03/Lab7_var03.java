@@ -60,6 +60,12 @@ public class Lab7_var03 {
             addAll(airplanes);
         }
 
+        public MySet(Object[] objects) {
+            this.value = new DoublyLinkedList<>();
+            for (Object object : objects) {
+                value.addFirst(object);
+            }
+        }
 
         @Override
         public int size() {
@@ -193,11 +199,8 @@ public class Lab7_var03 {
                 }
             }
 
-            if (size() != other.size()) {
-                return false;
-            }
+            return size() == other.size();
 
-            return true;
         }
 
         @Override
