@@ -50,7 +50,7 @@ public class Lab7_var03Test {
         mySet.remove(2);
 
         assertTrue(anotherSet.equals(mySet));
-        assertEquals(anotherSet, mySet.toArray()); // fail, NEED FIX
+        assertEquals(anotherSet, mySet);
     }
 
     @Test
