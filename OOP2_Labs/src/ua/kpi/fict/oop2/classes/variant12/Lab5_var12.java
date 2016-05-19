@@ -16,9 +16,8 @@ public class Lab5_var12 {
 
         String textFromFile = readTextFromFile(pathPrefix + fileNameIn + fileExtension);
         Text text = parseTextToObjects(textFromFile);
-        replaceSomeWords(4, "exampleWord");
+        replaceSomeWords(4, "exampleWord", text);
         writeToFile(pathPrefix + fileNameOut + fileExtension, text);
-
     }
 
     public static String readTextFromFile(String path) {
@@ -96,8 +95,16 @@ public class Lab5_var12 {
         return result;
     }
 
-    public static void replaceSomeWords(int wordsLength, String replacer) {
-        // TODO: make some replaces in Text.
+    public static void replaceSomeWords(int wordsLength, String replacer, Text text) {
+        for (Sentence sentence : text.value) {
+            for (int i = 0; i < sentence.value.length; i++) {
+                SentenceElement se = sentence.value[i];
+                if (se instanceof Word
+                        && ((Word) se).getValue().length == wordsLength) {
+                    sentence.value[i] = new Word(replacer);
+                }
+            }
+        }
     }
 
     public static void writeToFile(String path, Text text) {
@@ -155,6 +162,12 @@ class Word extends SentenceElement {
             this.value[i] = other.value[i];
         }
     }
+    public Word(String word) {
+        this.value = new Letter[word.length()];
+        for (int i = 0; i < word.length(); i++) {
+            this.value[i] = new Letter(word.charAt(i));
+        }
+    }
 
     public Letter[] getValue() {
         return this.value;
@@ -169,7 +182,11 @@ class Word extends SentenceElement {
 
     @Override
     public String toString() {
-        return Arrays.toString(value);
+        String result = "";
+        for (Letter l : this.value) {
+            result += l;
+        }
+        return result;
     }
 
     public void add(Letter letter) {
@@ -290,7 +307,7 @@ class Text {
     protected Sentence[] value;
 
     public Text() {
-        this.value = new Sentence[0];
+        this.value = new Sentence[1];
     }
     public Text(int sentencesCount) {
         this.value = new Sentence[sentencesCount];
@@ -304,11 +321,7 @@ class Text {
     public String toString() {
         String result = "";
         for (Sentence sentence : value) {
-            if (sentence.toString().equals("\n")) {
-                result += sentence;
-            } else {
-                result += sentence + "\n";
-            }
+            result += sentence;
         }
         return result;
     }
