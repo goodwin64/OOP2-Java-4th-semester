@@ -1,26 +1,99 @@
 package ua.kpi.fict.oop2.classes.variant12;
 
-import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Created by Rock(https://github.com/Filin-Rock) on 25.03.2016.
  */
 public class Lab5_var12 {
     public static void main(String[] args) {
-        String pathPrefix = "src\\KPI_FICT\\OOP2\\Resources\\Variant12\\";
-        String fileNameIn = "Lab5_var12_in.txt";
-        String fileNameOut = "Lab5_var12_out.txt";
+        String pathPrefix = "src\\ua\\kpi\\fict\\oop2\\Resources\\Variant12\\";
+        String fileNameIn = "Lab5_var12_in";
+        String fileNameOut = "Lab5_var12_out";
         String fileExtension = ".txt";
 
-        Text text = readTextFromFile(pathPrefix + fileNameIn + fileExtension);
+        String textFromFile = readTextFromFile(pathPrefix + fileNameIn + fileExtension);
+        Text text = parseTextToObjects(textFromFile);
         replaceSomeWords(4, "exampleWord");
         writeToFile(pathPrefix + fileNameOut + fileExtension, text);
 
     }
 
-    public static Text readTextFromFile(String path) {
-        // TODO: char-by-char text parsing and creating a Text() instance.
-        return new Text();
+    public static String readTextFromFile(String path) {
+        String result = "";
+        //BufferedReader br;
+        int c;
+        FileInputStream in;
+
+        try {
+            //br = new BufferedReader(new FileReader(file));
+            in = new FileInputStream(path);
+            while ((c = in.read()) != -1) {
+                result += (char) c;
+                //text.value.addAll(parseLine(line));
+                //line = br.readLine();
+            }
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static Text parseTextToObjects(String text) {
+        int sentencesCount = 0;
+        Text result = new Text(countSentences(text));
+        char currentChar;
+        Word lastWord = new Word();
+        Word emptyWord = new Word();
+        PunctuationMark lastPM = new PunctuationMark();
+        Sentence lastSentence = new Sentence(0);
+
+        for (int i = 0; i < text.length(); i++) {
+            currentChar = text.charAt(i);
+            if (Character.isLetter(currentChar)) {
+                lastWord.add(new Letter(currentChar));
+            } else {
+                lastPM.setValue(String.valueOf(currentChar));
+                boolean isSentenceDelimiter = new String(PunctuationMark.sentenceDelimiters).indexOf(currentChar) != -1;
+                boolean isTextDelimiter = new String(PunctuationMark.textDelimiters).indexOf(currentChar) != -1;
+                if (isSentenceDelimiter) {
+                    // TODO: add special case - the hyphen (-)
+                    if (!emptyWord.equals(lastWord)) {
+                        lastSentence.add(new Word(lastWord));
+                    }
+                    lastSentence.add(new PunctuationMark(lastPM.getValue()));
+                    lastWord.setValue("");
+                } else if (isTextDelimiter) {
+                    // TODO: add special case - Shortened word (Mr. Sherlock)
+                    if (!emptyWord.equals(lastWord)) {
+                        lastSentence.add(new Word(lastWord));
+                    }
+                    lastWord.setValue("");
+                    lastSentence.add(new PunctuationMark(lastPM.getValue()));
+                    result.value[sentencesCount++] = new Sentence(lastSentence.getValue());
+                    lastSentence = new Sentence(0);
+                } else {
+                    // TODO special case: numbers within word (2nd, 5th)
+                }
+            }
+        }
+        return result;
+    }
+
+    private static int countSentences(String text) {
+        int result = 0;
+        for (char c : text.toCharArray()) {
+            for (char textDelimiter : PunctuationMark.textDelimiters) {
+                if (c == textDelimiter) {
+                    result++;
+                    break;
+                }
+            }
+        }
+        return result;
     }
 
     public static void replaceSomeWords(int wordsLength, String replacer) {
@@ -33,16 +106,37 @@ public class Lab5_var12 {
 }
 
 /**
+ * Class implements the letter - a part of word.
+ */
+class Letter {
+    private char value;
+
+    public Letter(char value) {
+        this.value = value;
+    }
+
+    public char getValue() {
+        return value;
+    }
+
+    public void setValue(char value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.value);
+    }
+}
+
+/**
  * Class implements the element of sentence: a word or a punctuation mark.
  *
  * Fundamental difference between Word and PunctuationMark
- * is that the Word contains String value, PM contains char value.
+ * is that the Word contains array of Letters value, PM contains char value.
  */
 abstract class SentenceElement {
-    private String value;
-
-    public abstract String getValue();
-    public abstract void setValue(String value);
+    public abstract String toString();
 }
 
 /**
@@ -50,36 +144,54 @@ abstract class SentenceElement {
  * A..Z, a..z
  */
 class Word extends SentenceElement {
-    private String value;
+    private Letter[] value;
 
     public Word() {
-        this.value = "";
+        this.value = new Letter[0];
     }
-    public Word(String word) {
-        try {
-            setValue(word);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+    public Word(Word other) {
+        this.value = new Letter[other.value.length];
+        for (int i = 0; i < other.value.length; i++) {
+            this.value[i] = other.value[i];
+        }
+    }
+
+    public Letter[] getValue() {
+        return this.value;
+    }
+
+    public void setValue(String value) {
+        this.value = new Letter[value.length()];
+        for (int i = 0; i < value.length(); i++) {
+            this.value[i] = new Letter(value.charAt(i));
         }
     }
 
     @Override
-    public String getValue() {
-        return value;
-    }
-
-    @Override
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    @Override
     public String toString() {
-        return value;
+        return Arrays.toString(value);
     }
 
-    public void add(char c) {
-        this.value += c;
+    public void add(Letter letter) {
+        int newSize = this.value.length + 1;
+        Letter[] temp = new Letter[newSize];
+        for (int i = 0; i < this.value.length; i++) {
+            temp[i] = this.value[i];
+        }
+        this.value = temp;
+        this.value[newSize - 1] = new Letter(letter.getValue());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Word word = (Word) o;
+
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(getValue(), word.getValue());
+
     }
 }
 
@@ -103,32 +215,18 @@ class PunctuationMark extends SentenceElement {
     public PunctuationMark(char c) {
         this.value = c;
     }
-    public PunctuationMark(String punctuationMark) {
-        try {
-            setValue(punctuationMark);
-        } catch (IllegalArgumentException e) {
-            /*
-             * System.out and System.err are different console streams,
-             * so here is using the first one
-             * not to mix incorrect argument and error info.
-             */
-            System.out.printf("%s (%s)\n", e, punctuationMark);
-        }
+
+    public char getValue() {
+        return this.value;
     }
 
-    @Override
-    public String getValue() {
-        return String.valueOf(this.value);
-    }
-
-    @Override
     public void setValue(String value) {
         this.value = value.charAt(0);
     }
 
     @Override
     public String toString() {
-        return getValue();
+        return String.valueOf(getValue());
     }
 }
 
@@ -137,23 +235,22 @@ class PunctuationMark extends SentenceElement {
  * words and/or punctuation marks.
  */
 class Sentence {
-    protected ArrayList<SentenceElement> value;
+    protected SentenceElement[] value;
 
-    public Sentence() {
-        this.value = new ArrayList<>(1);
+    public Sentence(int elementsCount) {
+        this.value = new SentenceElement[elementsCount];
+        for (int i = 0; i < elementsCount; i++) {
+            this.value[i] = null;
+        }
     }
-    public Sentence(PunctuationMark pm) {
-        this.value = new ArrayList<>(1);
-        value.add(pm);
-    }
-    public Sentence(Sentence other) {
-        this.value = new ArrayList<>(other.getValue().size());
-        for (SentenceElement se : other.getValue()) {
-            this.value.add(se);
+    public Sentence(SentenceElement[] sentElements) {
+        this.value = new SentenceElement[sentElements.length];
+        for (int i = 0; i < sentElements.length; i++) {
+            this.value[i] = sentElements[i];
         }
     }
 
-    public ArrayList<SentenceElement> getValue() {
+    public SentenceElement[] getValue() {
         return value;
     }
 
@@ -163,15 +260,26 @@ class Sentence {
         for (SentenceElement se : value) {
             result += se;
         }
-        return String.format("%s", result);
+        return result;
+    }
+
+    private void incrementSize() {
+        int newSize = this.value.length + 1;
+        SentenceElement[] temp = new SentenceElement[newSize];
+        for (int i = 0; i < this.value.length; i++) {
+            temp[i] = this.value[i];
+        }
+        this.value = temp;
     }
 
     public void add(Word word) {
-        this.value.add(word);
+        incrementSize();
+        this.value[this.value.length - 1] = new Word(word);
     }
 
     public void add(PunctuationMark pm) {
-        this.value.add(pm);
+        incrementSize();
+        this.value[this.value.length - 1] = new PunctuationMark(pm.getValue());
     }
 }
 
@@ -179,13 +287,16 @@ class Sentence {
  * Class implements the text - a sequence of sentences and/or punctuation marks.
  */
 class Text {
-    protected ArrayList<Sentence> value;
+    protected Sentence[] value;
 
     public Text() {
-        this.value = new ArrayList<>(1);
+        this.value = new Sentence[0];
+    }
+    public Text(int sentencesCount) {
+        this.value = new Sentence[sentencesCount];
     }
 
-    public ArrayList<Sentence> getValue() {
+    public Sentence[] getValue() {
         return value;
     }
 
@@ -199,6 +310,6 @@ class Text {
                 result += sentence + "\n";
             }
         }
-        return String.format("%s", result);
+        return result;
     }
 }
