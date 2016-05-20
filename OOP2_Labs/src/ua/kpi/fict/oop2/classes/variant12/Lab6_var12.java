@@ -1,9 +1,7 @@
 package ua.kpi.fict.oop2.classes.variant12;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.Random;
+import java.lang.reflect.Array;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -13,8 +11,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Lab6_var12 {
 
     public static void main(String[] args) {
-
         Music[] compositions = createTrackList();
+        shuffleArray(compositions);
 
         printHeader("null");
         printTrackList(compositions);
@@ -23,13 +21,32 @@ public class Lab6_var12 {
         Arrays.sort(compositions, new SortedByID());
         printTrackList(compositions);
 
-        printHeader("Длитольности");
+        printHeader("Длительности");
         Arrays.sort(compositions, new SortedByDuration());
         printTrackList(compositions);
 
         printHeader("Названию");
         Arrays.sort(compositions, new SortedByTitle());
         printTrackList(compositions);
+
+
+
+        Music[] filteredCompositions = searchByTrackLength(parseDuration(args[0]), parseDuration(args[1]), compositions);
+        System.out.printf("Filter: from %s to %s\n", args[0], args[1]);
+        printTrackList(filteredCompositions);
+    }
+
+    /**
+     * Parses the string which contains duration of a music composition to an integer number,
+     * count of seconds:
+     * 0:02:12 -> 132
+     */
+    public static int parseDuration(String arg) {
+        String[] timeParameters = arg.split(":");
+        int hours = Integer.parseInt(timeParameters[0]);
+        int minutes = Integer.parseInt(timeParameters[1]);
+        int seconds = Integer.parseInt(timeParameters[2]);
+        return hours * 3600 + minutes * 60 + seconds;
     }
 
     //Print header
@@ -65,8 +82,6 @@ public class Lab6_var12 {
         musics[14] = new Disco_80("Cheri lady", "Modern Talking", 197);
         musics[15] = new Disco_80("Simply the best", "Tina Turner", 280);
 
-        shuffleArray(musics);
-
         return musics;
     }
 
@@ -88,9 +103,12 @@ public class Lab6_var12 {
     }
 
     //convert seconds to hours and minutes
-    public static String getPrettyDuration(int duration) {
+    public static String getPrettyDuration(int duration) throws IllegalArgumentException {
         int seconds, minutes, hours;
 
+        if (duration < 0) {
+            throw new IllegalArgumentException("Negative duration!");
+        }
         seconds = duration % 60;
         duration -= seconds;
 
@@ -100,7 +118,7 @@ public class Lab6_var12 {
 
         hours = duration / 3600;
 
-        return String.format("%2d:%02d:%02d", hours, minutes, seconds);
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 
     //prints formed track list
@@ -144,6 +162,17 @@ public class Lab6_var12 {
 
             return str1.compareTo(str2);
         }
+    }
+
+    // Search in track list
+    public static Music[] searchByTrackLength(int minDuration, int maxDuration, Music[] src) {
+        ArrayList<Music> result = new ArrayList<>(src.length);
+        for (int i = 0; i < src.length; i++) {
+            if (src[i].getDuration() > minDuration && src[i].getDuration() < maxDuration) {
+                result.add(src[i]); // TODO: 20.05.2016 COPY?
+            }
+        }
+        return result.toArray(new Music[]{});
     }
 
     //Parent class Music
