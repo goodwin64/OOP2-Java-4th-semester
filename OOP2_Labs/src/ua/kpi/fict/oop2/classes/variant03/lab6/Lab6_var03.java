@@ -1,4 +1,4 @@
-package ua.kpi.fict.oop2.classes.variant03;
+package ua.kpi.fict.oop2.classes.variant03.lab6;
 
 import java.io.*;
 import java.util.Arrays;

@@ -1,4 +1,7 @@
-package ua.kpi.fict.oop2.classes.variant03;
+package ua.kpi.fict.oop2.classes.variant03.lab4;
+
+import ua.kpi.fict.oop2.classes.variant03.Lab1_var03;
+import ua.kpi.fict.oop2.classes.variant03.Lab2_var03;
 
 public class Student implements Comparable<Student> {
 

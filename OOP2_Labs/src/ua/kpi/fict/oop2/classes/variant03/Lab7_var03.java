@@ -1,5 +1,10 @@
 package ua.kpi.fict.oop2.classes.variant03;
 
+import ua.kpi.fict.oop2.classes.variant03.lab6.AirFreighter;
+import ua.kpi.fict.oop2.classes.variant03.lab6.Airliner;
+import ua.kpi.fict.oop2.classes.variant03.lab6.Airplane;
+import ua.kpi.fict.oop2.classes.variant03.lab6.Warplane;
+
 import java.util.*;
 
 /**

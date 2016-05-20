@@ -4,9 +4,9 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import ua.kpi.fict.oop2.classes.variant03.Airliner;
-import ua.kpi.fict.oop2.classes.variant03.Airplane;
-import ua.kpi.fict.oop2.classes.variant03.Lab6_var03;
+import ua.kpi.fict.oop2.classes.variant03.lab6.Airliner;
+import ua.kpi.fict.oop2.classes.variant03.lab6.Airplane;
+import ua.kpi.fict.oop2.classes.variant03.lab6.Lab6_var03;
 import ua.kpi.fict.oop2.classes.variant03.Lab7_var03;
 
 /**

@@ -1,4 +1,4 @@
-package ua.kpi.fict.oop2.classes.variant03;
+package ua.kpi.fict.oop2.classes.variant03.lab4;
 
 /**
  * Methods to generate a random name, surname.
