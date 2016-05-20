@@ -1,4 +1,4 @@
-package ua.kpi.fict.oop2.test.variant03;
+package ua.kpi.fict.oop2.tests.variant03;
 
 import org.junit.After;
 import org.junit.Assert;
