@@ -1,0 +1,28 @@
+Laboratory work #7
+Theme:		Working with collections in Java.
+Objective:	Gaining skills in creating and using own standard collections in Java.
+
+Task
+1.	Determine 
+	C2 as a remainder of division of the student record book by number 2, 
+	C3 as a remainder of division of the student record book by number 3.
+
+
+2.	Depending on C2 value determine the interface, which the collection implements:
+	C2	Interface
+	0	List
+	1	Set
+
+3.	Depending on C3 value determine the internal structure of the collection:
+	C3	Internal structure of the collection
+	0	An array with initial number of 15 elements and increase the number of items by 30%
+	1	Linked list
+	2	Double linked list
+
+4.	Create a class that describes a typed collection (collection type is a generic class from the 6th laboratory work), that implements the interface given in option (item 2) and the internal structure given in option (p.3).
+	Implement all methods of the interface and create at least three constructors:
+		1 - empty 
+		2 - in which is passed one generic object class 
+		3 - in which is passed a standard collection of objects
+	All initial data set in the executive method (main). 
+	The code must conform to the JCC standards and be thoroughly documented.
