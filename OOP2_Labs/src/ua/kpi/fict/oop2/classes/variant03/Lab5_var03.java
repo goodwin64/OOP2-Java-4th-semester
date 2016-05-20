@@ -3,20 +3,94 @@ package ua.kpi.fict.oop2.classes.variant03;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 /**
  * Created by Max Donchenko (https://github.com/goodwin64) on 09.03.2016.
  */
 public class Lab5_var03 {
     public static void main(String[] args) {
-        String pathPrefix = "src\\KPI_FICT\\OOP2\\Source\\";
-        String fileName = "Baskervilles, Chapter 8";
+        String pathPrefix = "src\\ua\\kpi\\fict\\oop2\\Resources\\Variant03\\";
+        String fileName = "someText";
         String fileExtension = ".txt";
 
-        Text text = readTextFromFile(pathPrefix + fileName + fileExtension);
+        String textFromFile = readTextFromFile(pathPrefix + fileName + fileExtension);
+        Text text = parseStringToText(textFromFile);
         ArrayList<Word> words = getWords(text);
         Collections.sort(words);
         toFile(pathPrefix + fileName + " - output" + fileExtension, words);
+    }
+
+    /**
+     * Split input string on words, punctuation marks and sentences
+     * (respective classes instances)
+     * Words and PMs are put in Sentence value,
+     * Sentences are put in Text value.
+     *
+     * @param text                          text to parse
+     * @throws IllegalArgumentException     if line is empty
+     */
+    public static Text parseStringToText(String text) throws IllegalArgumentException {
+        if (text.equals("")) {
+            throw new IllegalArgumentException("Empty text on input");
+        }
+        //int numberOfWords = countMatches(text, PunctuationMark.sentenceDelimiters);
+        int numberOfSentences = countMatches(text, PunctuationMark.textDelimiters);
+        ArrayList<Sentence> result = new ArrayList<>(numberOfSentences);
+        char currentChar;
+        Word lastWord = new Word();
+        PunctuationMark lastPM = new PunctuationMark();
+        Sentence lastSentence = new Sentence();
+
+        for (int i = 0; i < text.length(); i++) {
+            currentChar = text.charAt(i);
+            if (Character.isLetter(currentChar)) {
+                lastWord.add(currentChar);
+            } else if (isDelimiter(currentChar, PunctuationMark.sentenceDelimiters)) {
+                lastPM.setValue(String.valueOf(currentChar));
+                // TODO: add special case - the hyphen (-)
+                lastSentence.add(new Word(lastWord.getValue()));
+                if (!lastSentence.toString().equals("")) {
+                    lastSentence.add(new PunctuationMark(lastPM.getValue()));
+                }
+                lastWord.setValue("");
+            } else if (isDelimiter(currentChar, PunctuationMark.textDelimiters)) {
+                // TODO: add special case - Shortened word (Mr. Sherlock)
+                lastSentence.add(new Word(lastWord.getValue()));
+                lastWord.setValue("");
+                lastSentence.add(new PunctuationMark(lastPM.getValue()));
+                result.add(new Sentence(lastSentence.getValue()));
+                lastSentence.value.clear();
+            } else {
+                // TODO special case: numbers within word (2nd, 5th)
+            }
+        }
+        return new Text(result);
+    }
+
+    public static boolean isDelimiter(char c, char[] delimiters) {
+        // TODO: 20.05.2016 how is better? loop or 1-line action
+        /*
+        for (char del : delimiters) {
+            if (c == del)
+                return true
+        }
+        return false;
+        */
+        return new String(delimiters).indexOf(c) != -1;
+    }
+
+    public static int countMatches(String text, char[] delimiterCharsSequence) {
+        int result = 0;
+        for (char c : text.toCharArray()) {
+            for (char delimiter : delimiterCharsSequence) {
+                if (c == delimiter) {
+                    result++;
+                    break;
+                }
+            }
+        }
+        return result;
     }
 
     /**
@@ -26,74 +100,24 @@ public class Lab5_var03 {
      *
      * @return text     the String contains the text
      */
-    public static Text readTextFromFile(String path) {
+    public static String readTextFromFile(String path) {
         File file = new File(path);
-        Text text = new Text();
+        String text = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             try {
-                String line = br.readLine();
-                while (!line.equalsIgnoreCase("EOF")) {
-                    text.value.addAll(parseLine(line));
-                    line = br.readLine();
+                int ch;
+                while ((ch = br.read()) != -1) {
+                    text += (char) ch;
                 }
                 br.close();
-            } catch (IOException e2) {
-                System.err.format("IOException: %s%n", e2);
+            } catch (IOException e) {
+                System.err.format("IOException: %s%n", e);
             }
-        } catch (FileNotFoundException e1) {
-            System.err.format("Exception: %s%n", e1);
+        } catch (FileNotFoundException e) {
+            System.err.format("Exception: %s%n", e);
         }
         return text;
-    }
-
-    /**
-     * Split input string on words, punctuation marks and sentences
-     * (respective classes instances)
-     * Words and PMs are put in Sentence value,
-     * Sentences are put in Text value.
-     *
-     * @param line                          line to parse
-     * @throws IllegalArgumentException     if line is empty
-     */
-    public static ArrayList<Sentence> parseLine(String line) {
-        ArrayList<Sentence> result = new ArrayList<>(20);
-        if (line.equals("")) {
-            result.add(new Sentence(new PunctuationMark('\n')));
-        }
-        char currentChar;
-        Word lastWord = new Word();
-        PunctuationMark lastPM = new PunctuationMark();
-        Sentence lastSentence = new Sentence();
-
-        for (int i = 0; i < line.length(); i++) {
-            currentChar = line.charAt(i);
-            if (Character.isLetter(currentChar)) {
-                lastWord.add(currentChar);
-            } else {
-                lastPM.setValue(String.valueOf(currentChar));
-                boolean isSentenceDelimiter = new String(PunctuationMark.sentenceDelimiters).indexOf(currentChar) != -1;
-                boolean isTextDelimiter = new String(PunctuationMark.textDelimiters).indexOf(currentChar) != -1;
-                if (isSentenceDelimiter) {
-                    // TODO: add special case - the hyphen (-)
-                    lastSentence.add(new Word(lastWord.getValue()));
-                    if (!lastSentence.toString().equals("")) {
-                        lastSentence.add(new PunctuationMark(lastPM.getValue()));
-                    }
-                    lastWord.setValue("");
-                } else if (isTextDelimiter) {
-                    // TODO: add special case - Shortened word (Mr. Sherlock)
-                    lastSentence.add(new Word(lastWord.getValue()));
-                    lastWord.setValue("");
-                    lastSentence.add(new PunctuationMark(lastPM.getValue()));
-                    result.add(new Sentence(lastSentence.getValue()));
-                    lastSentence.value.clear();
-                } else {
-                    // TODO special case: numbers within word (2nd, 5th)
-                }
-            }
-        }
-        return result;
     }
 
     /**
@@ -105,11 +129,10 @@ public class Lab5_var03 {
     public static ArrayList<Word> getWords(Text text) {
         ArrayList<Word> result = new ArrayList<>(2000); // depends on text
         for (Sentence s : text.getValue()) {
-            for (SentenceElement se : s.getValue()) {
-                if (se instanceof Word && !se.getValue().equals("")) {
-                    result.add(new Word(se.getValue()));
-                }
-            }
+            result.addAll(s.getValue().stream()
+                    .filter(se -> se instanceof Word && !se.getValue().equals(""))
+                    .map(se -> new Word(se.getValue()))
+                    .collect(Collectors.toList()));
         }
         return result;
     }
@@ -124,15 +147,15 @@ public class Lab5_var03 {
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(path, "UTF-8");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        for (Word word : words) {
-            writer.println(word);
+        if (writer != null) {
+            for (Word word : words) {
+                writer.println(word);
+            }
+            writer.close();
         }
-        writer.close();
     }
 }
 
@@ -204,8 +227,7 @@ class Word extends SentenceElement implements Comparable<Word> {
             return lengthDiff;
         }
 
-        int alphabetDiff = this.getValue().compareTo(other.getValue());
-        return alphabetDiff;
+        return this.getValue().compareTo(other.getValue());
     }
 
     public void add(char c) {
@@ -317,19 +339,14 @@ class Sentence {
     public Sentence() {
         this.value = new ArrayList<>(1);
     }
-    public Sentence(Word word) {
-        this.value = new ArrayList<>(1);
-        value.add(word);
-    }
     public Sentence(PunctuationMark pm) {
         this.value = new ArrayList<>(1);
         value.add(pm);
     }
     public Sentence(ArrayList<SentenceElement> sentence) {
         this.value = new ArrayList<>(20);
-        for (SentenceElement se : sentence) {
-            this.value.add(se);
-        }
+        this.value.addAll(sentence.stream()
+                .collect(Collectors.toList()));
     }
 
     public ArrayList<SentenceElement> getValue() {
@@ -342,7 +359,7 @@ class Sentence {
         for (SentenceElement se : value) {
             result += se;
         }
-        return String.format("%s", result);
+        return result;
     }
 
     public void add(Word word) {
@@ -358,10 +375,13 @@ class Sentence {
  * Class implements the text - a sequence of sentences and/or punctuation marks.
  */
 class Text {
-    protected ArrayList<Sentence> value;
+    private ArrayList<Sentence> value;
 
     public Text() {
-        this.value = new ArrayList<>(2);
+        this.value = new ArrayList<>(1);
+    }
+    public Text(ArrayList<Sentence> sentenceArrayList) {
+        this.value = sentenceArrayList;
     }
 
     public ArrayList<Sentence> getValue() {
@@ -372,12 +392,8 @@ class Text {
     public String toString() {
         String result = "";
         for (Sentence sentence : value) {
-            if (sentence.toString().equals("\n")) {
-                result += sentence;
-            } else {
-                result += sentence + "\n";
-            }
+            result += sentence;
         }
-        return String.format("%s", result);
+        return result;
     }
 }
