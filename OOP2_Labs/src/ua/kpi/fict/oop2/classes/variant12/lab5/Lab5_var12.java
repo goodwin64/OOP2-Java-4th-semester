@@ -1,8 +1,9 @@
-package ua.kpi.fict.oop2.classes.variant12;
+package ua.kpi.fict.oop2.classes.variant12.lab5;
 
 import ua.kpi.fict.oop2.classes.variant12.lab5.*;
 
 import java.io.*;
+import java.util.Scanner;
 
 /**
  * Created by Rock(https://github.com/Filin-Rock) on 25.03.2016.
@@ -17,9 +18,22 @@ public class Lab5_var12 {
         String textFromFile = readTextFromFile(pathPrefix + fileNameIn + fileExtension);
         Text text = parseTextToObjects(textFromFile);
 
-
         System.out.println(text);
-        replaceSomeWords(4, "exampleWord", text);
+
+        Scanner scanner = new Scanner(System.in);
+        int lenOfWord = 0;
+        String sameWord = null;
+        try {
+            System.out.print("Укажите длину слова для замены: ");
+            lenOfWord = scanner.nextInt();
+            System.out.print("Укажите на какое слово будем менять: ");
+            sameWord = scanner.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+
+        replaceSomeWords(lenOfWord, sameWord, text);
         System.out.println(text);
         writeToFile(pathPrefix + fileNameOut + fileExtension, text);
     }
@@ -59,14 +73,14 @@ public class Lab5_var12 {
                 boolean isSentenceDelimiter = new String(PunctuationMark.sentenceDelimiters).indexOf(currentChar) != -1;
                 boolean isTextDelimiter = new String(PunctuationMark.textDelimiters).indexOf(currentChar) != -1;
                 if (isSentenceDelimiter) {
-                    // TODO: add special case - the hyphen (-)
+
                     if (!emptyWord.equals(lastWord)) {
                         lastSentence.add(new Word(lastWord));
                     }
                     lastSentence.add(new PunctuationMark(lastPM.getValue()));
                     lastWord.setValue("");
                 } else if (isTextDelimiter) {
-                    // TODO: add special case - Shortened word (Mr. Sherlock)
+
                     if (!emptyWord.equals(lastWord)) {
                         lastSentence.add(new Word(lastWord));
                     }
@@ -75,7 +89,7 @@ public class Lab5_var12 {
                     result.value[sentencesCount++] = new Sentence(lastSentence.getValue());
                     lastSentence = new Sentence(0);
                 } else {
-                    // TODO special case: numbers within word (2nd, 5th)
+
                 }
             }
         }

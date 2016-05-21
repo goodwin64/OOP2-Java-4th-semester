@@ -29,10 +29,19 @@ public class Lab6_var12 {
         Arrays.sort(compositions, new SortedByTitle());
         printTrackList(compositions);
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\nУкажите минимальную продолжительность для поиска: ");
+        String minDuration = scanner.next();
 
+        System.out.print("Укажите максимальную продолжительность для поиска: ");
+        String maxDuration = scanner.next();
 
-        Music[] filteredCompositions = searchByTrackLength(parseDuration(args[0]), parseDuration(args[1]), compositions);
-        System.out.printf("Filter: from %s to %s\n", args[0], args[1]);
+        Music[] filteredCompositions = searchByTrackLength(
+                parseDuration(minDuration),
+                parseDuration(maxDuration),
+                compositions
+        );
+        System.out.printf("\nFilter: from %s to %s\n", minDuration, maxDuration);
         printTrackList(filteredCompositions);
     }
 
@@ -41,8 +50,8 @@ public class Lab6_var12 {
      * count of seconds:
      * 0:02:12 -> 132
      */
-    public static int parseDuration(String arg) {
-        String[] timeParameters = arg.split(":");
+    public static int parseDuration(String compDuration) {
+        String[] timeParameters = compDuration.split(":");
         int hours = Integer.parseInt(timeParameters[0]);
         int minutes = Integer.parseInt(timeParameters[1]);
         int seconds = Integer.parseInt(timeParameters[2]);
