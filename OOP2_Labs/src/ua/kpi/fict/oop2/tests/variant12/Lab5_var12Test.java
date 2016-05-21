@@ -4,8 +4,9 @@ import org.junit.Test;
 import ua.kpi.fict.oop2.classes.variant12.lab5.Text;
 
 import static org.junit.Assert.*;
-import static ua.kpi.fict.oop2.classes.variant12.Lab5_var12.parseTextToObjects;
-import static ua.kpi.fict.oop2.classes.variant12.Lab5_var12.replaceSomeWords;
+
+import static ua.kpi.fict.oop2.classes.variant12.lab5.Lab5_var12.parseTextToObjects;
+import static ua.kpi.fict.oop2.classes.variant12.lab5.Lab5_var12.replaceSomeWords;
 
 /**
  * Created by Rock(https://github.com/Filin-Rock) on 20.05.2016.
@@ -27,4 +28,4 @@ public class Lab5_var12Test {
         assertEquals(afterSecondReplacing, text.toString());
     }
 }
-// Прекрасно слышу, но НАташа приехала приболевшей и с 22-00 лежит, спит......  не хочу ее будть, пусть отдахнет, замерзла наверное,у стала. Потому я тихо говорю. Молчу...
+
