@@ -1,465 +1,466 @@
-AirFreighter "random air freighter":
-	ID: 53
-	Flew 7894 km, range: 295 km
-	Cruise speed: 1193 km/h
-	Fuel consumption is 1326.86 kg/h
-	Energy conversion efficiency: 5% (deviation: -15%)
-	Weight: 28253 kg, Cargo weight: 5782 kg
-	Cargo capacity: 3513 kg
-	Maximum takeoff weight: 31766 kg
-
-Warplane "random warplane":
+Airliner "random airliner":
 	ID: 64
-	Flew 5107 km, range: 924 km
-	Cruise speed: 1188 km/h
-	Fuel consumption is 7597.38 kg/h
-	Energy conversion efficiency: 2% (deviation: -19%)
-	Weight: 237817 kg, Cargo weight: 0 kg
-	Bomb load: 107451 kg
-
-Warplane "random warplane":
-	ID: 33
-	Flew 1955 km, range: 4315 km
-	Cruise speed: 1172 km/h
-	Fuel consumption is 3675.43 kg/h
-	Energy conversion efficiency: 2% (deviation: -19%)
-	Weight: 24858 kg, Cargo weight: 0 kg
-	Bomb load: 10080 kg
-
-Warplane "random warplane":
-	ID: 27
-	Flew 1359 km, range: 7229 km
-	Cruise speed: 1140 km/h
-	Fuel consumption is 4331.65 kg/h
-	Energy conversion efficiency: 2% (deviation: -18%)
-	Weight: 175381 kg, Cargo weight: 0 kg
-	Bomb load: 99310 kg
-
-AirFreighter "random air freighter":
-	ID: 48
-	Flew 2863 km, range: 8955 km
-	Cruise speed: 1114 km/h
-	Fuel consumption is 4513.83 kg/h
-	Energy conversion efficiency: 2% (deviation: -18%)
-	Weight: 181680 kg, Cargo weight: 20043 kg
-	Cargo capacity: 50649 kg
-	Maximum takeoff weight: 232329 kg
-
-AirFreighter "random air freighter":
-	ID: 55
-	Flew 5925 km, range: 10145 km
-	Cruise speed: 1051 km/h
-	Fuel consumption is 14743.54 kg/h
-	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 96790 kg, Cargo weight: 7858 kg
-	Cargo capacity: 17018 kg
-	Maximum takeoff weight: 113808 kg
-
-Warplane "random warplane":
-	ID: 23
-	Flew 1258 km, range: 306 km
-	Cruise speed: 1034 km/h
-	Fuel consumption is 6995.21 kg/h
-	Energy conversion efficiency: 1% (deviation: -19%)
-	Weight: 176434 kg, Cargo weight: 0 kg
-	Bomb load: 176350 kg
-
-AirFreighter "random air freighter":
-	ID: 50
-	Flew 4841 km, range: 9484 km
-	Cruise speed: 1026 km/h
-	Fuel consumption is 2728.89 kg/h
+	Flew 719 km, range: 11027 km
+	Cruise speed: 1192 km/h
+	Fuel consumption is 2906.46 kg/h
 	Energy conversion efficiency: 3% (deviation: -17%)
-	Weight: 122360 kg, Cargo weight: 28292 kg
-	Cargo capacity: 47900 kg
-	Maximum takeoff weight: 170260 kg
-
-Airliner "random airliner":
-	ID: 59
-	Flew 7929 km, range: 7752 km
-	Cruise speed: 1025 km/h
-	Fuel consumption is 6849.77 kg/h
-	Energy conversion efficiency: 1% (deviation: -19%)
-	Weight: 51055 kg, Cargo weight: 0 kg
-	Seating capacity: 428
+	Weight: 110651 kg, Cargo weight: 0 kg
+	Seating capacity: 26
 
 AirFreighter "random air freighter":
-	ID: 36
-	Flew 180 km, range: 13018 km
-	Cruise speed: 1016 km/h
-	Fuel consumption is 446.43 kg/h
-	Energy conversion efficiency: 12% (deviation: -8%)
-	Weight: 20473 kg, Cargo weight: 3939 kg
-	Cargo capacity: 3730 kg
-	Maximum takeoff weight: 24203 kg
-
-Airliner "random airliner":
-	ID: 42
-	Flew 9977 km, range: 2502 km
-	Cruise speed: 987 km/h
-	Fuel consumption is 13167.89 kg/h
+	ID: 29
+	Flew 3072 km, range: 6441 km
+	Cruise speed: 1174 km/h
+	Fuel consumption is 16208.95 kg/h
 	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 179876 kg, Cargo weight: 0 kg
-	Seating capacity: 88
-
-Warplane "random warplane":
-	ID: 44
-	Flew 9343 km, range: 5229 km
-	Cruise speed: 981 km/h
-	Fuel consumption is 3592.04 kg/h
-	Energy conversion efficiency: 2% (deviation: -18%)
-	Weight: 105179 kg, Cargo weight: 0 kg
-	Bomb load: 5180 kg
-
-Warplane "random warplane":
-	ID: 61
-	Flew 9453 km, range: 8005 km
-	Cruise speed: 922 km/h
-	Fuel consumption is 6961.56 kg/h
-	Energy conversion efficiency: 1% (deviation: -19%)
-	Weight: 224033 kg, Cargo weight: 0 kg
-	Bomb load: 126515 kg
-
-Warplane "random warplane":
-	ID: 25
-	Flew 5014 km, range: 6072 km
-	Cruise speed: 883 km/h
-	Fuel consumption is 2863.01 kg/h
-	Energy conversion efficiency: 2% (deviation: -18%)
-	Weight: 75479 kg, Cargo weight: 0 kg
-	Bomb load: 55131 kg
-
-Airliner "random airliner":
-	ID: 37
-	Flew 3010 km, range: 1908 km
-	Cruise speed: 838 km/h
-	Fuel consumption is 3381.02 kg/h
-	Energy conversion efficiency: 2% (deviation: -19%)
-	Weight: 58911 kg, Cargo weight: 0 kg
-	Seating capacity: 101
-
-Airliner "random airliner":
-	ID: 40
-	Flew 7988 km, range: 12583 km
-	Cruise speed: 819 km/h
-	Fuel consumption is 4592.48 kg/h
-	Energy conversion efficiency: 2% (deviation: -19%)
-	Weight: 154333 kg, Cargo weight: 0 kg
-	Seating capacity: 216
+	Weight: 132922 kg, Cargo weight: 7404 kg
+	Cargo capacity: 80511 kg
+	Maximum takeoff weight: 213433 kg
 
 AirFreighter "random air freighter":
-	ID: 34
-	Flew 9778 km, range: 8634 km
-	Cruise speed: 808 km/h
-	Fuel consumption is 1263.68 kg/h
-	Energy conversion efficiency: 4% (deviation: -17%)
-	Weight: 39575 kg, Cargo weight: 3472 kg
-	Cargo capacity: 8424 kg
-	Maximum takeoff weight: 47999 kg
-
-Warplane "random warplane":
-	ID: 28
-	Flew 5430 km, range: 9457 km
-	Cruise speed: 800 km/h
-	Fuel consumption is 10301.81 kg/h
-	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 162896 kg, Cargo weight: 0 kg
-	Bomb load: 153811 kg
-
-Airliner "random airliner":
-	ID: 60
-	Flew 3125 km, range: 8056 km
-	Cruise speed: 782 km/h
-	Fuel consumption is 1617.85 kg/h
-	Energy conversion efficiency: 3% (deviation: -18%)
-	Weight: 45686 kg, Cargo weight: 0 kg
-	Seating capacity: 295
+	ID: 22
+	Flew 7196 km, range: 530 km
+	Cruise speed: 1155 km/h
+	Fuel consumption is 2306.28 kg/h
+	Energy conversion efficiency: 3% (deviation: -17%)
+	Weight: 72449 kg, Cargo weight: 1356 kg
+	Cargo capacity: 3847 kg
+	Maximum takeoff weight: 76296 kg
 
 Warplane "random warplane":
 	ID: 58
-	Flew 2886 km, range: 2077 km
-	Cruise speed: 781 km/h
-	Fuel consumption is 142.62 kg/h
-	Energy conversion efficiency: 27% (deviation: +6%)
-	Weight: 3636 kg, Cargo weight: 0 kg
-	Bomb load: 2266 kg
-
-Warplane "random warplane":
-	ID: 45
-	Flew 1755 km, range: 7475 km
-	Cruise speed: 757 km/h
-	Fuel consumption is 9234.62 kg/h
-	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 187361 kg, Cargo weight: 0 kg
-	Bomb load: 72120 kg
-
-Airliner "random airliner":
-	ID: 26
-	Flew 6464 km, range: 11154 km
-	Cruise speed: 756 km/h
-	Fuel consumption is 7913.92 kg/h
-	Energy conversion efficiency: 1% (deviation: -19%)
-	Weight: 229992 kg, Cargo weight: 0 kg
-	Seating capacity: 245
-
-AirFreighter "random air freighter":
-	ID: 56
-	Flew 6419 km, range: 4791 km
-	Cruise speed: 749 km/h
-	Fuel consumption is 4706.51 kg/h
-	Energy conversion efficiency: 2% (deviation: -19%)
-	Weight: 230000 kg, Cargo weight: 38033 kg
-	Cargo capacity: 65507 kg
-	Maximum takeoff weight: 295507 kg
-
-Airliner "random airliner":
-	ID: 21
-	Flew 6257 km, range: 14635 km
-	Cruise speed: 729 km/h
-	Fuel consumption is 11768.41 kg/h
-	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 233565 kg, Cargo weight: 0 kg
-	Seating capacity: 1
-
-AirFreighter "random air freighter":
-	ID: 65
-	Flew 7965 km, range: 2321 km
-	Cruise speed: 723 km/h
-	Fuel consumption is 503.50 kg/h
-	Energy conversion efficiency: 7% (deviation: -13%)
-	Weight: 17278 kg, Cargo weight: 213 kg
-	Cargo capacity: 0 kg
-	Maximum takeoff weight: 17278 kg
-
-Airliner "random airliner":
-	ID: 52
-	Flew 5538 km, range: 2534 km
-	Cruise speed: 715 km/h
-	Fuel consumption is 3996.58 kg/h
-	Energy conversion efficiency: 2% (deviation: -19%)
-	Weight: 159108 kg, Cargo weight: 0 kg
-	Seating capacity: 142
-
-AirFreighter "random air freighter":
-	ID: 54
-	Flew 8416 km, range: 5079 km
-	Cruise speed: 706 km/h
-	Fuel consumption is 5849.00 kg/h
-	Energy conversion efficiency: 1% (deviation: -19%)
-	Weight: 201483 kg, Cargo weight: 59902 kg
-	Cargo capacity: 71291 kg
-	Maximum takeoff weight: 272774 kg
-
-Airliner "random airliner":
-	ID: 17
-	Flew 5934 km, range: 7243 km
-	Cruise speed: 684 km/h
-	Fuel consumption is 828.76 kg/h
-	Energy conversion efficiency: 4% (deviation: -16%)
-	Weight: 25103 kg, Cargo weight: 0 kg
-	Seating capacity: 380
-
-Airliner "random airliner":
-	ID: 29
-	Flew 3369 km, range: 1488 km
-	Cruise speed: 674 km/h
-	Fuel consumption is 13084.16 kg/h
-	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 211209 kg, Cargo weight: 0 kg
-	Seating capacity: 491
-
-Warplane "random warplane":
-	ID: 20
-	Flew 2417 km, range: 14677 km
-	Cruise speed: 670 km/h
-	Fuel consumption is 14430.89 kg/h
-	Energy conversion efficiency: 0% (deviation: -20%)
-	Weight: 189654 kg, Cargo weight: 0 kg
-	Bomb load: 39561 kg
-
-AirFreighter "random air freighter":
-	ID: 41
-	Flew 5655 km, range: 3364 km
-	Cruise speed: 588 km/h
-	Fuel consumption is 6368.80 kg/h
-	Energy conversion efficiency: 1% (deviation: -19%)
-	Weight: 251947 kg, Cargo weight: 71174 kg
-	Cargo capacity: 20669 kg
-	Maximum takeoff weight: 272616 kg
-
-Warplane "random warplane":
-	ID: 31
-	Flew 4216 km, range: 2386 km
-	Cruise speed: 577 km/h
-	Fuel consumption is 477.31 kg/h
-	Energy conversion efficiency: 6% (deviation: -14%)
-	Weight: 20473 kg, Cargo weight: 0 kg
-	Bomb load: 17668 kg
-
-Warplane "random warplane":
-	ID: 32
-	Flew 6393 km, range: 5825 km
-	Cruise speed: 547 km/h
-	Fuel consumption is 17410.76 kg/h
-	Energy conversion efficiency: 0% (deviation: -20%)
-	Weight: 152527 kg, Cargo weight: 0 kg
-	Bomb load: 141871 kg
-
-Warplane "random warplane":
-	ID: 51
-	Flew 5814 km, range: 1471 km
-	Cruise speed: 527 km/h
-	Fuel consumption is 2498.65 kg/h
-	Energy conversion efficiency: 1% (deviation: -19%)
-	Weight: 64922 kg, Cargo weight: 0 kg
-	Bomb load: 62703 kg
-
-Airliner "random airliner":
-	ID: 38
-	Flew 641 km, range: 2161 km
-	Cruise speed: 499 km/h
-	Fuel consumption is 308.09 kg/h
-	Energy conversion efficiency: 8% (deviation: -12%)
-	Weight: 8735 kg, Cargo weight: 0 kg
-	Seating capacity: 299
-
-Airliner "random airliner":
-	ID: 43
-	Flew 4817 km, range: 5271 km
-	Cruise speed: 475 km/h
-	Fuel consumption is 7384.86 kg/h
-	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 162156 kg, Cargo weight: 0 kg
-	Seating capacity: 69
-
-Airliner "random airliner":
-	ID: 18
-	Flew 4563 km, range: 6965 km
-	Cruise speed: 474 km/h
-	Fuel consumption is 130.17 kg/h
-	Energy conversion efficiency: 18% (deviation: -2%)
-	Weight: 5519 kg, Cargo weight: 0 kg
-	Seating capacity: 188
+	Flew 9125 km, range: 11252 km
+	Cruise speed: 1155 km/h
+	Fuel consumption is 5712.95 kg/h
+	Energy conversion efficiency: 2% (deviation: -18%)
+	Weight: 192222 kg, Cargo weight: 0 kg
+	Bomb load: 170727 kg
 
 AirFreighter "random air freighter":
 	ID: 62
-	Flew 5504 km, range: 9858 km
-	Cruise speed: 458 km/h
-	Fuel consumption is 915.96 kg/h
-	Energy conversion efficiency: 3% (deviation: -17%)
-	Weight: 48594 kg, Cargo weight: 12890 kg
-	Cargo capacity: 4950 kg
-	Maximum takeoff weight: 53544 kg
+	Flew 1336 km, range: 2449 km
+	Cruise speed: 1147 km/h
+	Fuel consumption is 10484.12 kg/h
+	Energy conversion efficiency: 1% (deviation: -19%)
+	Weight: 177069 kg, Cargo weight: 49809 kg
+	Cargo capacity: 38004 kg
+	Maximum takeoff weight: 215073 kg
 
 Warplane "random warplane":
-	ID: 57
-	Flew 9299 km, range: 5454 km
-	Cruise speed: 402 km/h
-	Fuel consumption is 20753.99 kg/h
-	Energy conversion efficiency: 0% (deviation: -20%)
-	Weight: 220468 kg, Cargo weight: 0 kg
-	Bomb load: 184894 kg
+	ID: 38
+	Flew 654 km, range: 254 km
+	Cruise speed: 1136 km/h
+	Fuel consumption is 607.80 kg/h
+	Energy conversion efficiency: 10% (deviation: -10%)
+	Weight: 26185 kg, Cargo weight: 0 kg
+	Bomb load: 26140 kg
 
-Airliner "random airliner":
-	ID: 46
-	Flew 4316 km, range: 5734 km
-	Cruise speed: 390 km/h
-	Fuel consumption is 6434.51 kg/h
-	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 208774 kg, Cargo weight: 0 kg
-	Seating capacity: 221
+AirFreighter "random air freighter":
+	ID: 17
+	Flew 910 km, range: 4937 km
+	Cruise speed: 1117 km/h
+	Fuel consumption is 5102.28 kg/h
+	Energy conversion efficiency: 3% (deviation: -18%)
+	Weight: 278691 kg, Cargo weight: 80650 kg
+	Cargo capacity: 68010 kg
+	Maximum takeoff weight: 346701 kg
 
 Warplane "random warplane":
-	ID: 24
-	Flew 3889 km, range: 3262 km
-	Cruise speed: 365 km/h
-	Fuel consumption is 1426.65 kg/h
+	ID: 52
+	Flew 2897 km, range: 5484 km
+	Cruise speed: 1116 km/h
+	Fuel consumption is 6982.84 kg/h
 	Energy conversion efficiency: 2% (deviation: -19%)
-	Weight: 58342 kg, Cargo weight: 0 kg
-	Bomb load: 44496 kg
-
-AirFreighter "random air freighter":
-	ID: 16
-	Flew 3015 km, range: 1756 km
-	Cruise speed: 342 km/h
-	Fuel consumption is 1921.77 kg/h
-	Energy conversion efficiency: 1% (deviation: -19%)
-	Weight: 43798 kg, Cargo weight: 8183 kg
-	Cargo capacity: 0 kg
-	Maximum takeoff weight: 43798 kg
-
-Warplane "random warplane":
-	ID: 30
-	Flew 3205 km, range: 8647 km
-	Cruise speed: 336 km/h
-	Fuel consumption is 3044.86 kg/h
-	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 106545 kg, Cargo weight: 0 kg
-	Bomb load: 103672 kg
+	Weight: 221893 kg, Cargo weight: 0 kg
+	Bomb load: 68607 kg
 
 Airliner "random airliner":
-	ID: 22
-	Flew 9771 km, range: 2136 km
-	Cruise speed: 335 km/h
-	Fuel consumption is 2201.45 kg/h
-	Energy conversion efficiency: 1% (deviation: -19%)
-	Weight: 88659 kg, Cargo weight: 0 kg
-	Seating capacity: 310
-
-AirFreighter "random air freighter":
-	ID: 39
-	Flew 2632 km, range: 2483 km
-	Cruise speed: 320 km/h
-	Fuel consumption is 6409.84 kg/h
-	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 261644 kg, Cargo weight: 72523 kg
-	Cargo capacity: 362 kg
-	Maximum takeoff weight: 262006 kg
-
-AirFreighter "random air freighter":
-	ID: 49
-	Flew 662 km, range: 8805 km
-	Cruise speed: 269 km/h
-	Fuel consumption is 5222.03 kg/h
-	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 291031 kg, Cargo weight: 79921 kg
-	Cargo capacity: 0 kg
-	Maximum takeoff weight: 291031 kg
-
-Airliner "random airliner":
-	ID: 47
-	Flew 2496 km, range: 10566 km
-	Cruise speed: 224 km/h
-	Fuel consumption is 19096.31 kg/h
-	Energy conversion efficiency: 0% (deviation: -20%)
-	Weight: 199117 kg, Cargo weight: 0 kg
-	Seating capacity: 9
-
-Warplane "random warplane":
-	ID: 35
-	Flew 8174 km, range: 2490 km
-	Cruise speed: 224 km/h
-	Fuel consumption is 8132.06 kg/h
-	Energy conversion efficiency: 0% (deviation: -20%)
-	Weight: 169580 kg, Cargo weight: 0 kg
-	Bomb load: 55452 kg
+	ID: 45
+	Flew 3435 km, range: 11435 km
+	Cruise speed: 1051 km/h
+	Fuel consumption is 2459.47 kg/h
+	Energy conversion efficiency: 2% (deviation: -18%)
+	Weight: 35394 kg, Cargo weight: 0 kg
+	Seating capacity: 446
 
 AirFreighter "random air freighter":
 	ID: 63
-	Flew 9683 km, range: 8856 km
-	Cruise speed: 213 km/h
-	Fuel consumption is 1717.45 kg/h
+	Flew 7496 km, range: 1992 km
+	Cruise speed: 1024 km/h
+	Fuel consumption is 16975.74 kg/h
 	Energy conversion efficiency: 1% (deviation: -20%)
-	Weight: 41412 kg, Cargo weight: 1583 kg
-	Cargo capacity: 37451 kg
-	Maximum takeoff weight: 78863 kg
+	Weight: 244141 kg, Cargo weight: 39496 kg
+	Cargo capacity: 10266 kg
+	Maximum takeoff weight: 254407 kg
 
 Warplane "random warplane":
-	ID: 19
-	Flew 3519 km, range: 7768 km
-	Cruise speed: 204 km/h
-	Fuel consumption is 3224.73 kg/h
+	ID: 20
+	Flew 7390 km, range: 13493 km
+	Cruise speed: 966 km/h
+	Fuel consumption is 3023.87 kg/h
+	Energy conversion efficiency: 2% (deviation: -18%)
+	Weight: 107866 kg, Cargo weight: 0 kg
+	Bomb load: 2975 kg
+
+Warplane "random warplane":
+	ID: 43
+	Flew 3595 km, range: 1406 km
+	Cruise speed: 952 km/h
+	Fuel consumption is 185.50 kg/h
+	Energy conversion efficiency: 25% (deviation: +5%)
+	Weight: 4577 kg, Cargo weight: 0 kg
+	Bomb load: 3743 kg
+
+Warplane "random warplane":
+	ID: 54
+	Flew 687 km, range: 3319 km
+	Cruise speed: 933 km/h
+	Fuel consumption is 27457.18 kg/h
 	Energy conversion efficiency: 0% (deviation: -20%)
-	Weight: 70219 kg, Cargo weight: 0 kg
-	Bomb load: 20457 kg
+	Weight: 227622 kg, Cargo weight: 0 kg
+	Bomb load: 111026 kg
+
+AirFreighter "random air freighter":
+	ID: 31
+	Flew 74 km, range: 6389 km
+	Cruise speed: 910 km/h
+	Fuel consumption is 1518.95 kg/h
+	Energy conversion efficiency: 3% (deviation: -17%)
+	Weight: 25954 kg, Cargo weight: 2243 kg
+	Cargo capacity: 18217 kg
+	Maximum takeoff weight: 44171 kg
+
+Warplane "random warplane":
+	ID: 56
+	Flew 4082 km, range: 518 km
+	Cruise speed: 897 km/h
+	Fuel consumption is 8110.75 kg/h
+	Energy conversion efficiency: 1% (deviation: -20%)
+	Weight: 85597 kg, Cargo weight: 0 kg
+	Bomb load: 22823 kg
+
+Airliner "random airliner":
+	ID: 61
+	Flew 4631 km, range: 8080 km
+	Cruise speed: 893 km/h
+	Fuel consumption is 5756.78 kg/h
+	Energy conversion efficiency: 1% (deviation: -19%)
+	Weight: 191628 kg, Cargo weight: 0 kg
+	Seating capacity: 285
+
+Airliner "random airliner":
+	ID: 49
+	Flew 5 km, range: 12438 km
+	Cruise speed: 892 km/h
+	Fuel consumption is 4464.51 kg/h
+	Energy conversion efficiency: 2% (deviation: -19%)
+	Weight: 138792 kg, Cargo weight: 0 kg
+	Seating capacity: 281
+
+Airliner "random airliner":
+	ID: 60
+	Flew 6391 km, range: 3615 km
+	Cruise speed: 859 km/h
+	Fuel consumption is 4206.90 kg/h
+	Energy conversion efficiency: 2% (deviation: -19%)
+	Weight: 111552 kg, Cargo weight: 0 kg
+	Seating capacity: 132
+
+Warplane "random warplane":
+	ID: 46
+	Flew 5581 km, range: 10625 km
+	Cruise speed: 854 km/h
+	Fuel consumption is 9112.01 kg/h
+	Energy conversion efficiency: 1% (deviation: -20%)
+	Weight: 186788 kg, Cargo weight: 0 kg
+	Bomb load: 185667 kg
+
+Warplane "random warplane":
+	ID: 42
+	Flew 1053 km, range: 9775 km
+	Cruise speed: 817 km/h
+	Fuel consumption is 7385.77 kg/h
+	Energy conversion efficiency: 1% (deviation: -19%)
+	Weight: 240247 kg, Cargo weight: 0 kg
+	Bomb load: 222523 kg
+
+AirFreighter "random air freighter":
+	ID: 53
+	Flew 7275 km, range: 7028 km
+	Cruise speed: 793 km/h
+	Fuel consumption is 2269.17 kg/h
+	Energy conversion efficiency: 2% (deviation: -18%)
+	Weight: 87621 kg, Cargo weight: 340 kg
+	Cargo capacity: 120 kg
+	Maximum takeoff weight: 87741 kg
+
+AirFreighter "random air freighter":
+	ID: 36
+	Flew 2335 km, range: 4009 km
+	Cruise speed: 791 km/h
+	Fuel consumption is 1483.20 kg/h
+	Energy conversion efficiency: 3% (deviation: -18%)
+	Weight: 20458 kg, Cargo weight: 8964 kg
+	Cargo capacity: 1829 kg
+	Maximum takeoff weight: 22287 kg
+
+Airliner "random airliner":
+	ID: 24
+	Flew 1602 km, range: 4594 km
+	Cruise speed: 649 km/h
+	Fuel consumption is 4555.13 kg/h
+	Energy conversion efficiency: 1% (deviation: -19%)
+	Weight: 117654 kg, Cargo weight: 0 kg
+	Seating capacity: 276
+
+AirFreighter "random air freighter":
+	ID: 32
+	Flew 5747 km, range: 4883 km
+	Cruise speed: 642 km/h
+	Fuel consumption is 2003.52 kg/h
+	Energy conversion efficiency: 2% (deviation: -18%)
+	Weight: 80002 kg, Cargo weight: 21407 kg
+	Cargo capacity: 20656 kg
+	Maximum takeoff weight: 100658 kg
+
+Airliner "random airliner":
+	ID: 16
+	Flew 6332 km, range: 6057 km
+	Cruise speed: 630 km/h
+	Fuel consumption is 7289.60 kg/h
+	Energy conversion efficiency: 1% (deviation: -19%)
+	Weight: 235024 kg, Cargo weight: 0 kg
+	Seating capacity: 27
+
+Warplane "random warplane":
+	ID: 55
+	Flew 2199 km, range: 6368 km
+	Cruise speed: 627 km/h
+	Fuel consumption is 2439.34 kg/h
+	Energy conversion efficiency: 1% (deviation: -19%)
+	Weight: 23931 kg, Cargo weight: 0 kg
+	Bomb load: 4395 kg
+
+AirFreighter "random air freighter":
+	ID: 50
+	Flew 234 km, range: 744 km
+	Cruise speed: 592 km/h
+	Fuel consumption is 6260.15 kg/h
+	Energy conversion efficiency: 1% (deviation: -20%)
+	Weight: 180440 kg, Cargo weight: 56681 kg
+	Cargo capacity: 52951 kg
+	Maximum takeoff weight: 233391 kg
+
+AirFreighter "random air freighter":
+	ID: 47
+	Flew 9576 km, range: 13128 km
+	Cruise speed: 574 km/h
+	Fuel consumption is 2651.86 kg/h
+	Energy conversion efficiency: 2% (deviation: -19%)
+	Weight: 117444 kg, Cargo weight: 8589 kg
+	Cargo capacity: 69913 kg
+	Maximum takeoff weight: 187357 kg
+
+Airliner "random airliner":
+	ID: 34
+	Flew 5746 km, range: 1969 km
+	Cruise speed: 563 km/h
+	Fuel consumption is 16971.86 kg/h
+	Energy conversion efficiency: 0% (deviation: -20%)
+	Weight: 104984 kg, Cargo weight: 0 kg
+	Seating capacity: 46
+
+Airliner "random airliner":
+	ID: 33
+	Flew 8834 km, range: 1045 km
+	Cruise speed: 535 km/h
+	Fuel consumption is 876.52 kg/h
+	Energy conversion efficiency: 3% (deviation: -17%)
+	Weight: 14423 kg, Cargo weight: 0 kg
+	Seating capacity: 116
+
+Warplane "random warplane":
+	ID: 27
+	Flew 8151 km, range: 10725 km
+	Cruise speed: 492 km/h
+	Fuel consumption is 971.05 kg/h
+	Energy conversion efficiency: 3% (deviation: -18%)
+	Weight: 36749 kg, Cargo weight: 0 kg
+	Bomb load: 9741 kg
+
+AirFreighter "random air freighter":
+	ID: 41
+	Flew 4005 km, range: 10590 km
+	Cruise speed: 484 km/h
+	Fuel consumption is 147.41 kg/h
+	Energy conversion efficiency: 16% (deviation: -4%)
+	Weight: 8531 kg, Cargo weight: 3677 kg
+	Cargo capacity: 180 kg
+	Maximum takeoff weight: 8711 kg
+
+Airliner "random airliner":
+	ID: 44
+	Flew 3174 km, range: 10482 km
+	Cruise speed: 451 km/h
+	Fuel consumption is 5924.74 kg/h
+	Energy conversion efficiency: 1% (deviation: -20%)
+	Weight: 221988 kg, Cargo weight: 0 kg
+	Seating capacity: 334
+
+Warplane "random warplane":
+	ID: 21
+	Flew 8103 km, range: 12639 km
+	Cruise speed: 449 km/h
+	Fuel consumption is 5468.30 kg/h
+	Energy conversion efficiency: 1% (deviation: -20%)
+	Weight: 225079 kg, Cargo weight: 0 kg
+	Bomb load: 112113 kg
+
+Airliner "random airliner":
+	ID: 25
+	Flew 2885 km, range: 13563 km
+	Cruise speed: 439 km/h
+	Fuel consumption is 23068.52 kg/h
+	Energy conversion efficiency: 0% (deviation: -20%)
+	Weight: 235298 kg, Cargo weight: 0 kg
+	Seating capacity: 244
+
+Airliner "random airliner":
+	ID: 28
+	Flew 6005 km, range: 722 km
+	Cruise speed: 435 km/h
+	Fuel consumption is 319.80 kg/h
+	Energy conversion efficiency: 7% (deviation: -14%)
+	Weight: 6505 kg, Cargo weight: 0 kg
+	Seating capacity: 49
+
+Warplane "random warplane":
+	ID: 26
+	Flew 8236 km, range: 5836 km
+	Cruise speed: 427 km/h
+	Fuel consumption is 7415.62 kg/h
+	Energy conversion efficiency: 1% (deviation: -20%)
+	Weight: 226919 kg, Cargo weight: 0 kg
+	Bomb load: 118251 kg
+
+Airliner "random airliner":
+	ID: 35
+	Flew 4572 km, range: 8955 km
+	Cruise speed: 417 km/h
+	Fuel consumption is 6114.72 kg/h
+	Energy conversion efficiency: 1% (deviation: -20%)
+	Weight: 145785 kg, Cargo weight: 0 kg
+	Seating capacity: 98
+
+AirFreighter "random air freighter":
+	ID: 18
+	Flew 5502 km, range: 7150 km
+	Cruise speed: 389 km/h
+	Fuel consumption is 14749.95 kg/h
+	Energy conversion efficiency: 0% (deviation: -20%)
+	Weight: 225956 kg, Cargo weight: 23045 kg
+	Cargo capacity: 116897 kg
+	Maximum takeoff weight: 342853 kg
+
+Airliner "random airliner":
+	ID: 23
+	Flew 2796 km, range: 6033 km
+	Cruise speed: 357 km/h
+	Fuel consumption is 11702.86 kg/h
+	Energy conversion efficiency: 0% (deviation: -20%)
+	Weight: 139803 kg, Cargo weight: 0 kg
+	Seating capacity: 55
+
+Warplane "random warplane":
+	ID: 51
+	Flew 6043 km, range: 12362 km
+	Cruise speed: 345 km/h
+	Fuel consumption is 1293.61 kg/h
+	Energy conversion efficiency: 2% (deviation: -19%)
+	Weight: 55797 kg, Cargo weight: 0 kg
+	Bomb load: 11749 kg
+
+Warplane "random warplane":
+	ID: 59
+	Flew 854 km, range: 10241 km
+	Cruise speed: 334 km/h
+	Fuel consumption is 16548.43 kg/h
+	Energy conversion efficiency: 0% (deviation: -20%)
+	Weight: 201864 kg, Cargo weight: 0 kg
+	Bomb load: 68316 kg
+
+AirFreighter "random air freighter":
+	ID: 57
+	Flew 2369 km, range: 11143 km
+	Cruise speed: 332 km/h
+	Fuel consumption is 6136.40 kg/h
+	Energy conversion efficiency: 1% (deviation: -20%)
+	Weight: 299681 kg, Cargo weight: 86616 kg
+	Cargo capacity: 11815 kg
+	Maximum takeoff weight: 311496 kg
+
+Airliner "random airliner":
+	ID: 30
+	Flew 9689 km, range: 252 km
+	Cruise speed: 330 km/h
+	Fuel consumption is 7824.57 kg/h
+	Energy conversion efficiency: 0% (deviation: -20%)
+	Weight: 171473 kg, Cargo weight: 0 kg
+	Seating capacity: 147
+
+AirFreighter "random air freighter":
+	ID: 19
+	Flew 5041 km, range: 3280 km
+	Cruise speed: 323 km/h
+	Fuel consumption is 3987.85 kg/h
+	Energy conversion efficiency: 1% (deviation: -20%)
+	Weight: 69150 kg, Cargo weight: 3545 kg
+	Cargo capacity: 1431 kg
+	Maximum takeoff weight: 70581 kg
+
+Airliner "random airliner":
+	ID: 65
+	Flew 9534 km, range: 1682 km
+	Cruise speed: 285 km/h
+	Fuel consumption is 4794.98 kg/h
+	Energy conversion efficiency: 1% (deviation: -20%)
+	Weight: 196706 kg, Cargo weight: 0 kg
+	Seating capacity: 36
+
+Airliner "random airliner":
+	ID: 48
+	Flew 6344 km, range: 3118 km
+	Cruise speed: 273 km/h
+	Fuel consumption is 306.50 kg/h
+	Energy conversion efficiency: 5% (deviation: -16%)
+	Weight: 11498 kg, Cargo weight: 0 kg
+	Seating capacity: 0
+
+AirFreighter "random air freighter":
+	ID: 39
+	Flew 9595 km, range: 10492 km
+	Cruise speed: 232 km/h
+	Fuel consumption is 8884.94 kg/h
+	Energy conversion efficiency: 0% (deviation: -20%)
+	Weight: 88046 kg, Cargo weight: 7635 kg
+	Cargo capacity: 254 kg
+	Maximum takeoff weight: 88300 kg
+
+Warplane "random warplane":
+	ID: 37
+	Flew 421 km, range: 4498 km
+	Cruise speed: 215 km/h
+	Fuel consumption is 1092.99 kg/h
+	Energy conversion efficiency: 1% (deviation: -19%)
+	Weight: 34946 kg, Cargo weight: 0 kg
+	Bomb load: 29796 kg
+
+Airliner "random airliner":
+	ID: 40
+	Flew 6342 km, range: 10473 km
+	Cruise speed: 204 km/h
+	Fuel consumption is 4132.50 kg/h
+	Energy conversion efficiency: 0% (deviation: -20%)
+	Weight: 173327 kg, Cargo weight: 0 kg
+	Seating capacity: 64
 

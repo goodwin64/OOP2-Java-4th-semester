@@ -10,8 +10,8 @@ import java.util.Scanner;
  */
 public class Lab6_var03 {
     public static void main(String[] args) {
-        String dataPathPrefix = "src\\KPI_FICT\\OOP2\\Source\\Variant03\\";
-        String outputPathPrefix = "src\\KPI_FICT\\OOP2\\Source\\Variant03\\";
+        String dataPathPrefix = "src\\ua\\kpi\\fict\\oop2\\Resources\\Variant03\\";
+        String outputPathPrefix = dataPathPrefix;
 
         Airplane[] realAirplanes = createAirplanesBasedOnPrototypes();
 
@@ -181,7 +181,8 @@ public class Lab6_var03 {
                     int MTOW = (int) ((Math.random() + 1) * emptyWeight);   // g.t. or equal to emptyWeight
                     airplanes[i] = new AirFreighter(airplanes[i], MTOW);
                     airplanes[i].setModel("random air freighter");
-                    int cargoWeight = (int) (Math.random() * airplanes[i].getWeight() / 2);
+                    int cargoWeight = (int) (Math.random() *
+                            (((AirFreighter) airplanes[i]).getMTOW() - airplanes[i].getWeight()));
                     try {
                         ((AirFreighter) airplanes[i]).addWeight(cargoWeight);
                     } catch (IllegalArgumentException e) {
