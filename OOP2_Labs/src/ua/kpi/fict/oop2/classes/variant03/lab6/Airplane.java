@@ -1,5 +1,7 @@
 package ua.kpi.fict.oop2.classes.variant03.lab6;
 
+import ua.kpi.fict.oop2.tests.variant03.AirplaneException;
+
 import java.util.Locale;
 
 /**
@@ -35,13 +37,25 @@ public class Airplane implements Comparable<Airplane> {
     }
     public Airplane(Airplane other) {
         addFlightDistance(other.getFlightDistance());
-        setCruiseSpeed(other.getCruiseSpeed());
-        setRange(other.getRange());
+        try {
+            setCruiseSpeed(other.getCruiseSpeed());
+        } catch (AirplaneException e) {
+            e.printStackTrace();
+        }
+        try {
+            setRange(other.getRange());
+        } catch (AirplaneException e) {
+            e.printStackTrace();
+        }
         this.ID = other.getID();
         setWeight(other.getWeight());
         this.emptyWeight = other.getWeight();
         setFuelConsumption(other.getFuelConsumption());
-        setModel(other.getModel());
+        try {
+            setModel(other.getModel());
+        } catch (AirplaneException e) {
+            e.printStackTrace();
+        }
     }
     public Airplane(String model, int emptyWeight, double fuelConsumption,
                     int cruiseSpeed, int range) throws IllegalArgumentException {
@@ -64,19 +78,19 @@ public class Airplane implements Comparable<Airplane> {
 
         try {
             setModel(model);
-        } catch (IllegalArgumentException e) {
+        } catch (AirplaneException e) {
             e.printStackTrace();
         }
 
         try {
             setCruiseSpeed(cruiseSpeed);
-        } catch (IllegalArgumentException e) {
+        } catch (AirplaneException e) {
             e.printStackTrace();
         }
 
         try {
             setRange(range);
-        } catch (Exception e) {
+        } catch (AirplaneException e) {
             e.printStackTrace();
         }
     }
@@ -169,12 +183,12 @@ public class Airplane implements Comparable<Airplane> {
     public String getModel() {
         return model;
     }
-    public void setModel(String model) throws IllegalArgumentException {
+    public void setModel(String model) throws AirplaneException {
         if (model.length() <= 50) {
             this.model = model;
         } else {
             String message = "Incorrect model name, length is >50";
-            throw new IllegalArgumentException(message);
+            throw new AirplaneException(message);
         }
     }
 
@@ -182,12 +196,13 @@ public class Airplane implements Comparable<Airplane> {
     public int getCruiseSpeed() {
         return cruiseSpeed;
     }
-    public void setCruiseSpeed(int cruiseSpeed) throws IllegalArgumentException {
-        if (cruiseSpeed > 50 && cruiseSpeed < 3200) {
+    public void setCruiseSpeed(int cruiseSpeed) throws AirplaneException {
+        int MAXIMUM_AIRPLANE_SPEED = 3200;
+        if (cruiseSpeed > 50 && cruiseSpeed < MAXIMUM_AIRPLANE_SPEED) {
             this.cruiseSpeed = cruiseSpeed;
         } else {
             String message = "Incorrect cruise speed";
-            throw new IllegalArgumentException(message);
+            throw new AirplaneException(message);
         }
     }
 
@@ -195,12 +210,13 @@ public class Airplane implements Comparable<Airplane> {
     public int getRange() {
         return range;
     }
-    public void setRange(int range) {
-        if (range > 0 && range < 17395) {
+    public void setRange(int range) throws AirplaneException {
+        int MAXIMUM_AIRPLANE_RANGE = 17395;
+        if (range > 0 && range < MAXIMUM_AIRPLANE_RANGE) {
             this.range = range;
         } else {
             String message = "Incorrect range";
-            throw new IllegalArgumentException(message);
+            throw new AirplaneException(message);
         }
     }
 

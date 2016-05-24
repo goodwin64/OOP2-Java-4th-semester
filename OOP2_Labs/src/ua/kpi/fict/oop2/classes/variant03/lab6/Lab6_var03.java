@@ -1,5 +1,7 @@
 package ua.kpi.fict.oop2.classes.variant03.lab6;
 
+import ua.kpi.fict.oop2.tests.variant03.AirplaneException;
+
 import java.io.*;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -25,7 +27,12 @@ public class Lab6_var03 {
         }
         if (writer != null) {
             // TASK: Create an airline.
-            Airplane[] airline = createRandomAirplanes();
+            Airplane[] airline = new Airplane[0];
+            try {
+                airline = createRandomAirplanes();
+            } catch (AirplaneException e) {
+                e.printStackTrace();
+            }
             airplanesToFile(dataPathPrefix + "Lab6 - airplanes data.txt", airline, true);
 
             // TASK: Calculate the total carrying capacity of airline.
@@ -148,7 +155,7 @@ public class Lab6_var03 {
     /**
      * Creates and fills an Airplanes array of random airplanes.
      */
-    public static Airplane[] createRandomAirplanes() {
+    public static Airplane[] createRandomAirplanes() throws AirplaneException {
         Airplane[] airplanes = new Airplane[50];
 
         for (int i = 0; i < 50; i++) {
