@@ -81,22 +81,6 @@ public class Lab3_var03 {
     }
 
     /**
-     * Outputs the results to the file instead of console.
-     */
-    public static void printToFile() {
-        File file = new File("Output.txt");
-        try {
-            PrintWriter pw = new PrintWriter(file);
-            pw.println("Line 1");
-            pw.println("Line 2");
-            pw.println("Line 3");
-            pw.close();
-        } catch (IOException e) {
-            System.err.format("IOException: %s%n", e);
-        }
-    }
-
-    /**
      * Scan text from file to buffer string.
      *
      * @param path      the path to the file with text
