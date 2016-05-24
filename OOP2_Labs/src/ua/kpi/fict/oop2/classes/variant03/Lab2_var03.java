@@ -39,16 +39,23 @@ public class Lab2_var03 {
      * Calculates the sum of numbers in each column
      * and print additional row with these values.
      */
-    public static void printColumnAmounts(byte[][] matrix) {
-        int sum;
-        for (int j = 0; j < matrix[0].length; j++) {
-            sum = 0;
-            for (int i = 0; i < matrix.length; i++) {
-                sum += matrix[i][j];
-            }
-            System.out.printf("%5d", sum);
+    public static int sumColumnsMinimums(byte[][] matrix) {
+        int sum = 0;
+        if (matrix.length < 1 || matrix[0].length < 1) {
+            throw new IllegalArgumentException("Empty matrix");
         }
-        System.out.println(); /* analogue of '\n' */
+        for (int j = 0; j < matrix[0].length; j++) {
+            int min = 0;
+            for (int i = 0; i < matrix.length; i++) {
+                if (matrix[i][j] < min) {
+                    min = matrix[i][j];
+                }
+            }
+            sum += min;
+            System.out.printf("%5d", min);
+        }
+        System.out.println();
+        return sum;
     }
 
     public static void main(String[] args) {
@@ -91,11 +98,11 @@ public class Lab2_var03 {
             }
         }
 
-        //prettyPrint(A);
-        //prettyPrint(B);
+        prettyPrint(A);
+        prettyPrint(B);
         prettyPrint(C);
 
-        printColumnAmounts(C);
+        System.out.println("Sum of minimum elements in each column: " + sumColumnsMinimums(C));
 
     }
 }
