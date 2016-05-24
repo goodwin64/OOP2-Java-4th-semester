@@ -64,7 +64,7 @@ class SortDescByAverMark implements Comparator<Student> {
 
         if (am2 == am1) {
             return 0;
-        } else if (am2 - am1 < 0) {
+        } else if (am2 < am1) {
             return -1;
         } else {
             return 1;
